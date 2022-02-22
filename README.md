@@ -8,8 +8,8 @@ El grupo lo conforman:
 
 Aplicación web para una pizzería. 
 Tecnologías utilizadas:
-Backend: JAVA, MAVEN, SPRING
-BBDD: MySQL y MongoDB
-Frontend: Angular
+Backend: JAVA, MAVEN, SPRING.
+BBDD: MySQL y MongoDB.
+Frontend: Angular.
 
 
