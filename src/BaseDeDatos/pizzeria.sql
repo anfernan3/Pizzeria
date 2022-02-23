@@ -12,8 +12,8 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
--- Volcando estructura para tabla pizzeria.comentario
-CREATE TABLE IF NOT EXISTS `comentario` (
+-- Volcando estructura para tabla pizzeria.comentarios
+CREATE TABLE IF NOT EXISTS `comentarios` (
   `id_comentario` int NOT NULL AUTO_INCREMENT,
   `puntuacion` int NOT NULL,
   `fecha` timestamp NOT NULL,
@@ -22,26 +22,41 @@ CREATE TABLE IF NOT EXISTS `comentario` (
   PRIMARY KEY (`id_comentario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla pizzeria.comentario: ~0 rows (aproximadamente)
-DELETE FROM `comentario`;
-/*!40000 ALTER TABLE `comentario` DISABLE KEYS */;
-/*!40000 ALTER TABLE `comentario` ENABLE KEYS */;
+-- Volcando datos para la tabla pizzeria.comentarios: ~0 rows (aproximadamente)
+DELETE FROM `comentarios`;
+/*!40000 ALTER TABLE `comentarios` DISABLE KEYS */;
+/*!40000 ALTER TABLE `comentarios` ENABLE KEYS */;
 
--- Volcando estructura para tabla pizzeria.funcion
-CREATE TABLE IF NOT EXISTS `funcion` (
+-- Volcando estructura para tabla pizzeria.direcciones
+CREATE TABLE IF NOT EXISTS `direcciones` (
+  `id_direccion` int NOT NULL AUTO_INCREMENT,
+  `calle` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ciudad` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `pais` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id_usuario` int DEFAULT NULL,
+  PRIMARY KEY (`id_direccion`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Volcando datos para la tabla pizzeria.direcciones: ~0 rows (aproximadamente)
+DELETE FROM `direcciones`;
+/*!40000 ALTER TABLE `direcciones` DISABLE KEYS */;
+/*!40000 ALTER TABLE `direcciones` ENABLE KEYS */;
+
+-- Volcando estructura para tabla pizzeria.funciones
+CREATE TABLE IF NOT EXISTS `funciones` (
   `id_funcion` int NOT NULL AUTO_INCREMENT,
   `usuario` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `rol` enum('usuario','tienda','repartidor','gerente') COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id_funcion`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla pizzeria.funcion: ~0 rows (aproximadamente)
-DELETE FROM `funcion`;
-/*!40000 ALTER TABLE `funcion` DISABLE KEYS */;
-/*!40000 ALTER TABLE `funcion` ENABLE KEYS */;
+-- Volcando datos para la tabla pizzeria.funciones: ~0 rows (aproximadamente)
+DELETE FROM `funciones`;
+/*!40000 ALTER TABLE `funciones` DISABLE KEYS */;
+/*!40000 ALTER TABLE `funciones` ENABLE KEYS */;
 
--- Volcando estructura para tabla pizzeria.ingrediente
-CREATE TABLE IF NOT EXISTS `ingrediente` (
+-- Volcando estructura para tabla pizzeria.ingredientes
+CREATE TABLE IF NOT EXISTS `ingredientes` (
   `id_ingrediente` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tipo` enum('base','salsa','otros') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -49,10 +64,10 @@ CREATE TABLE IF NOT EXISTS `ingrediente` (
   PRIMARY KEY (`id_ingrediente`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla pizzeria.ingrediente: ~0 rows (aproximadamente)
-DELETE FROM `ingrediente`;
-/*!40000 ALTER TABLE `ingrediente` DISABLE KEYS */;
-/*!40000 ALTER TABLE `ingrediente` ENABLE KEYS */;
+-- Volcando datos para la tabla pizzeria.ingredientes: ~0 rows (aproximadamente)
+DELETE FROM `ingredientes`;
+/*!40000 ALTER TABLE `ingredientes` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ingredientes` ENABLE KEYS */;
 
 -- Volcando estructura para tabla pizzeria.ingredientes por pizza
 CREATE TABLE IF NOT EXISTS `ingredientes por pizza` (
@@ -61,8 +76,8 @@ CREATE TABLE IF NOT EXISTS `ingredientes por pizza` (
   `ingrediente` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `cantidad` int NOT NULL,
   PRIMARY KEY (`id_ingredientes_por_pizza`),
-  CONSTRAINT `FK_ingredientes por pizza_ingrediente` FOREIGN KEY (`id_ingredientes_por_pizza`) REFERENCES `ingrediente` (`id_ingrediente`),
-  CONSTRAINT `FK_ingredientes por pizza_pizza` FOREIGN KEY (`id_ingredientes_por_pizza`) REFERENCES `pizza` (`id_pizza`)
+  CONSTRAINT `FK_ingredientes por pizza_ingrediente` FOREIGN KEY (`id_ingredientes_por_pizza`) REFERENCES `ingredientes` (`id_ingrediente`),
+  CONSTRAINT `FK_ingredientes por pizza_pizza` FOREIGN KEY (`id_ingredientes_por_pizza`) REFERENCES `pizzas` (`id_pizza`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Volcando datos para la tabla pizzeria.ingredientes por pizza: ~0 rows (aproximadamente)
@@ -70,8 +85,8 @@ DELETE FROM `ingredientes por pizza`;
 /*!40000 ALTER TABLE `ingredientes por pizza` DISABLE KEYS */;
 /*!40000 ALTER TABLE `ingredientes por pizza` ENABLE KEYS */;
 
--- Volcando estructura para tabla pizzeria.pedido
-CREATE TABLE IF NOT EXISTS `pedido` (
+-- Volcando estructura para tabla pizzeria.pedidos
+CREATE TABLE IF NOT EXISTS `pedidos` (
   `id_pedido` int NOT NULL AUTO_INCREMENT,
   `numero_pedido` int NOT NULL,
   `usuario` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -86,13 +101,13 @@ CREATE TABLE IF NOT EXISTS `pedido` (
   UNIQUE KEY `numero_pedido` (`numero_pedido`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla pizzeria.pedido: ~0 rows (aproximadamente)
-DELETE FROM `pedido`;
-/*!40000 ALTER TABLE `pedido` DISABLE KEYS */;
-/*!40000 ALTER TABLE `pedido` ENABLE KEYS */;
+-- Volcando datos para la tabla pizzeria.pedidos: ~0 rows (aproximadamente)
+DELETE FROM `pedidos`;
+/*!40000 ALTER TABLE `pedidos` DISABLE KEYS */;
+/*!40000 ALTER TABLE `pedidos` ENABLE KEYS */;
 
--- Volcando estructura para tabla pizzeria.pizza
-CREATE TABLE IF NOT EXISTS `pizza` (
+-- Volcando estructura para tabla pizzeria.pizzas
+CREATE TABLE IF NOT EXISTS `pizzas` (
   `id_pizza` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `descripcion` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -102,14 +117,15 @@ CREATE TABLE IF NOT EXISTS `pizza` (
   `precio` double NOT NULL,
   `gusta` enum('Si','No') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Si',
   PRIMARY KEY (`id_pizza`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla pizzeria.pizza: ~1 rows (aproximadamente)
-DELETE FROM `pizza`;
-/*!40000 ALTER TABLE `pizza` DISABLE KEYS */;
-INSERT INTO `pizza` (`id_pizza`, `nombre`, `descripcion`, `foto`, `base`, `salsa`, `precio`, `gusta`) VALUES
-	(6, 'Barbacoa', 'pizza barbacoa', NULL, 'fina', 'barbacoa', 5.7, 'No');
-/*!40000 ALTER TABLE `pizza` ENABLE KEYS */;
+-- Volcando datos para la tabla pizzeria.pizzas: ~0 rows (aproximadamente)
+DELETE FROM `pizzas`;
+/*!40000 ALTER TABLE `pizzas` DISABLE KEYS */;
+INSERT INTO `pizzas` (`id_pizza`, `nombre`, `descripcion`, `foto`, `base`, `salsa`, `precio`, `gusta`) VALUES
+	(1, 'Barbacoa', 'pizza barbacoa', NULL, 'fina', 'barbacoa', 5.7, 'No'),
+	(7, 'Barbacoa', 'pizza barbacoa', NULL, 'gruesa', 'barbacoa', 5.9, 'Si');
+/*!40000 ALTER TABLE `pizzas` ENABLE KEYS */;
 
 -- Volcando estructura para tabla pizzeria.pizzas por pedido
 CREATE TABLE IF NOT EXISTS `pizzas por pedido` (
@@ -126,24 +142,25 @@ DELETE FROM `pizzas por pedido`;
 /*!40000 ALTER TABLE `pizzas por pedido` DISABLE KEYS */;
 /*!40000 ALTER TABLE `pizzas por pedido` ENABLE KEYS */;
 
--- Volcando estructura para tabla pizzeria.usuario
-CREATE TABLE IF NOT EXISTS `usuario` (
-  `id_usuario` int NOT NULL,
-  `nombre` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `primer_apellido` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `segundo_apellido` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `direccion` varchar(350) COLLATE utf8mb4_unicode_ci NOT NULL,
+-- Volcando estructura para tabla pizzeria.usuarios
+CREATE TABLE IF NOT EXISTS `usuarios` (
+  `id_usuario` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `primer_apellido` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `segundo_apellido` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id_direccion` int DEFAULT NULL,
   `contraseña` enum('texto','sha1','md5') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id_usuario`),
-  CONSTRAINT `FK_usuario_comentario` FOREIGN KEY (`id_usuario`) REFERENCES `comentario` (`id_comentario`),
-  CONSTRAINT `FK_usuario_funcion` FOREIGN KEY (`id_usuario`) REFERENCES `funcion` (`id_funcion`),
-  CONSTRAINT `FK_usuario_pedido` FOREIGN KEY (`id_usuario`) REFERENCES `pedido` (`id_pedido`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  KEY `FK_usuario_direccion` (`id_direccion`),
+  CONSTRAINT `FK_usuario_direccion` FOREIGN KEY (`id_direccion`) REFERENCES `direcciones` (`id_direccion`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla pizzeria.usuario: ~0 rows (aproximadamente)
-DELETE FROM `usuario`;
-/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
+-- Volcando datos para la tabla pizzeria.usuarios: ~0 rows (aproximadamente)
+DELETE FROM `usuarios`;
+/*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
+INSERT INTO `usuarios` (`id_usuario`, `nombre`, `primer_apellido`, `segundo_apellido`, `id_direccion`, `contraseña`) VALUES
+	(1, 'admin', NULL, NULL, NULL, 'texto');
+/*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
