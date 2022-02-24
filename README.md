@@ -2,7 +2,7 @@
 
 El grupo lo conforman:
 - Antonio Fernández
-- Miguel zapata
+- Miguel Zapata
 - Juan Antonio Espín
 - Ángel Gomez
 
