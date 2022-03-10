@@ -1,0 +1,14 @@
+.icon{
+    width: 2%;
+    height: 2%;
+}
+
+.acceso{
+    background-color: red;
+}
+
+ul{
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+}
