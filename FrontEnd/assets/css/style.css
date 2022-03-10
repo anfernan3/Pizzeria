@@ -1,14 +1,42 @@
-.icon{
-    width: 2%;
-    height: 2%;
+
+body{
+    font-family: 'Raleway', sans-serif;
 }
 
-.acceso{
-    background-color: red;
+/* nav{
+    border-bottom: 1px solid;
+    display: flex;
+    flex-direction: row;
+} */
+
+.icon{
+    display: flex;
+    flex-direction: row;
+    width: 5%;
+    height: 100%;
 }
 
 ul{
     list-style-type: none;
     display: flex;
     flex-direction: row;
+}
+
+li{
+    margin-right: 12%;
+    margin-left: 1%;
+}
+
+/* li:hover{
+    margin-top: -2%;
+    margin-right: 12%;
+    margin-left: 1%;
+} */
+
+.imgcarrusel{
+    height: 500px !important;
+}
+
+section{
+    margin: 1%;
 }
