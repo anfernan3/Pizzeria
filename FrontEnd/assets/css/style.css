@@ -1,27 +1,43 @@
 
 body{
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Raleway', sans-serif !important;
 }
 
 nav{
     align-items: center;
+    background-color: #7E0306 !important;
 }
-.carrusel{
-    
 
-}
 article{
-    margin: 2%;
+    margin-top: 1%;
 }
+
+.carrusel{
+    width: 100%;
+}
+
 .acceso{    
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: center;
-    width: 100%;    
+    flex-wrap: wrap;
+    align-items: center; 
 }
 
 .btn-acceso{
     width: 100%;
+}
+
+.card{
+    flex-direction: row !important;
+}
+.card img{
+    width: 100% !important;
+}
+.carta{
+    width: 100%;
+}
+
+.btn{
+    background-color: #D53E0F !important;
 }
 

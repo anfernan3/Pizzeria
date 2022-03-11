@@ -24,7 +24,7 @@
   <body>
     <!-- CABECERA -->
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light text-center">
+        <nav class="navbar navbar-expand-lg navbar-dark text-center">
             <div class="container-fluid">
                 <img src="https://img.icons8.com/cotton/64/000000/pizza--v5.png" class="icon" alt="icon">
                 <a class="navbar-brand" href="#">PizzaXpress</a>              
@@ -40,8 +40,7 @@
                     <a class="nav-link" href="#">Promociones</a>
                   </li>
                   <li class="nav-item">
-                    <button type="button" class="btn btn-danger btn-acceso"><a class="nav-link" href="#">Acceso</a></button>
-                    
+                    <button type="button" class="btn btn-danger btn-acceso"><a class="nav-link" href="#">Acceso</a></button>                    
                   </li>
                 </ul>
               </div>
@@ -57,12 +56,15 @@
                 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-indicators">
                       <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-label="Slide 1"></button>
-                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" class="active" aria-label="Slide 2"></button>
-                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" class="active" aria-label="Slide 3"></button>
+                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"  aria-label="Slide 2"></button>
+                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"  aria-label="Slide 3"></button>
                     </div>
                     <div class="carousel-inner">
                       <div class="carousel-item active">
-                        <img src="assets/img/pizza1.jpg" class="imgcarrusel" width="500" height="300" pizza1">
+                        <picture>
+                          <source media="(min-width:650px)" srcset="assets/img/pizza1.jpg" class="imgcarrusel" alt="Pizza1"> 
+                          <img src="assets/img/pizza1.jpg" class="imgcarrusel" width="500" height="300" alt="Pizza1">
+                        </picture>
                       </div>
                       <div class="carousel-item">
                         <img src="assets/img/pizza2.jpg" class="imgcarrusel" width="500" height="300" alt="pizza2">
@@ -82,35 +84,21 @@
                   </div>
             </article>
 
-            <!-- FORMULARIO DE INICIO DE SESIÓN -->
-            <article>
-                <form class="text-center">
-                    <div class="mb-3">
-                      <label for="exampleInputEmail1" class="form-label">Email</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                    </div>
-                    <div class="mb-3">
-                      <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-                      <input type="password" class="form-control" id="exampleInputPassword1">
-                    </div>
-                    <button type="submit" class="btn btn-success">Iniciar Sesión</button>
-                    <button type="submit" class="btn btn-danger">Registrarse</button>
-                    <button type="submit" class="btn btn-warning">Ingresar como invitado</button>
-                  </form>
-            </article>
+
             
         </section>
 
         <!-- CARTA -->
-        <section>
+        <section class="carta">
             <H1 class="text-center">Carta</H1>
+
             <!-- ESTO SE TIENE QUE GENERAR CON AJAX O CON ANGULAR (DEPENDIENDO DE SI ANGULAR LO PUEDE HACER O NO) -->
-            <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
+            <div class="card">
+                <img src="assets/img/iconPizza.png" class="card-img-top" alt="iconPizza"></img>
                 <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                  <h5 class="card-title">Peperoni</h5>
+                  <p class="card-text">Masa fresca, doble de bacon, champiñón, salsa carbonara, fundido para pizza y extra de fundido para pizza</p>
+                  <a href="#" class="btn">Pedir</a>
                 </div>
             </div>
         </section>
@@ -135,12 +123,8 @@
       
     <div class="container">
         <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-            <p class="col-md-4 mb-0 text-muted">&copy; 2022 PizzaXpress SL</p>
-      
-            <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-                <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-            </a>
-      
+            <p class="col-md-4 mb-0 text-muted text-center">&copy; 2022 PizzaXpress SL</p>
+            
             <ul class="nav col-md-4 justify-content-end">
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Inicio</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Carta</a></li>
