@@ -29,10 +29,25 @@ article{
 
 .card{
     flex-direction: row !important;
+<<<<<<< Upstream, based on origin/main
+=======
+<<<<<<< HEAD
+    flex-wrap: nowrap !important;
+>>>>>>> e1ee3e0 merge
 }
 .card img{
     width: 100% !important;
 }
+<<<<<<< Upstream, based on origin/main
+=======
+
+=======
+}
+.card img{
+    width: 100% !important;
+}
+>>>>>>> branch 'main' of https://github.com/anfernan3/Pizzeria.git
+>>>>>>> e1ee3e0 merge
 .carta{
     width: 100%;
 }
