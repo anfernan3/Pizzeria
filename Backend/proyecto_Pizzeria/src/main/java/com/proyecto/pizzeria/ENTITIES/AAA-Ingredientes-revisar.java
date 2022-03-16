@@ -1,4 +1,4 @@
-package com.proyecto.pizzeria.ENTITIES;
+/*package com.proyecto.pizzeria.ENTITIES;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -12,7 +12,7 @@ import java.util.Objects;
 @Entity
 @Table(name="ingredientes por pizza")
 @NamedQuery(name="Ingredientes.findAll", query="SELECT i FROM Ingredientes i")
-public class Direcciones extends EntityBase<Direcciones> implements Serializable {
+public class Ingredientes extends EntityBase<Ingredientes> implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -28,13 +28,13 @@ public class Direcciones extends EntityBase<Direcciones> implements Serializable
 	//bi-directional many-to-one association to Ingredientes
 	@ManyToOne
 	@JoinColumn(name="id_ingrediente")
-	private Direcciones ingrediente;
+	private Ingredientes ingrediente;
 
 	@NotNull
 	@Length(max=10)
 	private int cantidad;
 
-	public Direcciones(int ingredientesPizzaId, Pizzas pizza, Direcciones ingrediente,
+	public Ingredientes(int ingredientesPizzaId, Pizzas pizza, Ingredientes ingrediente,
 			@NotBlank @Length(max = 10) int cantidad) {
 		super();
 		IngredientesPizzaId = ingredientesPizzaId;
@@ -59,11 +59,11 @@ public class Direcciones extends EntityBase<Direcciones> implements Serializable
 		this.pizza = pizza;
 	}
 
-	public Direcciones getIngrediente() {
+	public Ingredientes getIngrediente() {
 		return ingrediente;
 	}
 
-	public void setIngrediente(Direcciones ingrediente) {
+	public void setIngrediente(Ingredientes ingrediente) {
 		this.ingrediente = ingrediente;
 	}
 
@@ -92,7 +92,7 @@ public class Direcciones extends EntityBase<Direcciones> implements Serializable
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Direcciones other = (Direcciones) obj;
+		Ingredientes other = (Ingredientes) obj;
 		return IngredientesPizzaId == other.IngredientesPizzaId;
 	}
 
@@ -109,4 +109,4 @@ public class Direcciones extends EntityBase<Direcciones> implements Serializable
 	
 	
 
-}
+}*/

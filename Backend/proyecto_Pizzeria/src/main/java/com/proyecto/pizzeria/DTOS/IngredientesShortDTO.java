@@ -1,4 +1,4 @@
-package com.proyecto.pizzeria.DTOS;
+/*package com.proyecto.pizzeria.DTOS;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.proyecto.pizzeria.ENTITIES.Ingredientes;
@@ -25,4 +25,4 @@ public class IngredientesShortDTO {
 //	}
 
 // ehhhh
-}
+}*/

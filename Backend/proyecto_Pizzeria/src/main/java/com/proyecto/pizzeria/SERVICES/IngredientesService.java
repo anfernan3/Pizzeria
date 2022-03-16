@@ -1,7 +1,7 @@
 package com.proyecto.pizzeria.SERVICES;
 
-import com.proyecto.pizzeria.ENTITIES.Ingredientes;
+import com.proyecto.pizzeria.ENTITIES.Ingrediente;
 
-public interface IngredientesService extends ProjectionDomainService<Ingredientes, Integer> {
+public interface IngredientesService extends ProjectionDomainService<Ingrediente, Integer> {
 
 }

@@ -1,4 +1,4 @@
-package com.proyecto.pizzeria.SERVICES_IMPL;
+/*package com.proyecto.pizzeria.SERVICES_IMPL;
 
 
 
@@ -9,7 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import com.proyecto.pizzeria.ENTITIES.Ingredientes;
+import com.proyecto.pizzeria.ENTITIES.Ingrediente;
 import com.proyecto.pizzeria.EXCEPTIONS.DuplicateKeyException;
 import com.proyecto.pizzeria.EXCEPTIONS.InvalidDataException;
 import com.proyecto.pizzeria.EXCEPTIONS.NotFoundException;
@@ -92,4 +92,4 @@ public class IngredientesServiceImpl implements IngredientesService {
 	public void deleteById(Integer id) {
 		dao.deleteById(id);
 	}
-}
+}*/

@@ -1,4 +1,4 @@
-package com.proyecto.pizzeria.REPOSITORIES;
+/*package com.proyecto.pizzeria.REPOSITORIES;
 
 import java.util.List;
 import org.springframework.data.domain.Page;
@@ -15,3 +15,4 @@ public interface IngredientesRepository extends JpaRepository<Ingredientes, Inte
 	<T> Page<T> findByIngredientesPizzaIdIsNotNull(Pageable pageable, Class<T> type);
 
 }
+*/
