@@ -1,11 +1,13 @@
 package com.proyecto.pizzeria.ENTITIES;
 
-
-
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
+import javax.persistence.*;
+
+import com.proyecto.pizzeria.ENTITYBASE.EntityBase;
+
+
 
 
 /**
@@ -15,7 +17,7 @@ import java.util.Objects;
 @Entity
 @Table(name="ingredientes")
 @NamedQuery(name="Ingrediente.findAll", query="SELECT i FROM Ingrediente i")
-public class Ingrediente implements Serializable {
+public class Ingrediente extends EntityBase<Ingrediente> implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -130,5 +132,4 @@ public class Ingrediente implements Serializable {
 	}
 	
 	
-
 }

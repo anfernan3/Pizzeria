@@ -42,11 +42,11 @@ public class Usuario implements Serializable {
 
 	//bi-directional many-to-one association to Direccione
 	@OneToMany(mappedBy="usuario")
-	private List<Direccione> direcciones;
+	private List<Direccion> direcciones;
 
 	//bi-directional many-to-one association to Funcione
 	@OneToMany(mappedBy="usuario")
-	private List<Funcione> funciones;
+	private List<Funcion> funciones;
 
 	public Usuario() {
 	}
@@ -129,44 +129,44 @@ public class Usuario implements Serializable {
 		return comentario;
 	}
 
-	public List<Direccione> getDirecciones() {
+	public List<Direccion> getDirecciones() {
 		return this.direcciones;
 	}
 
-	public void setDirecciones(List<Direccione> direcciones) {
+	public void setDirecciones(List<Direccion> direcciones) {
 		this.direcciones = direcciones;
 	}
 
-	public Direccione addDireccione(Direccione direccione) {
+	public Direccion addDireccione(Direccion direccione) {
 		getDirecciones().add(direccione);
 		direccione.setUsuario(this);
 
 		return direccione;
 	}
 
-	public Direccione removeDireccione(Direccione direccione) {
+	public Direccion removeDireccione(Direccion direccione) {
 		getDirecciones().remove(direccione);
 		direccione.setUsuario(null);
 
 		return direccione;
 	}
 
-	public List<Funcione> getFunciones() {
+	public List<Funcion> getFunciones() {
 		return this.funciones;
 	}
 
-	public void setFunciones(List<Funcione> funciones) {
+	public void setFunciones(List<Funcion> funciones) {
 		this.funciones = funciones;
 	}
 
-	public Funcione addFuncione(Funcione funcione) {
+	public Funcion addFuncione(Funcion funcione) {
 		getFunciones().add(funcione);
 		funcione.setUsuario(this);
 
 		return funcione;
 	}
 
-	public Funcione removeFuncione(Funcione funcione) {
+	public Funcion removeFuncione(Funcion funcione) {
 		getFunciones().remove(funcione);
 		funcione.setUsuario(null);
 

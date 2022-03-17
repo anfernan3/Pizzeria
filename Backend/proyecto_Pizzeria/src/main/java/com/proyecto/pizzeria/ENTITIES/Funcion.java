@@ -12,8 +12,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="funciones")
-@NamedQuery(name="Funcione.findAll", query="SELECT f FROM Funcione f")
-public class Funcione implements Serializable {
+public class Funcion implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -25,10 +24,10 @@ public class Funcione implements Serializable {
 
 	//bi-directional many-to-one association to Usuario
 	@ManyToOne
-	@JoinColumn(name="id_usuario")
+	@JoinColumn(name="id_usuario", insertable=false, updatable=false)
 	private Usuario usuario;
 
-	public Funcione() {
+	public Funcion() {
 	}
 
 	public int getIdFuncion() {

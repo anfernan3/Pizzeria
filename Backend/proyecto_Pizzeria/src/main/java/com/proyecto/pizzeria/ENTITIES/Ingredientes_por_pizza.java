@@ -25,12 +25,12 @@ public class Ingredientes_por_pizza implements Serializable {
 
 	//bi-directional many-to-one association to Ingrediente
 	@ManyToOne
-	@JoinColumn(name="id_ingrediente")
+	@JoinColumn(name="id_ingrediente", insertable=false, updatable=false)
 	private Ingrediente ingrediente;
 
 	//bi-directional many-to-one association to Pizza
 	@ManyToOne
-	@JoinColumn(name="id_pizza")
+	@JoinColumn(name="id_pizza", insertable=false, updatable=false)
 	private Pizza pizza;
 
 	public Ingredientes_por_pizza() {

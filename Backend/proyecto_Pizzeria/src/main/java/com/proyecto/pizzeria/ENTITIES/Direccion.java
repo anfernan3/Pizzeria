@@ -12,8 +12,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="direcciones")
-@NamedQuery(name="Direccione.findAll", query="SELECT d FROM Direccione d")
-public class Direccione implements Serializable {
+public class Direccion implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -29,10 +28,10 @@ public class Direccione implements Serializable {
 
 	//bi-directional many-to-one association to Usuario
 	@ManyToOne
-	@JoinColumn(name="id_usuario")
+	@JoinColumn(name="id_usuario", insertable=false, updatable=false)
 	private Usuario usuario;
 
-	public Direccione() {
+	public Direccion() {
 	}
 
 	public int getIdDireccion() {

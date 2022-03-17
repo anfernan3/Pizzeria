@@ -12,7 +12,6 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="`pizzas por pedido`")
-@NamedQuery(name="Pizzas_por_pedido.findAll", query="SELECT p FROM Pizzas_por_pedido p")
 public class Pizzas_por_pedido implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -25,12 +24,12 @@ public class Pizzas_por_pedido implements Serializable {
 
 	//bi-directional many-to-one association to Pedido
 	@ManyToOne
-	@JoinColumn(name="id_pedido")
+	@JoinColumn(name="id_pedido", insertable=false, updatable=false)
 	private Pedido pedido;
 
 	//bi-directional many-to-one association to Pizza
 	@ManyToOne
-	@JoinColumn(name="id_pizza")
+	@JoinColumn(name="id_pizza", insertable=false, updatable=false)
 	private Pizza pizza;
 
 	public Pizzas_por_pedido() {

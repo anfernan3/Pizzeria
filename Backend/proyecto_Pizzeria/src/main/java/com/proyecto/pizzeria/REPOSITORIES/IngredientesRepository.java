@@ -12,8 +12,8 @@ import com.proyecto.pizzeria.ENTITIES.Ingrediente;
 
 @RepositoryRestResource(exported = false)
 public interface IngredientesRepository extends JpaRepository<Ingrediente, Integer> {
-	<T> List<T> findByIngredientesPizzaIdIsNotNull(Class<T> type);
-	<T> Iterable<T> findByIngredientesPizzaIdIsNotNull(Sort sort, Class<T> type);
-	<T> Page<T> findByIngredientesPizzaIdIsNotNull(Pageable pageable, Class<T> type);
+	<T> List<T> findByIdIngredienteIsNotNull(Class<T> type);
+	<T> Iterable<T> findByIdIngredienteIsNotNull(Sort sort, Class<T> type);
+	<T> Page<T> findByIdIngredienteIsNotNull(Pageable pageable, Class<T> type);
 
 }
