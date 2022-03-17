@@ -1,4 +1,4 @@
-package com.proyecto.pizzeria.SERVICES;
+package com.proyecto.pizzeria.contracts.services;
 
 
 

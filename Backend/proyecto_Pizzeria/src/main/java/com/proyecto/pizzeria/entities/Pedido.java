@@ -1,4 +1,4 @@
-package com.proyecto.pizzeria.ENTITIES;
+package com.proyecto.pizzeria.entities;
 
 
 

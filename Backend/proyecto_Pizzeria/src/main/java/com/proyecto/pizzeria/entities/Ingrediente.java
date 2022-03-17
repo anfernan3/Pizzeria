@@ -1,11 +1,11 @@
-package com.proyecto.pizzeria.ENTITIES;
+package com.proyecto.pizzeria.entities;
 
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 import javax.persistence.*;
 
-import com.proyecto.pizzeria.ENTITYBASE.EntityBase;
+import com.proyecto.pizzeria.entitybase.EntityBase;
 
 
 

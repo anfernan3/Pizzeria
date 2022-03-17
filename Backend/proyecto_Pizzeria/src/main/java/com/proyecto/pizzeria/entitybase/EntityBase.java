@@ -1,4 +1,4 @@
-package com.proyecto.pizzeria.ENTITYBASE;
+package com.proyecto.pizzeria.entitybase;
 
 import java.util.Set;
 

@@ -1,4 +1,4 @@
-package com.proyecto.pizzeria.EXCEPTIONS;
+package com.proyecto.pizzeria.exceptions;
 
 public class InvalidDataException extends Exception {
 	private static final long serialVersionUID = 1L;

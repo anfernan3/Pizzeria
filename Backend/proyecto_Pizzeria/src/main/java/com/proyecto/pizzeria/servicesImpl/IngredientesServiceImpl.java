@@ -1,4 +1,4 @@
-package com.proyecto.pizzeria.SERVICES_IMPL;
+package com.proyecto.pizzeria.servicesImpl;
 
 
 
@@ -9,12 +9,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import com.proyecto.pizzeria.ENTITIES.Ingrediente;
-import com.proyecto.pizzeria.EXCEPTIONS.DuplicateKeyException;
-import com.proyecto.pizzeria.EXCEPTIONS.InvalidDataException;
-import com.proyecto.pizzeria.EXCEPTIONS.NotFoundException;
-import com.proyecto.pizzeria.REPOSITORIES.IngredientesRepository;
-import com.proyecto.pizzeria.SERVICES.IngredientesService;
+import com.proyecto.pizzeria.contracts.repositories.IngredientesRepository;
+import com.proyecto.pizzeria.contracts.services.IngredientesService;
+import com.proyecto.pizzeria.entities.Ingrediente;
+import com.proyecto.pizzeria.exceptions.DuplicateKeyException;
+import com.proyecto.pizzeria.exceptions.InvalidDataException;
+import com.proyecto.pizzeria.exceptions.NotFoundException;
 
 @Service
 public class IngredientesServiceImpl implements IngredientesService {

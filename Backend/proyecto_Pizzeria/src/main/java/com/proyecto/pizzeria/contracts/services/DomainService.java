@@ -1,10 +1,10 @@
-package com.proyecto.pizzeria.SERVICES;
+package com.proyecto.pizzeria.contracts.services;
 
 import java.util.List;
 
-import com.proyecto.pizzeria.EXCEPTIONS.DuplicateKeyException;
-import com.proyecto.pizzeria.EXCEPTIONS.InvalidDataException;
-import com.proyecto.pizzeria.EXCEPTIONS.NotFoundException;
+import com.proyecto.pizzeria.exceptions.DuplicateKeyException;
+import com.proyecto.pizzeria.exceptions.InvalidDataException;
+import com.proyecto.pizzeria.exceptions.NotFoundException;
 
 
 
