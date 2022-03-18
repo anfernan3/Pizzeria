@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Length;
 
 import com.proyecto.pizzeria.entitybase.EntityBase;
 
@@ -24,11 +27,12 @@ public class Ingrediente extends EntityBase<Ingrediente> implements Serializable
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_ingrediente")
 	private int idIngrediente;
-
+	@NotNull
+	@Length(max=50)
 	private String nombre;
-
+	@NotNull
 	private double precio;
-
+	@NotNull
 	private String tipo;
 
 	//bi-directional many-to-one association to Ingredientes_por_pizza
@@ -39,16 +43,14 @@ public class Ingrediente extends EntityBase<Ingrediente> implements Serializable
 	}
 	
 
-	public Ingrediente(int idIngrediente, String nombre, double precio, String tipo,
-			List<Ingredientes_por_pizza> ingredientesPorPizzas) {
+	public Ingrediente(int idIngrediente, @NotNull @Length(max = 50) String nombre, @NotNull double precio,
+			@NotNull String tipo) {
 		super();
 		this.idIngrediente = idIngrediente;
 		this.nombre = nombre;
 		this.precio = precio;
 		this.tipo = tipo;
-		this.ingredientesPorPizzas = ingredientesPorPizzas;
 	}
-
 
 
 	public int getIdIngrediente() {
