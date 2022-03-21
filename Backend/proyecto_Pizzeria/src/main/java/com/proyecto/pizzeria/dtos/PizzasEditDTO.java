@@ -30,6 +30,7 @@ public class PizzasEditDTO {
 	private double precio;
 	private int gusta;
 	
+	
 
 	public static PizzasEditDTO from(Pizza source) {
 		return new PizzasEditDTO(
