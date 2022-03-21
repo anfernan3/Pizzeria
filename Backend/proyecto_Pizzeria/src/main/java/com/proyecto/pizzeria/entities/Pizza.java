@@ -1,10 +1,14 @@
 package com.proyecto.pizzeria.entities;
 
-
-
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.Length;
+
+import com.proyecto.pizzeria.entitybase.EntityBase;
+
 import java.util.List;
+import java.util.Objects;
 
 
 /**
@@ -13,28 +17,29 @@ import java.util.List;
  */
 @Entity
 @Table(name="pizzas")
-public class Pizza implements Serializable {
+public class Pizza extends EntityBase<Pizza> implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_pizza")
-	private int idPizza;
-
-	private String base;
-
-	private String descripcion;
-
-	@Column(name="foto_url")
-	private String fotoUrl;
-
-	private int gusta;
-
+	private int idPizza;	
+	@NotNull
+	@Length(max=50)
 	private String nombre;
-
-	private double precio;
-
+	@Length(max=150)
+	private String descripcion;	
+	@Column(name="foto_url")
+	private String fotoUrl;	
+	@NotNull
+	private String base;
+	@NotNull
 	private String salsa;
+	@NotNull
+	private double precio;	
+	private int gusta;
+	
 
 	//bi-directional many-to-one association to Comentario
 	@OneToMany(mappedBy="pizza")
@@ -50,6 +55,56 @@ public class Pizza implements Serializable {
 
 	public Pizza() {
 	}
+	
+	public Pizza(
+			int idPizza,
+			String nombre, 
+			String descripcion,
+			String fotoUrl,
+			String base, 
+			String salsa, 
+			double precio, 
+			int gusta
+			) {
+		super();
+		this.idPizza = idPizza;
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.fotoUrl = fotoUrl;
+		this.base = base;
+		this.salsa = salsa;
+		this.precio = precio;
+		this.gusta = gusta;		
+	}
+
+	public Pizza(
+			int idPizza,
+			String nombre, 
+			String descripcion,
+			String fotoUrl,
+			String base, 
+			String salsa, 
+			double precio, 
+			int gusta, 			
+			List<Comentario> comentarios, 
+			List<Ingredientes_por_pizza> ingredientesPorPizzas,
+			List<Pizzas_por_pedido> pizzasPorPedidos
+			) {
+		super();
+		this.idPizza = idPizza;
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.fotoUrl = fotoUrl;
+		this.base = base;
+		this.salsa = salsa;
+		this.precio = precio;
+		this.gusta = gusta;		
+		this.comentarios = comentarios;
+		this.ingredientesPorPizzas = ingredientesPorPizzas;
+		this.pizzasPorPedidos = pizzasPorPedidos;
+	}
+
+
 
 	public int getIdPizza() {
 		return this.idPizza;
@@ -180,5 +235,44 @@ public class Pizza implements Serializable {
 
 		return pizzasPorPedido;
 	}
+
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(base, comentarios, descripcion, fotoUrl, gusta, idPizza, ingredientesPorPizzas, nombre,
+				pizzasPorPedidos, precio, salsa);
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Pizza other = (Pizza) obj;
+		return Objects.equals(base, other.base) && Objects.equals(comentarios, other.comentarios)
+				&& Objects.equals(descripcion, other.descripcion) && Objects.equals(fotoUrl, other.fotoUrl)
+				&& gusta == other.gusta && idPizza == other.idPizza
+				&& Objects.equals(ingredientesPorPizzas, other.ingredientesPorPizzas)
+				&& Objects.equals(nombre, other.nombre) && Objects.equals(pizzasPorPedidos, other.pizzasPorPedidos)
+				&& Double.doubleToLongBits(precio) == Double.doubleToLongBits(other.precio)
+				&& Objects.equals(salsa, other.salsa);
+	}
+
+
+	@Override
+	public String toString() {
+		return "Pizza [idPizza=" + idPizza + ", base=" + base + ", descripcion=" + descripcion + ", fotoUrl=" + fotoUrl
+				+ ", gusta=" + gusta + ", nombre=" + nombre + ", precio=" + precio + ", salsa=" + salsa
+				+ ", comentarios=" + comentarios + ", ingredientesPorPizzas=" + ingredientesPorPizzas
+				+ ", pizzasPorPedidos=" + pizzasPorPedidos + "]";
+	}
+	
+	
+	
+	
 
 }
