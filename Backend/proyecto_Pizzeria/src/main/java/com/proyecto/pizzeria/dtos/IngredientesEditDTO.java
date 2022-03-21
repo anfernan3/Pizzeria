@@ -7,6 +7,7 @@ import org.hibernate.validator.constraints.Length;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.proyecto.pizzeria.entities.Ingrediente;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Value;
 
 //con el lombok declaramos las variables y luego se las pasa al constructor
@@ -20,6 +21,7 @@ public class IngredientesEditDTO {
 	@NotNull
 	private double precio;
 	@NotNull
+	@ApiModelProperty(value = "Tipos de Ingredientes.", allowableValues = "Salsa,Base,Otros")
 	private String tipo;
 
 	public static IngredientesEditDTO from(Ingrediente source) {
