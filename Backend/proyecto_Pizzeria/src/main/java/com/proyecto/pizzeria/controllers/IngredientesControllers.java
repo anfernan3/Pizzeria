@@ -59,6 +59,7 @@ public class IngredientesControllers {
 			return IngredientesEditDTO.from(srv.getOne(id));
 	}
 	
+	/* El paginable no es necesario porqueno habrá muchos tipos
 	@GetMapping(path = "/{page}", params = "page")
 	@ApiOperation(value = "Listado paginable de ingredientes")
 	public Page<IngredientesEditDTO> getAll(@ApiParam(required = false) Pageable page) {
@@ -66,6 +67,7 @@ public class IngredientesControllers {
 		return new PageImpl<IngredientesEditDTO>(content.getContent().stream().map(item -> IngredientesEditDTO.from(item)).toList(), 
 				page, content.getTotalElements());
 	}
+	*/
 	
 	@PostMapping
 	@Transactional
