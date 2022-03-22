@@ -102,12 +102,12 @@ public class IngredientesServiceImpl implements IngredientesService {
 	@Override
 	public <T> List<T> getBases(Class<T> type) {
 		// TODO Auto-generated method stub
-		return null;
+		return dao.findByTipo("base", type);
 	}
 
 	@Override
 	public <T> List<T> getOtros(Class<T> type) {
 		// TODO Auto-generated method stub
-		return null;
+		return dao.findByTipo("otros", type);
 	}
 }
