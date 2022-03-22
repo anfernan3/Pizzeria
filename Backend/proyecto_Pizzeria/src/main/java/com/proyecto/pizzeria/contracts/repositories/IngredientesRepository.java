@@ -15,5 +15,6 @@ public interface IngredientesRepository extends JpaRepository<Ingrediente, Integ
 	<T> List<T> findByIdIngredienteIsNotNull(Class<T> type);
 	<T> Iterable<T> findByIdIngredienteIsNotNull(Sort sort, Class<T> type);
 	<T> Page<T> findByIdIngredienteIsNotNull(Pageable pageable, Class<T> type);
+	<T> List<T> findByTipo (String tipo, Class<T> type);
 
 }

@@ -92,4 +92,22 @@ public class IngredientesServiceImpl implements IngredientesService {
 	public void deleteById(Integer id) {
 		dao.deleteById(id);
 	}
+
+	@Override
+	public <T> List<T> getSalsas(Class<T> type) {
+		// TODO Auto-generated method stub
+		return dao.findByTipo("salsa", type);
+	}
+
+	@Override
+	public <T> List<T> getBases(Class<T> type) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public <T> List<T> getOtros(Class<T> type) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

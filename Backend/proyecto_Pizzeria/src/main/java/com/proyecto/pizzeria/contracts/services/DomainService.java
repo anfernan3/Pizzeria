@@ -17,3 +17,4 @@ public interface DomainService<E, K> {
 	void delete(E item);
 	void deleteById(K id);
 }
+

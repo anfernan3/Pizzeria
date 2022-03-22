@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `ingredientes` (
   `tipo` enum('base','salsa','otros') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `precio` double NOT NULL,
   PRIMARY KEY (`id_ingrediente`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- La exportación de datos fue deseleccionada.
 
@@ -107,10 +107,10 @@ CREATE TABLE IF NOT EXISTS `pedidos` (
 CREATE TABLE IF NOT EXISTS `pizzas` (
   `id_pizza` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `descripcion` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `descripcion` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `foto_url` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `base` enum('fina','gruesa','extra crujiente','gruesa con queso') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `salsa` enum('tomate','barcacoa','boloñesa','carbonara','queso') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `base` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `salsa` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `precio` double NOT NULL,
   `gusta` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_pizza`),

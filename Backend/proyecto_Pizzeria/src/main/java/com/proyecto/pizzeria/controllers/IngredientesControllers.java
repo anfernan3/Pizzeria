@@ -59,6 +59,27 @@ public class IngredientesControllers {
 			return IngredientesEditDTO.from(srv.getOne(id));
 	}
 	
+	@GetMapping(path = "/salsas")
+	@ApiOperation(value = "Listado Ingredientes por tipo")
+	public List<IngredientesEditDTO> getOneDetails(@RequestParam(required = false, defaultValue = "details") String mode)
+			throws NotFoundException {
+			return srv.getSalsas(IngredientesEditDTO.class);
+	}
+	
+	@GetMapping(path = "/bases")
+	@ApiOperation(value = "Listado Ingredientes por tipo")
+	public List<IngredientesEditDTO> getOneDetails1(@RequestParam(required = false, defaultValue = "details") String mode)
+			throws NotFoundException {
+			return srv.getBases(IngredientesEditDTO.class);
+	}
+	
+	@GetMapping(path = "/otros")
+	@ApiOperation(value = "Listado Ingredientes por tipo")
+	public List<IngredientesEditDTO> getOneDetails2(@RequestParam(required = false, defaultValue = "details") String mode)
+			throws NotFoundException {
+			return srv.getOtros(IngredientesEditDTO.class);
+	}
+	
 	/* El paginable no es necesario porqueno habrá muchos tipos
 	@GetMapping(path = "/{page}", params = "page")
 	@ApiOperation(value = "Listado paginable de ingredientes")
