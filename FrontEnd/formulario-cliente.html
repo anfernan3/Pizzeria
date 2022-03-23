@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>PizzeriaXpress - formulario de alta de cliente</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <a class="nav-icon" href="#">☰ </a>
+            <a href="index.html"><img id="logo" src="img\logo1.png" alt="logo pizzaXpress"></a>
+            <a class="link-navbar" href="carta.html">Carta</a>
+            <a class="link-navbar" href="#">Pedidos</a>
+            <div class="separator"></div>
+            <a class="nav-icon2" href="#">🛒</a>
+            <a class="nav-icon2" href="formulario-cliente.html">👤</a>
+        </nav>
+        
+        <nav id="navbar-mobile">
+            <a class="link" href="#">PizzaXpress</a>
+            <a class="link" href="#">Carta</a>
+            <a class="link" href="#">Perfil de usuario</a>
+            <a class="link" href="#">Pedidos</a>
+        </nav>
+        
+    </header>
+    <section>
+        <article class="container-form">
+            <div id="sectionForm" class="card-title">
+                <h2>Formulario de alta de usuario</h2>
+            </div>
+            <form class="flex-col controls-form" action=""onsubmit="return validateForm()" method="post">
+                <label for="nombre">Nombre:</label>
+                <input title="nombre" id="nombre" name="nombre" type="text" required>
+                <label for="apellidos">Apellidos:</label>
+                <input title="apellidos" id="apellidos" name="apellidos" type="text" required>
+                <label for="email">Email:</label>
+                <input title="email" id="email" name="email" type="email" required>
+                <label for="telefono">Telefono</label>
+                <input title="telefono" id="telefono" name="telefono" type="tel">
+                <label for="fecha_nacimiento" id="fecha_nacimiento" name="fecha_nacimiento" required>Fecha de nacimiento</label>
+                <input title="fecha_nacimiento" type="date" required>  
+                <input class="button" type="submit" value="Enviar">
+                <input class="button" type="submit" value="Cancelar"> 
+            </form>
+            
+            
+            
+    </article>
+</section>       
+
+   
+    <footer>
+        <div id="container-footer">
+            <div class="container-text">
+                <h2>Información</h2>
+                <ul>
+                    <li>Terminos y Condiciones de uso</li>
+                    <li>Politica de Cookies</li>
+                    <li>Sus datos Seguros</li>
+                    <li>Política de protección de datos</li>
+                    <li>Atributions for images</li>
+                </ul>
+            </div>
+            <div class="container-text">
+                <h2>Contacta con nosotros</h2>
+                <ul>
+                    <li>Teléfono: 123456789</li>
+                    <li>Email: pizzaXpress@pizzaXpress.com</li>
+                    <li>Dirección: C/ de prueba ...</li>
+                </ul>
+            </div>
+        </div>
+        <div id="container-social">
+            <h2>Redes Sociales</h2>
+            <div class="flex-display">
+                <a title="facebook" href="facebook.com"><img class="icon" src="img\facebook.ico" alt="Logotipo de facebook"></a>
+                <a title="youtube" href="youtube.com"><img class="icon" src="img\youtube.ico" alt="Logotipo de youtube"></a>
+            </div>
+            
+        </div>
+    </footer>
+
+</body>
+
+</html>
