@@ -156,4 +156,14 @@ public class Pedido implements Serializable {
 		return pizzasPorPedido;
 	}
 
+	public boolean isInvalid() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public String getErrorsMessage() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
