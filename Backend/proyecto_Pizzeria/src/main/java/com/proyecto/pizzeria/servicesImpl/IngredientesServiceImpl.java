@@ -111,3 +111,5 @@ public class IngredientesServiceImpl implements IngredientesService {
 		return dao.findByTipo("otros", type);
 	}
 }
+
+
