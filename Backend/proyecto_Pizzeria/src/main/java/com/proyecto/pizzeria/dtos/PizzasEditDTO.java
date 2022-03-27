@@ -1,8 +1,6 @@
 package com.proyecto.pizzeria.dtos;
 
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Null;
-
 import org.hibernate.validator.constraints.Length;
 
 import com.fasterxml.jackson.annotation.JsonProperty;

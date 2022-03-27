@@ -9,9 +9,6 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,7 +30,6 @@ import com.proyecto.pizzeria.exceptions.InvalidDataException;
 import com.proyecto.pizzeria.exceptions.NotFoundException;
 
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
@@ -60,21 +56,21 @@ public class IngredientesControllers {
 	}
 	
 	@GetMapping(path = "/salsas")
-	@ApiOperation(value = "Listado Ingredientes por tipo")
+	@ApiOperation(value = "Listado Ingredientes por tipo salsa")
 	public List<IngredientesEditDTO> getOneDetails(@RequestParam(required = false, defaultValue = "details") String mode)
 			throws NotFoundException {
 			return srv.getSalsas(IngredientesEditDTO.class);
 	}
 	
 	@GetMapping(path = "/bases")
-	@ApiOperation(value = "Listado Ingredientes por tipo")
+	@ApiOperation(value = "Listado Ingredientes por tipo base")
 	public List<IngredientesEditDTO> getOneDetails1(@RequestParam(required = false, defaultValue = "details") String mode)
 			throws NotFoundException {
 			return srv.getBases(IngredientesEditDTO.class);
 	}
 	
 	@GetMapping(path = "/otros")
-	@ApiOperation(value = "Listado Ingredientes por tipo")
+	@ApiOperation(value = "Listado Ingredientes por tipo otros")
 	public List<IngredientesEditDTO> getOneDetails2(@RequestParam(required = false, defaultValue = "details") String mode)
 			throws NotFoundException {
 			return srv.getOtros(IngredientesEditDTO.class);

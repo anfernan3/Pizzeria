@@ -7,13 +7,13 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-import com.proyecto.pizzeria.entities.Pedido;
+import com.proyecto.pizzeria.entities.Pizzas_por_pedido;
 
 
 @RepositoryRestResource(exported = false)
-public interface PedidosRepository extends JpaRepository<Pedido, Integer> {
-	<T> List<T> findByIdPedidoIsNotNull(Class<T> type);
-	<T> Iterable<T> findByIdPedidoIsNotNull(Sort sort, Class<T> type);
-	<T> Page<T> findByIdPedidoIsNotNull(Pageable pageable, Class<T> type);
+public interface Pizzas_por_pedido_Repository extends JpaRepository<Pizzas_por_pedido, Integer> {
+	<T> List<T> findByPedidoIsNotNull(Class<T> type);
+	<T> Iterable<T> findByPedidoIsNotNull(Sort sort, Class<T> type);
+	<T> Page<T> findByPedidoIsNotNull(Pageable pageable, Class<T> type);
 
 }
