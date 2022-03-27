@@ -3,9 +3,6 @@ package com.proyecto.pizzeria.dtos;
 import java.sql.Timestamp;
 
 import javax.validation.constraints.NotNull;
-
-import org.hibernate.validator.constraints.Length;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.proyecto.pizzeria.entities.Comentario;
 import com.proyecto.pizzeria.entities.Pizza;

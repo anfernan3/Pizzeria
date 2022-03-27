@@ -7,7 +7,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
 import com.proyecto.pizzeria.contracts.repositories.ComentarioRepository;
-import com.proyecto.pizzeria.contracts.repositories.PizzasRepository;
 import com.proyecto.pizzeria.contracts.services.ComentariosService;
 import com.proyecto.pizzeria.entities.Comentario;
 import com.proyecto.pizzeria.exceptions.DuplicateKeyException;

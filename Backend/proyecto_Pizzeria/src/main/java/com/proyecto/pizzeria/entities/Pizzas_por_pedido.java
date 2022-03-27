@@ -6,6 +6,9 @@ import java.io.Serializable;
 import java.util.Objects;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Length;
 
 
 /**
@@ -17,11 +20,15 @@ import javax.persistence.*;
 public class Pizzas_por_pedido implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@EmbeddedId
-	private Pizzas_por_pedidoPK id;
+//	@EmbeddedId
+//	private Pizzas_por_pedidoPK id;
 
+	@NotNull
+	@Length(max=10)
 	private int cantidad;
 
+	@NotNull
+	@Length(max=10)
 	private int precio;
 
 	//bi-directional many-to-one association to Pedido
@@ -38,22 +45,25 @@ public class Pizzas_por_pedido implements Serializable {
 	}
 	
 
-	public Pizzas_por_pedido(Pizzas_por_pedidoPK id, int cantidad, int precio, Pedido pedido, Pizza pizza) {
+
+public Pizzas_por_pedido(@NotNull @Length(max = 10) int cantidad, @NotNull @Length(max = 10) int precio,
+			Pedido pedido, Pizza pizza) {
 		super();
-		this.id = id;
 		this.cantidad = cantidad;
 		this.precio = precio;
 		this.pedido = pedido;
 		this.pizza = pizza;
 	}
 
-	public Pizzas_por_pedidoPK getId() {
-		return this.id;
-	}
 
-	public void setId(Pizzas_por_pedidoPK id) {
-		this.id = id;
-	}
+
+//	public Pizzas_por_pedidoPK getId() {
+//		return this.id;
+//	}
+//
+//	public void setId(Pizzas_por_pedidoPK id) {
+//		this.id = id;
+//	}
 
 	public int getCantidad() {
 		return this.cantidad;
@@ -90,8 +100,9 @@ public class Pizzas_por_pedido implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(cantidad, id, pedido, pizza, precio);
+		return Objects.hash(pedido, pizza);
 	}
+
 
 
 	@Override
@@ -103,15 +114,17 @@ public class Pizzas_por_pedido implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Pizzas_por_pedido other = (Pizzas_por_pedido) obj;
-		return cantidad == other.cantidad && Objects.equals(id, other.id) && Objects.equals(pedido, other.pedido)
-				&& Objects.equals(pizza, other.pizza) && precio == other.precio;
+		return Objects.equals(pedido, other.pedido) && Objects.equals(pizza, other.pizza);
 	}
+
 
 
 	@Override
 	public String toString() {
-		return "Pizzas_por_pedido [id=" + id + ", cantidad=" + cantidad + ", precio=" + precio + ", pedido=" + pedido
-				+ ", pizza=" + pizza + "]";
+		return "Pizzas_por_pedido [pedido=" + pedido + ", pizza=" + pizza + "]";
 	}
+
+
+
 	
 }

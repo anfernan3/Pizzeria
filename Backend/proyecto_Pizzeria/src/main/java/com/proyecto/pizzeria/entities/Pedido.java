@@ -4,8 +4,15 @@ package com.proyecto.pizzeria.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Length;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 
 /**
@@ -22,29 +29,42 @@ public class Pedido implements Serializable {
 	@Column(name="id_pedido")
 	private int idPedido;
 
+	@NotNull
+	@Length(max=50)
 	@Column(name="direccion_entrega")
 	private String direccionEntrega;
 
+	@NotNull
+	@Length(max=50)
 	@Column(name="entregado_por")
 	private String entregadoPor;
 
+	@NotNull
 	private String estado;
 
+	@JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fecha;
 
+	@JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="fecha_entrega")
 	private Date fechaEntrega;
 
+	@NotNull
 	private double importe;
 
+	@NotNull
 	@Column(name="numero_pedido")
 	private int numeroPedido;
 
+	@NotNull
+	@Length(max=50)
 	@Column(name="preparado_por")
 	private String preparadoPor;
 
+	@NotNull
+	@Length(max=50)
 	private String usuario;
 
 	//bi-directional many-to-one association to Pizzas_por_pedido
@@ -53,6 +73,28 @@ public class Pedido implements Serializable {
 
 	public Pedido() {
 	}
+	
+	
+
+	public Pedido(int idPedido, @NotNull @Length(max = 50) String direccionEntrega,
+			@NotNull @Length(max = 50) String entregadoPor, @NotNull String estado, Date fecha, Date fechaEntrega,
+			@NotNull double importe, @NotNull int numeroPedido, @NotNull @Length(max = 50) String preparadoPor,
+			@NotNull @Length(max = 50) String usuario, List<Pizzas_por_pedido> pizzasPorPedidos) {
+		super();
+		this.idPedido = idPedido;
+		this.direccionEntrega = direccionEntrega;
+		this.entregadoPor = entregadoPor;
+		this.estado = estado;
+		this.fecha = fecha;
+		this.fechaEntrega = fechaEntrega;
+		this.importe = importe;
+		this.numeroPedido = numeroPedido;
+		this.preparadoPor = preparadoPor;
+		this.usuario = usuario;
+		this.pizzasPorPedidos = pizzasPorPedidos;
+	}
+
+
 
 	public int getIdPedido() {
 		return this.idPedido;
@@ -165,5 +207,36 @@ public class Pedido implements Serializable {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(idPedido);
+	}
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Pedido other = (Pedido) obj;
+		return idPedido == other.idPedido;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "Pedido [idPedido=" + idPedido + ", fecha=" + fecha + ", importe=" + importe + ", numeroPedido="
+				+ numeroPedido + ", usuario=" + usuario + "]";
+	}
+	
+	
 
 }
