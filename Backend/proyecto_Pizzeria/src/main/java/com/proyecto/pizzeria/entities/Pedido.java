@@ -4,6 +4,9 @@ package com.proyecto.pizzeria.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.proyecto.pizzeria.entitybase.EntityBase;
+
 import java.util.Date;
 import java.util.List;
 
@@ -14,7 +17,7 @@ import java.util.List;
  */
 @Entity
 @Table(name="pedidos")
-public class Pedido implements Serializable {
+public class Pedido extends EntityBase<Pedido> implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id

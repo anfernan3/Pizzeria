@@ -13,7 +13,7 @@ import com.proyecto.pizzeria.entities.Pedido;
 
 @RepositoryRestResource(exported = false)
 public interface PedidosRepository extends JpaRepository<Pedido, Integer> {
-	<T> List<T> findByPedidoIsNotNull(Class<T> type);
+	<T> List<T> findByIdPedidoIsNotNull(Class<T> type);
 	<T> Iterable<T> findByIdPedidoIsNotNull(Sort sort, Class<T> type);
 	<T> Page<T> findByIdPedidoIsNotNull(Pageable pageable, Class<T> type);
 
