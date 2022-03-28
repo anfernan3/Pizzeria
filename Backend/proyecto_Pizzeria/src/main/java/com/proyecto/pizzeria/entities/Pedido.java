@@ -30,17 +30,16 @@ public class Pedido extends EntityBase<Pedido> implements Serializable {
 	private int idPedido;
 
 	@NotNull
-	@Length(max = 50)
+	@Length(max = 250)
 	@Column(name = "direccion_entrega")
 	private String direccionEntrega;
 
-	@NotNull
 	@Length(max = 50)
 	@Column(name = "entregado_por")
 	private String entregadoPor;
 
 	@NotNull
-	private String estado;
+	private String estado = "solicitado";
 
 	@JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
 	@Temporal(TemporalType.TIMESTAMP)
@@ -54,11 +53,6 @@ public class Pedido extends EntityBase<Pedido> implements Serializable {
 	@NotNull
 	private double importe;
 
-	@NotNull
-	@Column(name = "numero_pedido")
-	private int numeroPedido;
-
-	@NotNull
 	@Length(max = 50)
 	@Column(name = "preparado_por")
 	private String preparadoPor;
@@ -77,21 +71,15 @@ public class Pedido extends EntityBase<Pedido> implements Serializable {
 	}
 
 	public Pedido(int idPedido, @NotNull @Length(max = 50) String direccionEntrega,
-			@NotNull @Length(max = 50) String entregadoPor, @NotNull String estado, Date fecha, Date fechaEntrega,
-			@NotNull double importe, @NotNull int numeroPedido, @NotNull @Length(max = 50) String preparadoPor,
-			@NotNull @Length(max = 50) String usuario, List<Pizzas_por_pedido> pizzasPorPedidos) {
+			Date fecha,
+			@NotNull double importe,
+			@NotNull @Length(max = 50) String usuario) {
 		this();
 		this.idPedido = idPedido;
 		this.direccionEntrega = direccionEntrega;
-		this.entregadoPor = entregadoPor;
-		this.estado = estado;
 		this.fecha = fecha;
-		this.fechaEntrega = fechaEntrega;
 		this.importe = importe;
-		this.numeroPedido = numeroPedido;
-		this.preparadoPor = preparadoPor;
 		this.usuario = usuario;
-		this.pizzasPorPedidos = pizzasPorPedidos;
 	}
 
 	public int getIdPedido() {
@@ -149,15 +137,6 @@ public class Pedido extends EntityBase<Pedido> implements Serializable {
 	public void setImporte(double importe) {
 		this.importe = importe;
 	}
-
-	public int getNumeroPedido() {
-		return this.numeroPedido;
-	}
-
-	public void setNumeroPedido(int numeroPedido) {
-		this.numeroPedido = numeroPedido;
-	}
-
 	public String getPreparadoPor() {
 		return this.preparadoPor;
 	}
@@ -224,8 +203,7 @@ public class Pedido extends EntityBase<Pedido> implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Pedido [idPedido=" + idPedido + ", fecha=" + fecha + ", importe=" + importe + ", numeroPedido="
-				+ numeroPedido + ", usuario=" + usuario + "]";
+		return "Pedido [idPedido=" + idPedido + ", fecha=" + fecha + ", importe=" + importe +  ", usuario=" + usuario + "]";
 	}
 
 }

@@ -115,24 +115,24 @@ public class PedidosControllers {
 		return ResponseEntity.created(location).build();
 	}
 
-	@PutMapping("/{id}")
-	@ResponseStatus(HttpStatus.ACCEPTED)
-	@Transactional
-	@ApiOperation(value = "Modificar un Pedido existente", notes = "Los identificadores deben coincidir")
-	@ApiResponses({
-		@ApiResponse(code = 201, message = "Pedido añadido"),
-		@ApiResponse(code = 400, message = "Error al validar los datos o discrepancias en los identificadores"),
-		@ApiResponse(code = 404, message = "Pedido no encontrado")
-	})
-	public void update(@ApiParam(value = "Identificador del pedido") @PathVariable int id, @Valid @RequestBody PedidosEditDTO item)
-			throws InvalidDataException, NotFoundException {
-		if (id != item.getIdPedido())
-			throw new InvalidDataException("No coinciden los identificadores");
-		var entity = PedidosEditDTO.from(item);
-		if (entity.isInvalid())
-			throw new InvalidDataException(entity.getErrorsMessage());
-		srv.change(entity);
-	}
+//	@PutMapping("/{id}")
+//	@ResponseStatus(HttpStatus.ACCEPTED)
+//	@Transactional
+//	@ApiOperation(value = "Modificar un Pedido existente", notes = "Los identificadores deben coincidir")
+//	@ApiResponses({
+//		@ApiResponse(code = 201, message = "Pedido añadido"),
+//		@ApiResponse(code = 400, message = "Error al validar los datos o discrepancias en los identificadores"),
+//		@ApiResponse(code = 404, message = "Pedido no encontrado")
+//	})
+//	public void update(@ApiParam(value = "Identificador del pedido") @PathVariable int id, @Valid @RequestBody PedidosEditDTO item)
+//			throws InvalidDataException, NotFoundException {
+//		if (id != item.getIdPedido())
+//			throw new InvalidDataException("No coinciden los identificadores");
+//		var entity = PedidosEditDTO.from(item);
+//		if (entity.isInvalid())
+//			throw new InvalidDataException(entity.getErrorsMessage());
+//		srv.change(entity);
+//	}
 
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)

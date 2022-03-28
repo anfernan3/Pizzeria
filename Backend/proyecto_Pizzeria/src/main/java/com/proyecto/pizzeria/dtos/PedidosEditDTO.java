@@ -17,35 +17,13 @@ import lombok.Value;
 
 @Value
 public class PedidosEditDTO {
-	
-
-	private int idPedido;
 	@NotNull
-	@Length(max=50)
-	private String direccionEntrega;
-	@NotNull
-	@Length(max=50)
-	private String entregadoPor;
-	@NotNull
-	@ApiModelProperty(value = "Estado de pedido.", allowableValues = "solicitado,elaborandose,preparado,enviado,recibido,cancelado")
-	private String estado;
-	@JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
-	private Date fecha;
-	@JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
-	@Column(name="fecha_entrega")
-	private Date fechaEntrega;
+	@Length(max=250)
+	private String direccion;
 	@NotNull
 	private double importe;
-	@NotNull
-	private int numeroPedido;
-	@NotNull
-	@Length(max=50)
-	private String preparadoPor;
-	@NotNull
-	@Length(max=50)
-	private String usuario;
 	@ApiModelProperty(value = "Lista de identificadores de pedidos.")
-	private List<PizzasPorPedidoEditDTO> Pizzas;
+	private List<PizzasPorPedidoEditDTO> pizzas;
 
 	
 //	public static PedidosEditDTO from(Pedido source) {
@@ -66,17 +44,11 @@ public class PedidosEditDTO {
 	
 	public static Pedido from(PedidosEditDTO source) {
 		return new Pedido(
-				source.getIdPedido(),
-				source.getDireccionEntrega(),
-				source.getEntregadoPor(),
-				source.getEstado(),
-				source.getFecha(),
-				source.getFechaEntrega(),
+				0,
+				source.getDireccion(),
+				new Date(),
 				source.getImporte(),
-				source.getNumeroPedido(),
-				source.getPreparadoPor(),
-				source.getUsuario(), 
-				new ArrayList<Pizzas_por_pedido>()
+				null
 				);
 	}
 }
