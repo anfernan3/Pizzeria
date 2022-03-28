@@ -79,19 +79,19 @@ public class PedidosControllers {
 			return PedidosDetailsDTO.from(srv.getOne(id));
 	}
 	
-	@Transactional (readOnly = true)
-	@GetMapping(path = "/{id}", params = "mode=edit")
-	@ApiOperation(value = "Recupera un Pedido")
-	@ApiResponses({
-		@ApiResponse(code = 200, message = "Pedido encontrado"),
-		@ApiResponse(code = 404, message = "Pedido no encontrado")
-	})
-	
-	public PedidosEditDTO getOneEdit(@ApiParam(value = "Identificador del Pedido") @PathVariable int id, 
-			@ApiParam(value = "Versión completa o editable", required = false, allowableValues = "details,edit", defaultValue = "edit") @RequestParam() String mode)
-			throws NotFoundException {
-			return PedidosEditDTO.from(srv.getOne(id));
-	}
+//	@Transactional (readOnly = true)
+//	@GetMapping(path = "/{id}", params = "mode=edit")
+//	@ApiOperation(value = "Recupera un Pedido")
+//	@ApiResponses({
+//		@ApiResponse(code = 200, message = "Pedido encontrado"),
+//		@ApiResponse(code = 404, message = "Pedido no encontrado")
+//	})
+//	
+//	public PedidosEditDTO getOneEdit(@ApiParam(value = "Identificador del Pedido") @PathVariable int id, 
+//			@ApiParam(value = "Versión completa o editable", required = false, allowableValues = "details,edit", defaultValue = "edit") @RequestParam() String mode)
+//			throws NotFoundException {
+//			return PedidosEditDTO.from(srv.getOne(id));
+//	}
 
 	@PostMapping
 	@Transactional
@@ -102,15 +102,17 @@ public class PedidosControllers {
 		@ApiResponse(code = 404, message = "Pedido no encontrado")
 	})
 	public ResponseEntity<Object> create(@Valid @RequestBody PedidosEditDTO item) 
-			throws InvalidDataException, DuplicateKeyException {
+			throws InvalidDataException, DuplicateKeyException, NotFoundException {
 		var entity = PedidosEditDTO.from(item);
 		if(entity.isInvalid())
 			throw new InvalidDataException(entity.getErrorsMessage());
 		entity = srv.add(entity);
+		for(var dto: item.getPizzas())
+			entity.addPizzasPorPedido(dto.getPizza(), dto.getCantidad(), dto.getPrecio());
+		srv.change(entity);
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 			.buildAndExpand(entity.getIdPedido()).toUri();
 		return ResponseEntity.created(location).build();
-
 	}
 
 	@PutMapping("/{id}")

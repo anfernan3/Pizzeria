@@ -22,6 +22,13 @@ public class Pizzas_por_pedidoPK implements Serializable {
 
 	public Pizzas_por_pedidoPK() {
 	}
+	
+	public Pizzas_por_pedidoPK(int idPedido, int idPizza) {
+		super();
+		this.idPedido = idPedido;
+		this.idPizza = idPizza;
+	}
+
 	public int getIdPedido() {
 		return this.idPedido;
 	}

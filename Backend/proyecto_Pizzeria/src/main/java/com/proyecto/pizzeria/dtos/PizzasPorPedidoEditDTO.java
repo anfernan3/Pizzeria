@@ -14,7 +14,7 @@ public class PizzasPorPedidoEditDTO {
 	private int cantidad;
 	@NotNull
 	@Length(max=10)
-	private int precio;
+	private double precio;
 	private int pizza;
 	
 	public static PizzasPorPedidoEditDTO from(Pizzas_por_pedido source) {

@@ -29,7 +29,7 @@ public class Pizzas_por_pedido implements Serializable {
 
 	@NotNull
 	@Length(max=10)
-	private int precio;
+	private double precio;
 
 	//bi-directional many-to-one association to Pedido
 	@ManyToOne
@@ -46,13 +46,14 @@ public class Pizzas_por_pedido implements Serializable {
 	
 
 
-public Pizzas_por_pedido(@NotNull @Length(max = 10) int cantidad, @NotNull @Length(max = 10) int precio,
+public Pizzas_por_pedido(@NotNull @Length(max = 10) int cantidad, @NotNull @Length(max = 10) double precio,
 			Pedido pedido, Pizza pizza) {
 		super();
 		this.cantidad = cantidad;
 		this.precio = precio;
 		this.pedido = pedido;
 		this.pizza = pizza;
+		id = new Pizzas_por_pedidoPK(pedido.getIdPedido(), pizza.getIdPizza());
 	}
 
 
@@ -73,11 +74,11 @@ public Pizzas_por_pedido(@NotNull @Length(max = 10) int cantidad, @NotNull @Leng
 		this.cantidad = cantidad;
 	}
 
-	public int getPrecio() {
+	public double getPrecio() {
 		return this.precio;
 	}
 
-	public void setPrecio(int precio) {
+	public void setPrecio(double precio) {
 		this.precio = precio;
 	}
 

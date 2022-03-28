@@ -56,6 +56,11 @@ public class Pizza extends EntityBase<Pizza> implements Serializable {
 	public Pizza() {
 	}
 	
+	public Pizza(int idPizza) {
+		super();
+		this.idPizza = idPizza;
+	}
+
 	public Pizza(
 			int idPizza,
 			String nombre, 
