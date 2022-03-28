@@ -15,7 +15,6 @@ public class PedidosDetailsDTO {
 	private Date fecha;
 	private Date fechaEntrega;
 	private double importe;
-	private int numeroPedido;
 	private String preparadoPor;
 	private String usuario;
 
@@ -29,7 +28,6 @@ public class PedidosDetailsDTO {
 				source.getFecha(),
 				source.getFechaEntrega(),
 				source.getImporte(),
-				source.getNumeroPedido(),
 				source.getPreparadoPor(),
 				source.getUsuario()
 				);
