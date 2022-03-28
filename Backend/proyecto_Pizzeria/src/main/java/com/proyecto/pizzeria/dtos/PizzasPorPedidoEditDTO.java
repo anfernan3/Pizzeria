@@ -15,17 +15,15 @@ public class PizzasPorPedidoEditDTO {
 	@NotNull
 	@Length(max=10)
 	private int precio;
-	private Pedido pedido;
-	private Pizza pizza;
+	private int pizza;
 	
-//	public static PizzasPorPedidoEditDTO from(Pizzas_por_pedido source) {
-//		return new PizzasPorPedidoEditDTO(
-//				source.getCantidad(),
-//				source.getPrecio(),
-//				source.getPedido().getIdPedido(),
-//				source.getPizza().getIdPizza()
-//				);		
-//	}
+	public static PizzasPorPedidoEditDTO from(Pizzas_por_pedido source) {
+		return new PizzasPorPedidoEditDTO(
+				source.getCantidad(),
+				source.getPrecio(),
+				source.getPizza().getIdPizza()
+				);		
+	}
 
 }
 	

@@ -20,8 +20,8 @@ import org.hibernate.validator.constraints.Length;
 public class Pizzas_por_pedido implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-//	@EmbeddedId
-//	private Pizzas_por_pedidoPK id;
+	@EmbeddedId
+	private Pizzas_por_pedidoPK id;
 
 	@NotNull
 	@Length(max=10)
@@ -57,13 +57,13 @@ public Pizzas_por_pedido(@NotNull @Length(max = 10) int cantidad, @NotNull @Leng
 
 
 
-//	public Pizzas_por_pedidoPK getId() {
-//		return this.id;
-//	}
-//
-//	public void setId(Pizzas_por_pedidoPK id) {
-//		this.id = id;
-//	}
+	public Pizzas_por_pedidoPK getId() {
+		return this.id;
+	}
+
+	public void setId(Pizzas_por_pedidoPK id) {
+		this.id = id;
+	}
 
 	public int getCantidad() {
 		return this.cantidad;

@@ -1,12 +1,17 @@
 package com.proyecto.pizzeria.dtos;
 
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.proyecto.pizzeria.entities.Pedido;
+import com.proyecto.pizzeria.entities.Pizzas_por_pedido;
+
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Value;
 
@@ -39,24 +44,25 @@ public class PedidosEditDTO {
 	@NotNull
 	@Length(max=50)
 	private String usuario;
-//	@ApiModelProperty(value = "Lista de identificadores de pedidos.")
-//	private List<Pizzas_por_pedido> Pizzas_por_pedido;
+	@ApiModelProperty(value = "Lista de identificadores de pedidos.")
+	private List<PizzasPorPedidoEditDTO> Pizzas;
 
 	
-	public static PedidosEditDTO from(Pedido source) {
-		return new PedidosEditDTO(
-				source.getIdPedido(),
-				source.getDireccionEntrega(),
-				source.getEntregadoPor(),
-				source.getEstado(),
-				source.getFecha(),
-				source.getFechaEntrega(),
-				source.getImporte(),
-				source.getNumeroPedido(),
-				source.getPreparadoPor(),
-				source.getUsuario()
-				);
-	}
+//	public static PedidosEditDTO from(Pedido source) {
+//		return new PedidosEditDTO(
+//				source.getIdPedido(),
+//				source.getDireccionEntrega(),
+//				source.getEntregadoPor(),
+//				source.getEstado(),
+//				source.getFecha(),
+//				source.getFechaEntrega(),
+//				source.getImporte(),
+//				source.getNumeroPedido(),
+//				source.getPreparadoPor(),
+//				source.getUsuario(),
+//				source.getPizzasPorPedidos().
+//				);
+//	}
 	
 	public static Pedido from(PedidosEditDTO source) {
 		return new Pedido(
@@ -70,7 +76,7 @@ public class PedidosEditDTO {
 				source.getNumeroPedido(),
 				source.getPreparadoPor(),
 				source.getUsuario(), 
-				null
+				new ArrayList<Pizzas_por_pedido>()
 				);
 	}
 }

@@ -7,7 +7,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import com.proyecto.pizzeria.contracts.repositories.IngredientesRepository;
 import com.proyecto.pizzeria.contracts.repositories.PizzasRepository;
 import com.proyecto.pizzeria.contracts.services.PizzasService;
 import com.proyecto.pizzeria.entities.Pizza;

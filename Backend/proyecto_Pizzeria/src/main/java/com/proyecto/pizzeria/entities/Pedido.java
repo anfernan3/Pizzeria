@@ -70,7 +70,7 @@ public class Pedido extends EntityBase<Pedido> implements Serializable {
 	private String usuario;
 
 	//bi-directional many-to-one association to Pizzas_por_pedido
-	@OneToMany(mappedBy="pedido")
+	@OneToMany(mappedBy="pedido", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Pizzas_por_pedido> pizzasPorPedidos;
 
 	public Pedido() {
