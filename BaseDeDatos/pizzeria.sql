@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `ingredientes` (
   `tipo` enum('base','salsa','otros') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `precio` double NOT NULL,
   PRIMARY KEY (`id_ingrediente`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- La exportación de datos fue deseleccionada.
 
@@ -115,7 +115,7 @@ CREATE TABLE IF NOT EXISTS `pizzas` (
   `gusta` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_pizza`),
   UNIQUE KEY `nombre` (`nombre`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- La exportación de datos fue deseleccionada.
 
@@ -124,7 +124,7 @@ CREATE TABLE IF NOT EXISTS `pizzas por pedido` (
   `id_pedido` int NOT NULL,
   `id_pizza` int NOT NULL,
   `cantidad` int NOT NULL,
-  `precio` int NOT NULL,
+  `precio` decimal(9,0) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_pedido`,`id_pizza`),
   KEY `id_pedido` (`id_pedido`),
   KEY `id_pizza` (`id_pizza`),
