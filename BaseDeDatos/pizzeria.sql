@@ -88,17 +88,15 @@ CREATE TABLE IF NOT EXISTS `ingredientes por pizza` (
 -- Volcando estructura para tabla pizzeria.pedidos
 CREATE TABLE IF NOT EXISTS `pedidos` (
   `id_pedido` int NOT NULL AUTO_INCREMENT,
-  `numero_pedido` int NOT NULL,
   `usuario` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `fecha` datetime NOT NULL,
-  `direccion_entrega` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `preparado_por` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `fecha_entrega` datetime NOT NULL,
-  `entregado_por` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `importe` double NOT NULL,
+  `direccion_entrega` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `preparado_por` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `fecha_entrega` datetime DEFAULT NULL,
+  `entregado_por` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `importe` decimal(9,2) NOT NULL DEFAULT '0.00',
   `estado` enum('solicitado','elaborandose','preparado','enviado','recibido','cancelado') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id_pedido`),
-  UNIQUE KEY `numero_pedido` (`numero_pedido`)
+  PRIMARY KEY (`id_pedido`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- La exportación de datos fue deseleccionada.
