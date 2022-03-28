@@ -4,6 +4,11 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 import com.proyecto.pizzeria.entitybase.EntityBase;
+
+import io.swagger.annotations.ApiModelProperty;
+
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Length;
@@ -51,6 +56,9 @@ public class Pedido extends EntityBase<Pedido> implements Serializable {
 	private Date fechaEntrega;
 
 	@NotNull
+	@DecimalMin(value = "0.0", inclusive = false)
+	@Digits(integer = 7, fraction = 2)
+	@ApiModelProperty(value = "Un máximo de 7 dígitos enteros y 2 decimales.")
 	private double importe;
 
 	@Length(max = 50)

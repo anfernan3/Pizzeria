@@ -6,6 +6,8 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -20,7 +22,9 @@ public class PedidosEditDTO {
 	@NotNull
 	@Length(max=250)
 	private String direccion;
-	@NotNull
+	@DecimalMin(value = "0.0", inclusive = false)
+	@Digits(integer = 7, fraction = 2)
+	@ApiModelProperty(value = "Un máximo de 7 dígitos enteros y 2 decimales.")
 	private double importe;
 	@ApiModelProperty(value = "Lista de identificadores de pedidos.")
 	private List<PizzasPorPedidoEditDTO> pizzas;
@@ -48,7 +52,7 @@ public class PedidosEditDTO {
 				source.getDireccion(),
 				new Date(),
 				source.getImporte(),
-				null
+				"kk"
 				);
 	}
 }

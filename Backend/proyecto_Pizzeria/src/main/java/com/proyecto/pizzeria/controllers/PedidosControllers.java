@@ -1,10 +1,7 @@
 package com.proyecto.pizzeria.controllers;
 
-
-
 import java.net.URI;
 import java.util.List;
-
 
 import javax.validation.Valid;
 
@@ -48,15 +45,14 @@ import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
 @RestController
 @RequestMapping("/api/pedidos")
-@Api(value = "/pedidos", description = "Mantenimiento de pedidos", produces = "application/json, application/xml", consumes="application/json, application/xml")
+//@Api(value = "/pedidos", description = "Mantenimiento de pedidos", produces = "application/json, application/xml", consumes="application/json, application/xml")
 public class PedidosControllers {
 	@Autowired
 	private PedidosService srv;
 
-
-	@GetMapping 
+	@GetMapping
 	@ApiOperation(value = "Listado pedidos")
-	@Transactional (readOnly = true) // si solo queremos hacer solo lectura por la base de datos
+	@Transactional(readOnly = true) // si solo queremos hacer solo lectura por la base de datos
 	public List<PedidosShortDTO> getAll() {
 //		return srv.getByProjection(PedidosShortDTO.class);
 		return srv.getAll().stream().map(item -> PedidosShortDTO.from(item)).toList();
@@ -64,21 +60,22 @@ public class PedidosControllers {
 
 	@GetMapping(path = "/{page}", params = "page")
 	@ApiOperation(value = "Listado paginable de pedidos")
-	@Transactional (readOnly = true)
+	@Transactional(readOnly = true)
 	public Page<PedidosShortDTO> getAll(@ApiParam(required = false) Pageable page) {
 		var content = srv.getAll(page);
-		return new PageImpl<PedidosShortDTO>(content.getContent().stream().map(item -> PedidosShortDTO.from(item)).toList(), 
-				page, content.getTotalElements());
+		return new PageImpl<PedidosShortDTO>(
+				content.getContent().stream().map(item -> PedidosShortDTO.from(item)).toList(), page,
+				content.getTotalElements());
 
 	}
-	
-	@Transactional (readOnly = true)
+
+	@Transactional(readOnly = true)
 	@GetMapping(path = "/{id}")
-	public PedidosDetailsDTO getOneDetails(@PathVariable int id, @RequestParam(required = false, defaultValue = "details") String mode)
-			throws NotFoundException {
-			return PedidosDetailsDTO.from(srv.getOne(id));
+	public PedidosDetailsDTO getOneDetails(@PathVariable int id,
+			@RequestParam(required = false, defaultValue = "details") String mode) throws NotFoundException {
+		return PedidosDetailsDTO.from(srv.getOne(id));
 	}
-	
+
 //	@Transactional (readOnly = true)
 //	@GetMapping(path = "/{id}", params = "mode=edit")
 //	@ApiOperation(value = "Recupera un Pedido")
@@ -96,22 +93,22 @@ public class PedidosControllers {
 	@PostMapping
 	@Transactional
 	@ApiOperation(value = "Añadir una nuevo Pedido")
-	@ApiResponses({
-		@ApiResponse(code = 201, message = "Pedido añadida"),
-		@ApiResponse(code = 400, message = "Error al validar los datos o clave duplicada"),
-		@ApiResponse(code = 404, message = "Pedido no encontrado")
-	})
-	public ResponseEntity<Object> create(@Valid @RequestBody PedidosEditDTO item) 
+	@ApiResponses({ @ApiResponse(code = 201, message = "Pedido añadida"),
+			@ApiResponse(code = 400, message = "Error al validar los datos o clave duplicada"),
+			@ApiResponse(code = 404, message = "Pedido no encontrado") })
+	public ResponseEntity<Object> create(@RequestBody PedidosEditDTO item)
 			throws InvalidDataException, DuplicateKeyException, NotFoundException {
 		var entity = PedidosEditDTO.from(item);
-		if(entity.isInvalid())
+		if (entity.isInvalid())
 			throw new InvalidDataException(entity.getErrorsMessage());
 		entity = srv.add(entity);
-		for(var dto: item.getPizzas())
-			entity.addPizzasPorPedido(dto.getPizza(), dto.getCantidad(), dto.getPrecio());
-		srv.change(entity);
+		if (item.getPizzas() != null) {
+			for (var dto : item.getPizzas())
+				entity.addPizzasPorPedido(dto.getPizza(), dto.getCantidad(), dto.getPrecio());
+			srv.change(entity);
+		}
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-			.buildAndExpand(entity.getIdPedido()).toUri();
+				.buildAndExpand(entity.getIdPedido()).toUri();
 		return ResponseEntity.created(location).build();
 	}
 
@@ -137,10 +134,8 @@ public class PedidosControllers {
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	@ApiOperation(value = "Borrar una Pedido existente")
-	@ApiResponses({
-		@ApiResponse(code = 204, message = "Pedido borrado"),
-		@ApiResponse(code = 404, message = "Pedido no encontrado")
-	})
+	@ApiResponses({ @ApiResponse(code = 204, message = "Pedido borrado"),
+			@ApiResponse(code = 404, message = "Pedido no encontrado") })
 	public void delete(@ApiParam(value = "Identificador del Pedido") @PathVariable int id) {
 		srv.deleteById(id);
 	}
