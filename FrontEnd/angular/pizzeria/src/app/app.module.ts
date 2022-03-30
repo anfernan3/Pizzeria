@@ -13,6 +13,8 @@ import { PromocionesComponent } from './promociones/promociones.component';
 import { FooterModule } from './footer/footer.module';
 import { ErrorComponent } from './error/error.component';
 import { MainimageModule } from './mainimage/mainimage.module';
+import {CardModule} from 'primeng/card';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +32,8 @@ import { MainimageModule } from './mainimage/mainimage.module';
     FooterModule,
     AppRoutingModule,
     MainimageModule,
+    CardModule
+
   ],
 
   providers: [],
