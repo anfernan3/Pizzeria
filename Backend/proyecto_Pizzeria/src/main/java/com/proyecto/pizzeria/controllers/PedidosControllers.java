@@ -1,6 +1,8 @@
 package com.proyecto.pizzeria.controllers;
 
 import java.net.URI;
+import java.security.Principal;
+import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -112,31 +114,55 @@ public class PedidosControllers {
 		return ResponseEntity.created(location).build();
 	}
 
-//	@PutMapping("/{id}")
-//	@ResponseStatus(HttpStatus.ACCEPTED)
-//	@Transactional
-//	@ApiOperation(value = "Modificar un Pedido existente", notes = "Los identificadores deben coincidir")
-//	@ApiResponses({
-//		@ApiResponse(code = 201, message = "Pedido añadido"),
-//		@ApiResponse(code = 400, message = "Error al validar los datos o discrepancias en los identificadores"),
-//		@ApiResponse(code = 404, message = "Pedido no encontrado")
-//	})
-//	public void update(@ApiParam(value = "Identificador del pedido") @PathVariable int id, @Valid @RequestBody PedidosEditDTO item)
-//			throws InvalidDataException, NotFoundException {
-//		if (id != item.getIdPedido())
-//			throw new InvalidDataException("No coinciden los identificadores");
-//		var entity = PedidosEditDTO.from(item);
-//		if (entity.isInvalid())
-//			throw new InvalidDataException(entity.getErrorsMessage());
-//		srv.change(entity);
-//	}
+	@PutMapping("/{id}")
+	@ResponseStatus(HttpStatus.ACCEPTED)
+	@Transactional
+	@ApiOperation(value = "Modificar un Pedido existente", notes = "Los identificadores deben coincidir")
+	@ApiResponses({ @ApiResponse(code = 201, message = "Pedido añadido"),
+			@ApiResponse(code = 400, message = "Error al validar los datos o discrepancias en los identificadores"),
+			@ApiResponse(code = 404, message = "Pedido no encontrado") })
+	public void update(@ApiParam(value = "Identificador del pedido") @PathVariable int id, Principal usr)
+			throws InvalidDataException, NotFoundException {
+		var pedido = srv.getOne(id);
+		switch (pedido.getEstado()) {
+		//
+		case "solicitado":
+			pedido.setEstado("elaborandose");
+			break;
+		case "elaborandose":
+			pedido.setEstado("preparado");
+			pedido.setPreparadoPor(usr.getName());
+			break;
+		case "preparado":
+			pedido.setEstado("enviado");
+			pedido.setFechaEntrega(new Date());
+			break;
+		case "enviado":
+			pedido.setEstado("recibido");
+			pedido.setEntregadoPor(usr.getName());
+			pedido.setFechaEntrega(new Date());
+			
+			break;
+		default:
+			throw new InvalidDataException("No puedo cambiar de estado");
+		}
+		srv.change(pedido);
+	}
 
 	@DeleteMapping("/{id}")
+	@Transactional
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	@ApiOperation(value = "Borrar una Pedido existente")
 	@ApiResponses({ @ApiResponse(code = 204, message = "Pedido borrado"),
 			@ApiResponse(code = 404, message = "Pedido no encontrado") })
-	public void delete(@ApiParam(value = "Identificador del Pedido") @PathVariable int id) {
-		srv.deleteById(id);
+	public void delete(@ApiParam(value = "Identificador del Pedido") @PathVariable int id)
+			throws NotFoundException, InvalidDataException {
+		var pedido = srv.getOne(id);
+		if ("solicitado".equals(pedido.getEstado())) {
+			pedido.setEstado("cancelado");
+			srv.change(pedido);
+		} else {
+			throw new InvalidDataException("No puedo cambiar de estado");
+		}
 	}
 }

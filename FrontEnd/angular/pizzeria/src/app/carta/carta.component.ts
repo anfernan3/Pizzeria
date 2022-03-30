@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SelectItem } from 'primeng/api';
 import { CartaService } from '../services/carta.service';
 
 @Component({
@@ -7,19 +8,13 @@ import { CartaService } from '../services/carta.service';
   styleUrls: ['./carta.component.css'],
   providers: [CartaService]
 })
+
 export class CartaComponent implements OnInit {
 
-  holamundo(){
-    return ("Hola Mundo desde el servicio carta")
-  }
+    ngOnInit() {
 
-  constructor(private _cartaService: CartaService // el guión bajo para vinculación con un servicio) {
-
-  ){}
+    }
 
 
-  ngOnInit(): void {
-    console.log(this._cartaService);
-  }
 
 }
