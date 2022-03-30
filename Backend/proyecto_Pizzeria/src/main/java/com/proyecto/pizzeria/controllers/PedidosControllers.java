@@ -5,7 +5,7 @@ import java.security.Principal;
 import java.util.Date;
 import java.util.List;
 
-import javax.validation.Valid;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -25,20 +25,13 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.proyecto.pizzeria.contracts.repositories.PedidosRepository;
-import com.proyecto.pizzeria.contracts.services.IngredientesService;
 import com.proyecto.pizzeria.contracts.services.PedidosService;
 import com.proyecto.pizzeria.dtos.PedidosEditDTO;
-import com.proyecto.pizzeria.dtos.IngredientesEditDTO;
 import com.proyecto.pizzeria.dtos.PedidosDetailsDTO;
-import com.proyecto.pizzeria.dtos.PedidosEditDTO;
 import com.proyecto.pizzeria.dtos.PedidosShortDTO;
-import com.proyecto.pizzeria.entities.Pedido;
 import com.proyecto.pizzeria.exceptions.DuplicateKeyException;
 import com.proyecto.pizzeria.exceptions.InvalidDataException;
 import com.proyecto.pizzeria.exceptions.NotFoundException;
-
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
