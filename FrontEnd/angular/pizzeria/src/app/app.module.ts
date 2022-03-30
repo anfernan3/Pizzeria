@@ -9,10 +9,13 @@ import {MenubarModule} from 'primeng/menubar';
 import { MenuModule } from './menu/menu.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { PromocionesComponent } from './promociones/promociones.component';
+import { FooterModule } from './footer/footer.module';
 
 @NgModule({
   declarations: [
     AppComponent,
+    PromocionesComponent,
   ],
   imports: [
     BrowserModule,
@@ -22,6 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
     MenuModule,
     FormsModule,
     HttpClientModule,
+    FooterModule,
 
   ],
   providers: [],

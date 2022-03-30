@@ -1,10 +1,15 @@
 <p-menubar [model]="items">
-  <img src="../assets/img/logo.png" height="40" class="mr-2" />
-  <button
+  <ng-template pTemplate="start">
+    <img src="../assets/img/logo.png" height="40" class="mr-2" />
+  </ng-template>
+  <ng-template pTemplate="end">
+    <button
     type="button"
     pButton
     label="Login"
     icon="pi pi-power-off"
     style="margin-left: 0.25em"
   ></button>
+  </ng-template>
+
 </p-menubar>
