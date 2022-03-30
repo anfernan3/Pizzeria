@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PromocionesComponent } from './promociones/promociones.component';
 import { FooterModule } from './footer/footer.module';
 import { ErrorComponent } from './error/error.component';
+import { MainimageModule } from './mainimage/mainimage.module';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ErrorComponent } from './error/error.component';
     FormsModule,
     HttpClientModule,
     FooterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MainimageModule
   ],
 
   providers: [],
