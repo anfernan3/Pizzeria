@@ -6,8 +6,39 @@ footer{
 #container-footer{
   display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
+  margin: 2%;
+}
+
+.container-text{
+  align-items: center;
+}
+
+.flex-display{
+  flex-direction: column;
+}
+.container-social a{
+  text-decoration:none;
+  color: #D6E8EE;
+}
+.lista-social{
+  list-style: none;
+}
+
+ul{
+  list-style: none;
 
 }
-#container-text{
-
+ul li{
+  text-decoration: none;
+  color: #D6E8EE;
+  margin-bottom: 3%;
 }
+ul li a{
+  text-decoration: none;
+  color: #D6E8EE;
+}
+span{
+  margin-right: 8%;
+}
+
