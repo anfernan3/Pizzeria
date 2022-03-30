@@ -1,0 +1,107 @@
+/**
+Slider con imagen y textos
+**/
+
+:root {
+  --color-red: #ff4747;
+  --color-light: #f5f9e7;
+  --color-dark: #180314;
+  --color-medium-light: #f4f08d;
+  --color-medium-dark: #870909;
+}
+
+#mainimage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#slider {
+  display: flex;
+  align-items: center;
+}
+
+#container-cover {
+  position: relative;
+  display: inline-block;
+}
+
+.img-slider {
+  width: 100%;
+  z-index: auto;
+}
+.card-glass {
+  position: absolute;
+  margin-top: 10em;
+  border-radius: 10px;
+  background-color: rgba(135, 9, 9, 0.8);
+  align-items: center;
+  text-align: center;
+  margin-left: 2px;
+}
+
+.over-text {
+  font-size: 1.6em;
+  color: #f5f9e7;
+}
+
+#super-title {
+  position: absolute;
+  top: 25%;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  background-color: rgba(255, 71, 71, 0.8);
+}
+#super-text {
+  color: #f5f9e7;
+  font-size: xx-large;
+  font-weight: bolder;
+  margin-top: -0em;
+}
+/**
+Fin slider con imagen y textos
+**/
+
+/******
+***** Pantallas intermedias *****
+********/
+
+@media only screen and (min-width: 600px) {
+  #mainimage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card-glass {
+    position: absolute;
+    border-radius: 10px;
+    background-color: rgba(135, 9, 9, 0.8);
+    align-items: center;
+    text-align: center;
+    margin-left: 2px;
+  }
+
+  .over-text {
+    font-size: 1.6em;
+    color: #f5f9e7;
+  }
+
+  #super-title {
+    position: absolute;
+    top: 30%;
+    border-radius: 10px;
+    align-self: center;
+    width: auto;
+    height: 2.9em;
+    background-color: rgba(255, 71, 71, 0.8);
+  }
+
+  #super-text {
+    color: #f5f9e7;
+    font-size: xx-large;
+    font-weight: bolder;
+    margin-top: -0em;
+  }
+}
