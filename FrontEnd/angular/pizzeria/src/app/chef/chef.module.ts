@@ -10,6 +10,10 @@ import { ChefComponent } from './chef.component';
   ],
   imports: [
     CommonModule
-  ]
+  ],
+  exports: [
+    ChefComponent
+
+  ],
 })
 export class ChefModule { }
