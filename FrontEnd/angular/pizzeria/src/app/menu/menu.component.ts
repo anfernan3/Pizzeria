@@ -15,17 +15,17 @@ export class MenuComponent {
       {
         label: 'Carta',
         icon: 'pi pi-fw pi-book',
-        //url: '../carta/carta.component.html'
+        url: '../carta'
       },
       {
         label: 'Nuestros Chef',
         icon: 'pi pi-fw pi-user',
-        //url: '../chef/chef.component.html'
+        url: '../chef'
       },
       {
         label: 'Promociones',
         icon: 'pi pi-fw pi-wallet',
-        //url: '../promociones/promociones.component.html'
+        url: '../promociones'
       }
     ];
   }
