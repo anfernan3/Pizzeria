@@ -1,13 +1,7 @@
+
 @font-face {
   font-family: Saira_Semi_Condensed_Regular;
 
   src: url(assets/Saira_Semi_Condensed,Smooch_Sans/Smooch_Sans/SmoochSans-VariableFont_wght.ttf);
 }
-
-:root {
-  --color-red: #ff4747;
-  --color-light: #f5f9e7;
-  --color-dark: #180314;
-  --color-medium-light: #f4f08d;
-  --color-medium-dark: #870909;
 }

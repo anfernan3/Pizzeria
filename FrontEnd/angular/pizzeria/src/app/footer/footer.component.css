@@ -1,38 +1,13 @@
-footer {
-  background-color: var(--color-medium-dark);
+footer{
+  background-color: #001B48;
+  color: #D6E8EE;
 }
-#container-footer {
+
+#container-footer{
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-top: 6em;
-  margin-right: 0.2em;
+  flex-direction: row;
+
 }
-li {
-  color: var(--color-light);
-  list-style: none;
-}
-#container-social {
-  margin-top: 1em;
-  margin-left: 0.4em;
-  height: 8em;
-}
-.container-form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 1em;
-}
-.controls-form {
-  width: 80%;
-}
-.container-text {
-  margin-top: 1em;
-  margin-left: 0.4em;
-}
-.icon {
-  height: 3em;
-  margin-left: 1em;
+#container-text{
+
 }

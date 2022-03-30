@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { routing, appRoutingProviders} from './app-routing.module'
 import { AppComponent } from './app.component';
 
 import {ButtonModule} from 'primeng/button';
@@ -10,8 +11,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { PromocionesComponent } from './promociones/promociones.component';
 import { FooterModule } from './footer/footer.module';
+import { CartaComponent } from './carta/carta.component';
 import { ErrorComponent } from './error/error.component';
-import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -28,10 +29,10 @@ import { AppRoutingModule } from './app-routing.module';
     FormsModule,
     HttpClientModule,
     FooterModule,
-    AppRoutingModule,
+    routing
   ],
 
-  providers: [],
+  providers: [appRoutingProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
