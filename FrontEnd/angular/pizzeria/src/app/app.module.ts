@@ -19,6 +19,8 @@ import { SecurityModule } from './security';
 import { LoggerService, MyCoreModule } from 'src/lib/my-core';
 import { ComentariosComponent } from './comentarios/componente.component';
 import { ComentariosModule } from './comentarios';
+import { IngredientesModule } from './ingredientes';
+
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import { ComentariosModule } from './comentarios';
     CommonComponentModule,
     SecurityModule,
     MyCoreModule,
-    ComentariosModule
+    ComentariosModule,
+    IngredientesModule,
   ],
 
   providers: [LoggerService],

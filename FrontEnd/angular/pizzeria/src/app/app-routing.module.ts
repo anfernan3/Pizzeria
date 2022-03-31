@@ -9,8 +9,7 @@ import { ErrorComponent } from './error/error.component';
 import { NgModule } from '@angular/core';
 import { MainimageComponent } from './mainimage/mainimage.component';
 import { ComentariosComponent } from './comentarios/componente.component';
-// import { IngredientesAddComponent, IngredientesComponent } from './ingredientes';
-
+import { IngredientesComponent } from './ingredientes';
 
 // Array de rutas
 const routes: Routes = [
@@ -19,7 +18,7 @@ const routes: Routes = [
   {path: 'chef', component: ChefComponent},
   {path: 'promociones', component: PromocionesComponent},
   {path: 'comentarios', component: ComentariosComponent},
-  // {path: 'ingredientes', component: IngredientesComponent},
+  {path: 'ingredientes', component: IngredientesComponent},
   {path : '**', component: ErrorComponent},
 ];
 
