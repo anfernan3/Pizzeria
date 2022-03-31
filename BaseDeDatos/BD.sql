@@ -79,7 +79,7 @@ CREATE TABLE IF NOT EXISTS `ingredientes` (
   PRIMARY KEY (`id_ingrediente`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla pizzeria.ingredientes: ~11 rows (aproximadamente)
+-- Volcando datos para la tabla pizzeria.ingredientes: ~13 rows (aproximadamente)
 /*!40000 ALTER TABLE `ingredientes` DISABLE KEYS */;
 INSERT INTO `ingredientes` (`id_ingrediente`, `nombre`, `tipo`, `precio`) VALUES
 	(1, 'fina', 'base', 0.3),
@@ -128,7 +128,7 @@ CREATE TABLE IF NOT EXISTS `pedidos` (
   PRIMARY KEY (`id_pedido`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla pizzeria.pedidos: ~1 rows (aproximadamente)
+-- Volcando datos para la tabla pizzeria.pedidos: ~4 rows (aproximadamente)
 /*!40000 ALTER TABLE `pedidos` DISABLE KEYS */;
 INSERT INTO `pedidos` (`id_pedido`, `usuario`, `fecha`, `direccion_entrega`, `preparado_por`, `fecha_entrega`, `entregado_por`, `importe`, `estado`) VALUES
 	(1, 'Juan', '2022-03-28 16:20:48', 'C/ Churruca', NULL, NULL, NULL, 99.00, 'recibido'),

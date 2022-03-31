@@ -7,11 +7,12 @@ import { ChefComponent } from './chef/chef.component';
 import { PromocionesComponent } from './promociones/promociones.component';
 import { ErrorComponent } from './error/error.component';
 import { NgModule } from '@angular/core';
+import { MainimageComponent } from './mainimage/mainimage.component';
 
 
 // Array de rutas
 const routes: Routes = [
-  {path: '', component: CartaComponent},
+  {path: '', component: MainimageComponent},
   {path: 'carta', component: CartaComponent},
   {path: 'chef', component: ChefComponent},
   {path: 'promociones', component: PromocionesComponent},

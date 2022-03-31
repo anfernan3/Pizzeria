@@ -1,19 +1,15 @@
 package com.proyecto.pizzeria.dtos;
 
 
-import java.util.ArrayList;
+
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.proyecto.pizzeria.entities.Pedido;
-import com.proyecto.pizzeria.entities.Pizzas_por_pedido;
-
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Value;
 

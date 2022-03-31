@@ -1,8 +1,6 @@
 package com.proyecto.pizzeria.dtos;
 import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
-import com.proyecto.pizzeria.entities.Pedido;
-import com.proyecto.pizzeria.entities.Pizza;
 import com.proyecto.pizzeria.entities.Pizzas_por_pedido;
 
 import lombok.Value;
