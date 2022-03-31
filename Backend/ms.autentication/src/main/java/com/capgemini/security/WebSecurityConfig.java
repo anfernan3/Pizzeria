@@ -45,17 +45,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //			.antMatchers(HttpMethod.GET, "/login").permitAll()
 //			.antMatchers(HttpMethod.GET, "/admin").hasRole("ADMIN")
 			.antMatchers(
-					"/login/**",
-					"/api/v3/users/files/*",
-					"/api/v3/token/*",
+					"/login/**", "/register",
+					"/v3/token/*",
 					"/v3/api-docs",
 					"/swagger-resources/**",
-					"/swagger-ui/**",
-					"/webjars/**",
-					"/api/v1/",
-					"/api/v1/uploads/**",
-					"/api/v1/favicon.ico"
+					"/swagger-ui/**"
 					).permitAll()
+			.antMatchers("/api/usuarios").hasRole("GERENTE")
 			.anyRequest().authenticated();
+//			.anyRequest().permitAll();
 	}
 }

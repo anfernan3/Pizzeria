@@ -37,8 +37,7 @@ public class UsuarioResource {
 	private UsuarioService srv;
 	@Autowired
 	private PasswordEncoder passwordEncoder;
-	
-	
+
 	@GetMapping
 	public List<UsuarioDTO> getAll() {
 		return srv.getByProjection(UsuarioDTO.class);
@@ -53,27 +52,30 @@ public class UsuarioResource {
 	public UsuarioDTO getOne(@PathVariable String id) throws NotFoundException {
 		return UsuarioDTO.from(srv.getOne(id));
 	}
-	
-	@PostMapping
-	public ResponseEntity<Object> create(@Valid @RequestBody UsuarioDTO item) throws InvalidDataException, DuplicateKeyException {
-		Usuario Usuario = UsuarioDTO.from(item);
-		if(Usuario.isInvalid())
-			throw new InvalidDataException(Usuario.getErrorsMessage());
-		Usuario = srv.add(Usuario);
-		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-			.buildAndExpand(Usuario.getUsername()).toUri();
-		return ResponseEntity.created(location).build();
 
-	}
+//	@PostMapping
+//	public ResponseEntity<Object> create(@Valid @RequestBody UsuarioDTO item) throws InvalidDataException, DuplicateKeyException {
+//		Usuario Usuario = UsuarioDTO.from(item);
+//		if(Usuario.isInvalid())
+//			throw new InvalidDataException(Usuario.getErrorsMessage());
+//		Usuario = srv.add(Usuario);
+//		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+//			.buildAndExpand(Usuario.getUsername()).toUri();
+//		return ResponseEntity.created(location).build();
+//
+//	}
 
 	@PutMapping("/{id}")
 	@ResponseStatus(HttpStatus.ACCEPTED)
-	public void update(@PathVariable String id, @Valid @RequestBody UsuarioDTO item) throws InvalidDataException, NotFoundException {
-		if(id != item.getUsername())
+	public void update(@PathVariable String id, @Valid @RequestBody UsuarioDTO item)
+			throws InvalidDataException, NotFoundException {
+		if (!item.getUsername().equals(id))
 			throw new InvalidDataException("No coinciden los identificadores");
 		Usuario Usuario = UsuarioDTO.from(item);
-		if(Usuario.isInvalid())
-			throw new InvalidDataException(Usuario.getErrorsMessage());
+		var validos = List.of("","");
+		for(var rol: item.getRoles())
+		if(!validos.contains(rol))
+			throw new InvalidDataException("Rol no válido");
 		srv.change(Usuario);
 	}
 

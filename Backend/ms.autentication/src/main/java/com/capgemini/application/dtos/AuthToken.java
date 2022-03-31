@@ -7,10 +7,12 @@ public class AuthToken implements Serializable {
 	private boolean success = true;
     private String token;
     private String name;
-	public AuthToken(boolean success, String token, String name) {
+    private String[] roles;
+	public AuthToken(boolean success, String token, String name, String roles) {
 		this.success = success;
 		this.token = token;
 		this.name = name;
+		this.roles = roles.replace("ROLE_", "").split(",");
 	}
 	public boolean isSuccess() {
 		return success;
@@ -20,6 +22,9 @@ public class AuthToken implements Serializable {
 	}
 	public String getName() {
 		return name;
+	}
+	public String[] getRoles() {
+		return roles;
 	}
     
 }
