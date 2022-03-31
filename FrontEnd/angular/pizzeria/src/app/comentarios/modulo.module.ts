@@ -6,6 +6,7 @@ import { MyCoreModule } from 'src/lib/my-core';
 import { COMENTARIOS_COMPONENTES } from '../comentarios/componente.component';
 import { CommonServicesModule } from '../common-services';
 import { CommonComponentModule } from '../common-component/common-component.module';
+import {InputTextareaModule} from 'primeng/inputtextarea';
 
 
 
@@ -13,7 +14,7 @@ import { CommonComponentModule } from '../common-component/common-component.modu
   declarations: [ COMENTARIOS_COMPONENTES ],
   imports: [
     CommonModule, FormsModule, RouterModule.forChild([]),
-    MyCoreModule, CommonServicesModule, CommonComponentModule,
+    MyCoreModule, CommonServicesModule, CommonComponentModule, InputTextareaModule,
   ],
   exports: [ COMENTARIOS_COMPONENTES ]
 })

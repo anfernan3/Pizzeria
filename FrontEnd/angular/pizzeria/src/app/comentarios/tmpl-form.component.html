@@ -16,12 +16,13 @@
             type="string"
             name="usuario"
             id="id"
-            [(ngModel)]="VM.Elemento.usuario"
+            [(ngModel)]="VM.Elemento.id"
             #id="ngModel"
             required
             min="0"
           />
         </div>
+        <textarea pInputTextarea [(ngModel)]="VM.Elemento.comentario"></textarea>
         <app-show-errors-messages
         [errors]="id.errors"
         [pristine]="miForm.pristine"

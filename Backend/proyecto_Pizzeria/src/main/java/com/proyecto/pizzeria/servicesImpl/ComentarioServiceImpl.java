@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
 
 import com.proyecto.pizzeria.contracts.repositories.ComentarioRepository;
 import com.proyecto.pizzeria.contracts.services.ComentariosService;
@@ -13,6 +14,7 @@ import com.proyecto.pizzeria.exceptions.DuplicateKeyException;
 import com.proyecto.pizzeria.exceptions.InvalidDataException;
 import com.proyecto.pizzeria.exceptions.NotFoundException;
 
+@Service
 public class ComentarioServiceImpl implements ComentariosService {
 
 	private ComentarioRepository dao;

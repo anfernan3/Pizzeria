@@ -36,7 +36,7 @@ import io.swagger.v3.oas.annotations.parameters.RequestBody;
 public class ComentariosControllers {
 	
 	@Autowired
-	private ComentariosService srv;
+	public ComentariosService srv;
 	
 	@GetMapping
 	@ApiOperation(value = "Listado de comentarios")

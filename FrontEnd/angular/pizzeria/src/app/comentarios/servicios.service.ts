@@ -14,6 +14,7 @@ export class Comentarios {
   apellidos: string | null = null;
   id_usuario: number | null = null;
   id_pizza: number | null = null;
+  comentario: string | null = null;
 }
 
 @Injectable({
@@ -21,7 +22,7 @@ export class Comentarios {
  })
  export class ComentariosDAOService extends RESTDAOService<any, any> {
   constructor(http: HttpClient) {
-  super(http, 'Comentarios', {
+  super(http, 'comentarios', {
   context: new HttpContext().set(AUTH_REQUIRED, true)
   });
   }
@@ -35,7 +36,7 @@ export class ComentariosViewModelService {
   protected listado: Array<any> = [];
   protected elemento: any = {};
   protected idOriginal: any = null;
-  protected listURL = '/Comentarios';
+  protected listURL = '/comentarios';
 
   constructor(
     protected notify: NotificationService,
