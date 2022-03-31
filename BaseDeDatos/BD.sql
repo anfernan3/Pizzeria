@@ -159,14 +159,14 @@ CREATE TABLE IF NOT EXISTS `pizzas` (
 -- Volcando datos para la tabla pizzeria.pizzas: ~8 rows (aproximadamente)
 /*!40000 ALTER TABLE `pizzas` DISABLE KEYS */;
 INSERT INTO `pizzas` (`id_pizza`, `nombre`, `descripcion`, `foto_url`, `base`, `salsa`, `precio`, `gusta`) VALUES
-	(1, 'Margarita', 'Pizza a la piedra de tomate y queso', NULL, 'fina', 'tomate', 5.8, 20),
-	(2, 'Caprichosa', 'Pizza a la piedra con tomates cherries, pimiento, bacón, y queso', NULL, 'fina', 'tomate', 6.2, 50),
-	(3, 'Barbacoa', 'Pizza la piedra de barbacoa a la piedra con pollo, ternera, maíz y queso', NULL, 'ultra fina', 'barbacoa', 7.2, 100),
-	(4, 'Jamón y Queso', 'Pizza Pizza la piedra de  Jamón y Queso', NULL, 'fina', 'tomate', 6.8, 80),
-	(5, 'Vegetariana', 'Pizza Pizza la piedra con rucula, tomate, tofu, queso', NULL, 'gorda', 'tomate', 6.5, 15),
-	(6, 'Cuatro Quesos', 'Pizza la piedra con queso azul, elemental, mozarella, de cabra', NULL, 'ultra fina', 'queso', 6.8, 40),
-	(7, 'Carbonara', 'Pizza a la piedra con bacon, champiñones, pollo y queso', NULL, 'fina', 'nata', 7, 85),
-	(8, 'Peperoni', 'Pizza a la piedra de peperoni, pimiento y queso', NULL, 'gorda', 'tomate', 7, 70);
+	(1, 'Margarita', 'Pizza a la piedra de tomate y queso', 'assets/img/pizzas/pizza-margarita.jpg', 'fina', 'tomate', 5.8, 20),
+	(2, 'Caprichosa', 'Pizza a la piedra con tomates cherries, pimiento, bacón, y queso', 'assets/img/pizzas/pizza-caprichosa.jpg', 'fina', 'tomate', 6.2, 50),
+	(3, 'Barbacoa', 'Pizza la piedra de barbacoa a la piedra con pollo, ternera, maíz y queso', 'assets/img/pizzas/pizza-barbacoa.jpg', 'ultra fina', 'barbacoa', 7.2, 100),
+	(4, 'Jamón y Queso', 'Pizza Pizza la piedra de  Jamón y Queso', 'assets/img/pizzas/pizza-jamonyqueso.jpg', 'fina', 'tomate', 6.8, 80),
+	(5, 'Vegetariana', 'Pizza Pizza la piedra con rucula, tomate, tofu, queso', 'assets/img/pizzas/pizza-vegetariana.jpg', 'gorda', 'tomate', 6.5, 15),
+	(6, 'Cuatro Quesos', 'Pizza la piedra con queso azul, elemental, mozarella, de cabra', 'assets/img/pizzas/pizza-cuatroquesos.jpg', 'ultra fina', 'queso', 6.8, 40),
+	(7, 'Carbonara', 'Pizza a la piedra con bacon, champiñones, pollo y queso', 'assets/img/pizzas/pizza-carbonara.jpg', 'fina', 'nata', 7, 85),
+	(8, 'Peperoni', 'Pizza a la piedra de peperoni, pimiento y queso', 'assets/img/pizzas/pizza-peperoni.jpg', 'gorda', 'tomate', 7, 70);
 /*!40000 ALTER TABLE `pizzas` ENABLE KEYS */;
 
 -- Volcando estructura para tabla pizzeria.pizzas por pedido
