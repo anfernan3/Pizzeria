@@ -77,14 +77,14 @@ CREATE TABLE IF NOT EXISTS `ingredientes` (
   `tipo` enum('base','salsa','otros') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `precio` double NOT NULL,
   PRIMARY KEY (`id_ingrediente`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla pizzeria.ingredientes: ~11 rows (aproximadamente)
+-- Volcando datos para la tabla pizzeria.ingredientes: ~18 rows (aproximadamente)
 /*!40000 ALTER TABLE `ingredientes` DISABLE KEYS */;
 INSERT INTO `ingredientes` (`id_ingrediente`, `nombre`, `tipo`, `precio`) VALUES
-	(1, 'fina', 'base', 0.3),
-	(2, 'cebolla', 'otros', 0.3),
-	(3, 'ultra fina', 'base', 0.4),
+	(1, 'cebolla', 'otros', 0.3),
+	(2, 'bacon', 'otros', 0.5),
+	(3, 'fina', 'base', 0.5),
 	(4, 'barbacoa', 'salsa', 0.5),
 	(5, 'gruesa', 'base', 0.7),
 	(6, 'ultra fina', 'base', 0.4),
@@ -94,7 +94,12 @@ INSERT INTO `ingredientes` (`id_ingrediente`, `nombre`, `tipo`, `precio`) VALUES
 	(10, 'bacon', 'otros', 1),
 	(11, 'jamón', 'otros', 1),
 	(12, 'queso', 'otros', 1),
-	(13, 'champiñones', 'otros', 1);
+	(13, 'champiñones', 'otros', 1),
+	(14, 'aceitunas', 'otros', 0.7),
+	(15, 'boloñesa', 'salsa', 0.6),
+	(16, 'queso azul', 'salsa', 0.8),
+	(17, 'yogur', 'salsa', 0.4),
+	(18, 'pesto', 'salsa', 0.6);
 /*!40000 ALTER TABLE `ingredientes` ENABLE KEYS */;
 
 -- Volcando estructura para tabla pizzeria.ingredientes por pizza
@@ -128,7 +133,7 @@ CREATE TABLE IF NOT EXISTS `pedidos` (
   PRIMARY KEY (`id_pedido`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla pizzeria.pedidos: ~1 rows (aproximadamente)
+-- Volcando datos para la tabla pizzeria.pedidos: ~4 rows (aproximadamente)
 /*!40000 ALTER TABLE `pedidos` DISABLE KEYS */;
 INSERT INTO `pedidos` (`id_pedido`, `usuario`, `fecha`, `direccion_entrega`, `preparado_por`, `fecha_entrega`, `entregado_por`, `importe`, `estado`) VALUES
 	(1, 'Juan', '2022-03-28 16:20:48', 'C/ Churruca', NULL, NULL, NULL, 99.00, 'recibido'),
@@ -154,14 +159,14 @@ CREATE TABLE IF NOT EXISTS `pizzas` (
 -- Volcando datos para la tabla pizzeria.pizzas: ~8 rows (aproximadamente)
 /*!40000 ALTER TABLE `pizzas` DISABLE KEYS */;
 INSERT INTO `pizzas` (`id_pizza`, `nombre`, `descripcion`, `foto_url`, `base`, `salsa`, `precio`, `gusta`) VALUES
-	(1, 'Margarita', 'Pizza a la piedra de tomate y queso', NULL, 'fina', 'tomate', 5.8, 0),
-	(2, 'Caprichosa', 'Pizza a la piedra con tomates cherries, pimiento, bacón, y queso', NULL, 'fina', 'tomate', 6.2, 0),
-	(3, 'Barbacoa', 'Pizza la piedra de barbacoa a la piedra con pollo, ternera, maíz y queso', NULL, 'ultra fina', 'barbacoa', 7.2, 0),
-	(4, 'Jamón y Queso', 'Pizza Pizza la piedra de  Jamón y Queso', NULL, 'fina', 'tomate', 6.8, 0),
-	(5, 'Vegetariana', 'Pizza Pizza la piedra con rucula, tomate, tofu, queso', NULL, 'gorda', 'tomate', 6.5, 0),
-	(6, 'Cuatro Quesos', 'Pizza la piedra con queso azul, elemental, mozarella, de cabra', NULL, 'ultra fina', 'queso', 6.8, 0),
-	(7, 'Carbonara', 'Pizza a la piedra con bacon, champiñones, pollo y queso', NULL, 'fina', 'nata', 7, 0),
-	(8, 'Peperoni', 'Pizza a la piedra de peperoni, pimiento y queso', NULL, 'gorda', 'tomate', 7, 0);
+	(1, 'Margarita', 'Pizza a la piedra de tomate y queso', 'assets/img/pizzas/pizza-margarita.jpg', 'fina', 'tomate', 5.8, 20),
+	(2, 'Caprichosa', 'Pizza a la piedra con tomates cherries, pimiento, bacón, y queso', 'assets/img/pizzas/pizza-caprichosa.jpg', 'fina', 'tomate', 6.2, 50),
+	(3, 'Barbacoa', 'Pizza la piedra de barbacoa a la piedra con pollo, ternera, maíz y queso', 'assets/img/pizzas/pizza-barbacoa.jpg', 'ultra fina', 'barbacoa', 7.2, 100),
+	(4, 'Jamón y Queso', 'Pizza Pizza la piedra de  Jamón y Queso', 'assets/img/pizzas/pizza-jamonyqueso.jpg', 'fina', 'tomate', 6.8, 80),
+	(5, 'Vegetariana', 'Pizza Pizza la piedra con rucula, tomate, tofu, queso', 'assets/img/pizzas/pizza-vegetariana.jpg', 'gorda', 'tomate', 6.5, 15),
+	(6, 'Cuatro Quesos', 'Pizza la piedra con queso azul, elemental, mozarella, de cabra', 'assets/img/pizzas/pizza-cuatroquesos.jpg', 'ultra fina', 'queso', 6.8, 40),
+	(7, 'Carbonara', 'Pizza a la piedra con bacon, champiñones, pollo y queso', 'assets/img/pizzas/pizza-carbonara.jpg', 'fina', 'nata', 7, 85),
+	(8, 'Peperoni', 'Pizza a la piedra de peperoni, pimiento y queso', 'assets/img/pizzas/pizza-peperoni.jpg', 'gorda', 'tomate', 7, 70);
 /*!40000 ALTER TABLE `pizzas` ENABLE KEYS */;
 
 -- Volcando estructura para tabla pizzeria.pizzas por pedido
