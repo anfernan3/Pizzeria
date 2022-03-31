@@ -16,7 +16,7 @@ import {CardModule} from 'primeng/card';
 import { CommonServicesModule } from './common-services';
 import { CommonComponentModule } from './common-component';
 import { SecurityModule } from './security';
-import { MyCoreModule } from 'src/lib/my-core';
+import { LoggerService, MyCoreModule } from 'src/lib/my-core';
 
 @NgModule({
   declarations: [
@@ -40,10 +40,9 @@ import { MyCoreModule } from 'src/lib/my-core';
     CommonComponentModule,
     SecurityModule,
     MyCoreModule,
-
   ],
 
-  providers: [],
+  providers: [LoggerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

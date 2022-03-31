@@ -10,16 +10,10 @@ import { AuthService, AUTH_REQUIRED } from '../security';
 
 export class Ingredientes {
   id: number = 0;
-  tratamiento: string | null = null;
   nombre: string | null = null;
-  apellidos: string | null = null;
-  telefono: string | null = null;
-  email: string | null = null;
-  sexo: string | null = null;
-  nacimiento: string | null = null;
-  avatar: string | null = null;
-  conflictivo: boolean = false;
-}
+  precio: number | null = null;
+  tipo: string | null = null;
+
 
 @Injectable({
   providedIn: 'root'
