@@ -13,7 +13,7 @@
     <tr *ngFor="let item of VM.Listado">
       <td>
         <p>{{item.nombre}}</p> <br>
-        <img src="../../assets/img/pizzas/pizza-margarita.jpg" alt="pizza-margarita" height="auto" width="100">
+        <img [src]="item.foto??'assets/img/pizzas/pizza-margarita.jpg'" alt="Foto de la pizza {{item.nombre}}" height="auto" width="100">
       </td>
       <td>
         {{item.descripcion}}

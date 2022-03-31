@@ -9,6 +9,9 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,6 +33,7 @@ import com.proyecto.pizzeria.exceptions.InvalidDataException;
 import com.proyecto.pizzeria.exceptions.NotFoundException;
 
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
@@ -76,7 +80,7 @@ public class IngredientesControllers {
 			return srv.getOtros(IngredientesEditDTO.class);
 	}
 	
-	/* El paginable no es necesario porqueno habrá muchos tipos
+	
 	@GetMapping(path = "/{page}", params = "page")
 	@ApiOperation(value = "Listado paginable de ingredientes")
 	public Page<IngredientesEditDTO> getAll(@ApiParam(required = false) Pageable page) {
@@ -84,7 +88,7 @@ public class IngredientesControllers {
 		return new PageImpl<IngredientesEditDTO>(content.getContent().stream().map(item -> IngredientesEditDTO.from(item)).toList(), 
 				page, content.getTotalElements());
 	}
-	*/
+	
 	
 	@PostMapping
 	@Transactional

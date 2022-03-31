@@ -24,15 +24,11 @@ export class IngredientesDAOService extends RESTDAOService<Ingrediente, any> {
   }
   page(page: number, rows: number = 20): Observable<{ page: number, pages: number, rows: number, list: Array<any> }> {
     return new Observable(subscriber => {
-      this.http.get<{ pages: number, rows: number }>(`${this.baseUrl}?_page=count&_rows=${rows}`, this.option)
+      this.http.get<any>(`${this.baseUrl}/{page}?page=${page}&size=${rows}&sort=nombre`, this.option)
         .subscribe({
           next: data => {
             if (page >= data.pages) page = data.pages > 0 ? data.pages - 1 : 0;
-            this.http.get<Array<any>>(`${this.baseUrl}?_page=${page}&_rows=${rows}&_sort=nombre`, this.option)
-              .subscribe({
-                next: lst => subscriber.next({ page, pages: data.pages, rows: data.rows, list: lst }),
-                error: err => subscriber.error(err)
-              })
+            subscriber.next({ page: data.number, pages: data.totalPages, rows: data.rows, list: data.content })
           },
           error: err => subscriber.error(err)
         })
