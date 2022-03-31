@@ -13,7 +13,7 @@ export class Ingredientes {
   nombre: string | null = null;
   precio: number | null = null;
   tipo: string | null = null;
-
+}
 
 @Injectable({
   providedIn: 'root'
