@@ -39,7 +39,7 @@ public class Pedido extends EntityBase<Pedido> implements Serializable {
 	@Column(name = "direccion_entrega")
 	private String direccionEntrega;
 
-	@Length(max = 50)
+	@Length(max = 100)
 	@Column(name = "entregado_por")
 	private String entregadoPor;
 
@@ -61,12 +61,12 @@ public class Pedido extends EntityBase<Pedido> implements Serializable {
 	@ApiModelProperty(value = "Un máximo de 7 dígitos enteros y 2 decimales.")
 	private double importe;
 
-	@Length(max = 50)
+	@Length(max = 100)
 	@Column(name = "preparado_por")
 	private String preparadoPor;
 
 	@NotNull
-	@Length(max = 50)
+	@Length(max = 100)
 	private String usuario;
 
 	// bi-directional many-to-one association to Pizzas_por_pedido

@@ -11,6 +11,7 @@ import { MainimageComponent } from './mainimage/mainimage.component';
 import { ComentariosComponent } from './comentarios/componente.component';
 import { IngredientesComponent } from './ingredientes';
 import { PizzasComponent } from './pizzas';
+import { LoginComponent, RegisterUserComponent } from './security';
 
 // Array de rutas
 const routes: Routes = [
@@ -20,6 +21,8 @@ const routes: Routes = [
   {path: 'promociones', component: PromocionesComponent},
   {path: 'comentarios', component: ComentariosComponent},
   {path: 'ingredientes', component: IngredientesComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'registro', component: RegisterUserComponent},
   {path : '**', component: ErrorComponent},
 ];
 

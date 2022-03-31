@@ -6,7 +6,6 @@ import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.proyecto.pizzeria.entities.Comentario;
 import com.proyecto.pizzeria.entities.Pizza;
-import com.proyecto.pizzeria.entities.Usuario;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,11 +19,11 @@ public class ComentariosEditDTO {
 	@NotNull
 	private Timestamp fecha;
 	@NotNull
-	private int puntuacion;
+	private String comentario;
 	@NotNull
 	private Pizza pizza;
 	@NotNull
-	private Usuario usuario;
+	private String usuario;
 
 	
 
@@ -32,7 +31,7 @@ public class ComentariosEditDTO {
 		return new ComentariosEditDTO(
 				source.getIdComentario(),
 				source.getFecha(),
-				source.getPuntuacion(),
+				source.getComentario(),
 				source.getPizza(),
 				source.getUsuario()
 		);
@@ -42,7 +41,7 @@ public class ComentariosEditDTO {
 		return new Comentario(
 				source.getIdComentario(),
 				source.getFecha(),
-				source.getPuntuacion(),
+				source.getComentario(),
 				source.getPizza(),
 				source.getUsuario()
 		);

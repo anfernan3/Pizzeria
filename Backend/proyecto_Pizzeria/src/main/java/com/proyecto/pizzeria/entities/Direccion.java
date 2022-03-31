@@ -26,10 +26,7 @@ public class Direccion implements Serializable {
 
 	private String pais;
 
-	//bi-directional many-to-one association to Usuario
-	@ManyToOne
-	@JoinColumn(name="id_usuario", insertable=false, updatable=false)
-	private Usuario usuario;
+	private String usuario;
 
 	public Direccion() {
 	}
@@ -66,11 +63,11 @@ public class Direccion implements Serializable {
 		this.pais = pais;
 	}
 
-	public Usuario getUsuario() {
+	public String getUsuario() {
 		return this.usuario;
 	}
 
-	public void setUsuario(Usuario usuario) {
+	public void setUsuario(String usuario) {
 		this.usuario = usuario;
 	}
 

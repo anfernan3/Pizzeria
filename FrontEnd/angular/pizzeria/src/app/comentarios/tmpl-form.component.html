@@ -22,12 +22,16 @@
             min="0"
           />
         </div>
-        <textarea pInputTextarea [(ngModel)]="VM.Elemento.comentario"></textarea>
         <app-show-errors-messages
+          [errors]="id.errors"
+          [pristine]="miForm.pristine"
+        ></app-show-errors-messages>
+      </div>
+      <textarea pInputTextarea [(ngModel)]="VM.Elemento.comentario"></textarea>
+      <app-show-errors-messages
         [errors]="id.errors"
         [pristine]="miForm.pristine"
       ></app-show-errors-messages>
-      </div>
     </div>
     <app-form-buttons
       (send)="VM.send()"

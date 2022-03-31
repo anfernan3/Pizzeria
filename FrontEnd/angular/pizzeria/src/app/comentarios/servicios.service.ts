@@ -3,19 +3,19 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoggerService } from 'src/lib/my-core';
 import { NotificationService } from '../common-services/notification.service';
+import { AuthService } from '../security';
 import { RESTDAOService, AUTH_REQUIRED } from './RESTDAOService';
 
 export type ModoCRUD = 'list' | 'add' | 'edit' | 'view' | 'delete';
 
 export class Comentarios {
   id: number = 0;
-  puntuacion: number | null = null;
+  comentario: string | null = null;
   fecha: string | null = null;
-  apellidos: string | null = null;
   id_usuario: number | null = null;
   id_pizza: number | null = null;
-  comentario: string | null = null;
 }
+
 
 @Injectable({
   providedIn: 'root'
@@ -42,7 +42,8 @@ export class ComentariosViewModelService {
     protected notify: NotificationService,
     protected out: LoggerService,
     protected dao: ComentariosDAOService,
-    protected router: Router
+    protected router: Router,
+    protected auth: AuthService,
   ) {}
 
   public get Modo(): ModoCRUD { return this.modo; }
@@ -59,7 +60,7 @@ export class ComentariosViewModelService {
     });
   }
   public add(): void {
-    this.elemento = {};
+    this.elemento = { id_usuario: this.auth.Name};
     this.modo = 'add';
   }
   public edit(key: any): void {

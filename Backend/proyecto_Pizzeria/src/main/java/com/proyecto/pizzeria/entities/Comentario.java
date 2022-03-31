@@ -6,6 +6,8 @@ import java.io.Serializable;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.Length;
+
 import com.proyecto.pizzeria.entitybase.EntityBase;
 
 import lombok.Generated;
@@ -34,7 +36,7 @@ public class Comentario extends EntityBase<Comentario> implements Serializable {
 	@Generated
 	private Timestamp fecha;
 	@NotNull
-	private int puntuacion;
+	private String comentario;
 
 	//bi-directional many-to-one association to Pizza
 	@ManyToOne
@@ -42,11 +44,10 @@ public class Comentario extends EntityBase<Comentario> implements Serializable {
 	@NotNull
 	private Pizza pizza;
 
-	//bi-directional many-to-one association to Usuario
-	@ManyToOne
-	@JoinColumn(name="id_usuario")
+	
 	@NotNull
-	private Usuario usuario;
+	@Length(max = 100)
+	private String id_usuario;
 
 	public Comentario() {
 	}
@@ -55,16 +56,16 @@ public class Comentario extends EntityBase<Comentario> implements Serializable {
 	public Comentario(
 			@NotNull int idComentario, 
 			@NotNull Timestamp fecha, 
-			@NotNull int puntuacion,
+			@NotNull String comentario,
 			@NotNull Pizza pizza, 
-			@NotNull Usuario usuario
+			@NotNull String id_usuario
 			) {
 		super();
 		this.idComentario = idComentario;
 		this.fecha = fecha;
-		this.puntuacion = puntuacion;
+		this.comentario = comentario;
 		this.pizza = pizza;
-		this.usuario = usuario;
+		this.id_usuario = id_usuario;
 	}
 
 
@@ -85,12 +86,12 @@ public class Comentario extends EntityBase<Comentario> implements Serializable {
 		this.fecha = fecha;
 	}
 
-	public int getPuntuacion() {
-		return this.puntuacion;
+	public String getComentario() {
+		return this.comentario;
 	}
 
-	public void setPuntuacion(int puntuacion) {
-		this.puntuacion = puntuacion;
+	public void setComentario(String comentario) {
+		this.comentario = comentario;
 	}
 
 	public Pizza getPizza() {
@@ -101,18 +102,18 @@ public class Comentario extends EntityBase<Comentario> implements Serializable {
 		this.pizza = pizza;
 	}
 
-	public Usuario getUsuario() {
-		return this.usuario;
+	public String getUsuario() {
+		return this.id_usuario;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setUsuario(String usuario) {
+		this.id_usuario = usuario;
 	}
 
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(fecha, idComentario, pizza, puntuacion, usuario);
+		return Objects.hash(fecha, idComentario, pizza, comentario, id_usuario);
 	}
 
 
@@ -126,15 +127,15 @@ public class Comentario extends EntityBase<Comentario> implements Serializable {
 			return false;
 		Comentario other = (Comentario) obj;
 		return Objects.equals(fecha, other.fecha) && idComentario == other.idComentario
-				&& Objects.equals(pizza, other.pizza) && puntuacion == other.puntuacion
-				&& Objects.equals(usuario, other.usuario);
+				&& Objects.equals(pizza, other.pizza) && comentario == other.comentario
+				&& Objects.equals(id_usuario, other.id_usuario);
 	}
 
 
 	@Override
 	public String toString() {
-		return "Comentario [idComentario=" + idComentario + ", fecha=" + fecha + ", puntuacion=" + puntuacion
-				+ ", pizza=" + pizza + ", usuario=" + usuario + "]";
+		return "Comentario [idComentario=" + idComentario + ", fecha=" + fecha + ", comentario=" + comentario
+				+ ", pizza=" + pizza + ", usuario=" + id_usuario + "]";
 	}
 	
 	
