@@ -10,11 +10,12 @@ import { NgModule } from '@angular/core';
 import { MainimageComponent } from './mainimage/mainimage.component';
 import { ComentariosComponent } from './comentarios/componente.component';
 import { IngredientesComponent } from './ingredientes';
+import { PizzasComponent } from './pizzas';
 
 // Array de rutas
 const routes: Routes = [
   {path: '', component: MainimageComponent},
-  {path: 'carta', component: CartaComponent},
+  {path: 'carta', component: PizzasComponent},
   {path: 'chef', component: ChefComponent},
   {path: 'promociones', component: PromocionesComponent},
   {path: 'comentarios', component: ComentariosComponent},

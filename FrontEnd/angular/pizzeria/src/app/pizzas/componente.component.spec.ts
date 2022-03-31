@@ -6,15 +6,15 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { LoggerService } from 'src/lib/my-core';
 import { NotificationService } from '../common-services';
 
-import { IngredientesComponent } from './componente.component';
+import { PizzasComponent } from './componente.component';
 
-describe('IngredientesComponent', () => {
-  let component: IngredientesComponent;
-  let fixture: ComponentFixture<IngredientesComponent>;
+describe('PizzasComponent', () => {
+  let component: PizzasComponent;
+  let fixture: ComponentFixture<PizzasComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ IngredientesComponent ],
+      declarations: [ PizzasComponent ],
       providers: [ NotificationService, LoggerService ],
       imports: [ HttpClientTestingModule, RouterTestingModule, FormsModule ],
       schemas: [ NO_ERRORS_SCHEMA ]
@@ -23,7 +23,7 @@ describe('IngredientesComponent', () => {
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(IngredientesComponent);
+    fixture = TestBed.createComponent(PizzasComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
