@@ -33,6 +33,11 @@ export class MenuComponent {
         icon: 'pi pi-fw pi-book',
         url: '../ingredientes'
       },
+      {
+        label: 'Comentarios',
+        icon: 'pi pi-fw pi-book',
+        url: '../comentarios'
+      },
     ];
   }
 }
