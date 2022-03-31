@@ -26,7 +26,13 @@ export class MenuComponent {
         label: 'Promociones',
         icon: 'pi pi-fw pi-wallet',
         url: '../promociones'
-      }
+      },
+
+      {
+        label: 'Ingredientes',
+        icon: 'pi pi-fw pi-book',
+        url: '../ingredientes'
+      },
     ];
   }
 }

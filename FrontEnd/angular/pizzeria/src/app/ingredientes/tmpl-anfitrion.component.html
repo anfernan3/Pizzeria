@@ -1,0 +1,6 @@
+<ng-container [ngSwitch]="VM.Modo" >
+  <app-ingredientes-add *ngSwitchCase="'add'"></app-ingredientes-add>
+  <app-ingredientes-edit *ngSwitchCase="'edit'"></app-ingredientes-edit>
+  <app-ingredientes-view *ngSwitchCase="'view'"></app-ingredientes-view>
+  <app-ingredientes-list *ngSwitchDefault></app-ingredientes-list>
+</ng-container>

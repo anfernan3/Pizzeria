@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import {AppRoutingModule} from './app-routing.module'
 import { AppComponent } from './app.component';
-
 import {ButtonModule} from 'primeng/button';
 import {MenubarModule} from 'primeng/menubar';
 import { MenuModule } from './menu/menu.module';
@@ -14,6 +13,10 @@ import { FooterModule } from './footer/footer.module';
 import { ErrorComponent } from './error/error.component';
 import { MainimageModule } from './mainimage/mainimage.module';
 import {CardModule} from 'primeng/card';
+import { CommonServicesModule } from './common-services';
+import { CommonComponentModule } from './common-component';
+import { SecurityModule } from './security';
+import { MyCoreModule } from 'src/lib/my-core';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,11 @@ import {CardModule} from 'primeng/card';
     FooterModule,
     AppRoutingModule,
     MainimageModule,
-    CardModule
+    CardModule,
+    CommonServicesModule,
+    CommonComponentModule,
+    SecurityModule,
+    MyCoreModule,
 
   ],
 

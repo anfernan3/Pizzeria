@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavigationService } from './common-services';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,8 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'pizzeria';
 
+  constructor(private navigation: NavigationService){
+  }
   ngOnInit() {
 
   }
