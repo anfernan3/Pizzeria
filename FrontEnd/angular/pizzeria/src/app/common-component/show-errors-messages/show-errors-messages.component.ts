@@ -7,7 +7,7 @@ import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 })
 export class ShowErrorsMessagesComponent implements OnChanges  {
   @Input() errors: any;
-
+  @Input() pristine: any = false;
   mensaje = '';
   hidden = false;
 
@@ -49,7 +49,7 @@ export class ShowErrorsMessagesComponent implements OnChanges  {
       }
     }
     this.mensaje = msg.trim();
-    this.hidden = this.mensaje === '';
+    this.hidden = this.pristine || this.mensaje === '' ;
   }
 
 }
