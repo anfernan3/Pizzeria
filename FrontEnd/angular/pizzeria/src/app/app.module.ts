@@ -17,12 +17,14 @@ import { CommonServicesModule } from './common-services';
 import { CommonComponentModule } from './common-component';
 import { SecurityModule } from './security';
 import { LoggerService, MyCoreModule } from 'src/lib/my-core';
+import { ComentariosComponent } from './comentarios/comentarios.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PromocionesComponent,
     ErrorComponent,
+    ComentariosComponent,
   ],
 
   imports:[
