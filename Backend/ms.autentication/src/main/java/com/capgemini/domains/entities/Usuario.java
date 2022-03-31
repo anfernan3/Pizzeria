@@ -56,13 +56,11 @@ public class Usuario extends EntityBase<Usuario> implements Serializable {
 	public Usuario() {
 	}
 
-	public Usuario(String nombre2, String apellido1, String apellido2, String password2,
-			String telefono2, String username, String rol) {
+	public Usuario(String nombre2, String apellido1, String apellido2, String telefono2, String username, String rol) {
 		super();
 		this.nombre = nombre2;
 		this.primerApellido = apellido1;
 		this.segundoApellido = apellido2;
-		this.password = password2;
 		this.telefono = telefono2;
 		this.username = username;
 		this.rol = rol;

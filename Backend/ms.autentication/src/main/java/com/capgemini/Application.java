@@ -12,9 +12,19 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import springfox.documentation.builders.ApiInfoBuilder;
+import springfox.documentation.builders.PathSelectors;
+import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.service.Contact;
+import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 @EnableEurekaClient
+@EnableSwagger2
 @SpringBootApplication
 public class Application implements CommandLineRunner{
 
@@ -44,4 +54,19 @@ public class Application implements CommandLineRunner{
 	  	return ds;
 	  }	*/
 
+	@Bean
+	public Docket api() {                
+   	    return new Docket(DocumentationType.OAS_30)          
+	      .select()
+	      .apis(RequestHandlerSelectors.basePackage("com.capgemini.application.resources"))
+	      .paths(PathSelectors.ant("/**"))
+	      .build()
+	      .apiInfo(new ApiInfoBuilder()
+	                .title("Microservicio: Servicio de autenticación")
+	                .description("Microservicio utilizando proyecto de la Pizzeria.")
+	                .version("1.0")
+	                .license("Apache License Version 2.0")
+	                .contact(new Contact("Yo Mismo", "http://www.example.com", "myeaddress@example.com"))
+	                .build());
+	}
 }

@@ -73,8 +73,10 @@ public class UsuarioServiceImpl implements UsuarioService {
 	public Usuario change(Usuario item) throws NotFoundException, InvalidDataException  {
 		if(item == null)
 			throw new IllegalArgumentException();
-		if(dao.findById(item.getUsername()).isEmpty())
+		var old = dao.findById(item.getUsername());
+		if(old.isEmpty())
 			throw new NotFoundException();
+		item.setPassword(old.get().getPassword());
 		if(item.isInvalid())
 			throw new InvalidDataException(item.getErrorsMessage());
 		return dao.save(item);

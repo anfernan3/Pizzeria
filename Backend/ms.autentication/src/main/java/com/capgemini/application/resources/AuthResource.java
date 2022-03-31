@@ -1,8 +1,11 @@
 package com.capgemini.application.resources;
 
+import java.net.URI;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,11 +21,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.capgemini.application.dtos.AuthToken;
 import com.capgemini.application.dtos.BasicCredential;
+import com.capgemini.application.dtos.NuevoUsuarioDTO;
+import com.capgemini.application.dtos.UsuarioDTO;
 import com.capgemini.domains.contracts.services.UsuarioService;
 import com.capgemini.domains.entities.Usuario;
+import com.capgemini.exceptions.DuplicateKeyException;
+import com.capgemini.exceptions.InvalidDataException;
 import com.capgemini.exceptions.NotFoundException;
 
 import io.jsonwebtoken.Jwts;
@@ -53,7 +61,7 @@ public class AuthResource {
 			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
 		}
 
-		return ResponseEntity.ok(new AuthToken(true, getJWTToken(usr), username));
+		return ResponseEntity.ok(new AuthToken(true, getJWTToken(usr), username, usr.getRol()));
 	}
 
 	@PostMapping(path = "/login", consumes = "application/json")
@@ -78,4 +86,24 @@ public class AuthResource {
 	 * /register (anonimo) /profile (Authorization) (get, put) menos la contraseña
 	 * /users (Admin)(get, post, put, delete) + roles menos la contraseña
 	 */
+	@PostMapping(path="/register")
+	public ResponseEntity<Object> create(@Valid @RequestBody NuevoUsuarioDTO item) throws InvalidDataException, DuplicateKeyException {
+		Usuario usuario = NuevoUsuarioDTO.from(item);
+		// Minimo 8 caracteres
+//		Maximo 15
+//		Al menos una letra mayúscula
+//		Al menos una letra minucula
+//		Al menos un dígito
+//		No espacios en blanco
+//		Al menos 1 caracter especial
+//		/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,15}/
+		usuario.setPassword(passwordEncoder.encode(item.getPassword()));
+		if(usuario.isInvalid())
+			throw new InvalidDataException(usuario.getErrorsMessage());
+		usuario = srv.add(usuario);
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+			.buildAndExpand(usuario.getUsername()).toUri();
+		return ResponseEntity.created(location).build();
+
+	}
 }
