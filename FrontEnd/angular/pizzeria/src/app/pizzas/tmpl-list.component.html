@@ -1,8 +1,8 @@
 <table class="table table-striped table-hover">
   <thead>
     <tr class="table-info">
-      <th class="display-4">Nombre</th>
-      <th class="display-4">Tipo</th>
+      <th class="display-4">Pizza</th>
+      <th class="display-4">Descripción</th>
       <th class="display-4">Precio</th>
       <th class="text-end">
         <button *ngIf="VM.auth.isAutenticated" class="btn btn-success" routerLink="add"><i class="pi pi-plus-circle"></i> Añadir</button>
@@ -12,10 +12,11 @@
   <tbody>
     <tr *ngFor="let item of VM.Listado">
       <td>
-        <p>{{item.nombre}}</p>
+        <p>{{item.nombre}}</p> <br>
+        <img src="../../assets/img/pizzas/pizza-margarita.jpg" alt="pizza-margarita" height="auto" width="100">
       </td>
       <td>
-        {{item.tipo}}
+        {{item.descripcion}}
       </td>
       <td>
         {{item.precio | currency:'EUR':'symbol':'1.2-2'}}
