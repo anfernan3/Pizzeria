@@ -1,8 +1,10 @@
 <ng-container *ngIf="!loginSrv.isAutenticated">
   <form #logForm="ngForm" class="form-inline my-2 my-lg-0">
     <div class="input-group" role="group" aria-label="Login Form">
+      <label for="usuario">Usuario:</label>
       <input class="form-control-sm" [size]="8" type="text" [(ngModel)]="txtUsuario" required minlength="4" placeholder="Usuario"
         [ngModelOptions]="{standalone: true}">
+        <label for="password">password</label>
       <input class="form-control-sm" [size]="8" type="password" [(ngModel)]="txtPassword" required minlength="4" placeholder="Contraseña"
         [ngModelOptions]="{standalone: true}">
       <div class="input-group-append">

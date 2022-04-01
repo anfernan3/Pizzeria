@@ -1,5 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormArray, ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  FormArray,
+  ValidatorFn,
+  AbstractControl,
+  ValidationErrors,
+} from '@angular/forms';
 import { User, RegisterUserDAO, LoginService } from '../security.service';
 import { Router } from '@angular/router';
 import { NotificationService, NotificationType } from 'src/app/common-services';
@@ -8,18 +16,26 @@ import { LoggerService } from 'src/lib/my-core';
 @Component({
   selector: 'app-register-user',
   templateUrl: './register-user.component.html',
-  styleUrls: ['./register-user.component.css']
+  styleUrls: ['./register-user.component.css'],
 })
 export class RegisterUserComponent implements OnInit {
   public miForm: FormGroup = new FormGroup({});
   private model: User = new User();
 
-  constructor(private dao: RegisterUserDAO, private notify: NotificationService,
-    private out: LoggerService, private router: Router, private login: LoginService) { }
+  constructor(
+    private dao: RegisterUserDAO,
+    private notify: NotificationService,
+    private out: LoggerService,
+    private router: Router,
+    private login: LoginService
+  ) {}
 
   passwordMatchValidator(): ValidatorFn {
-    return (control: AbstractControl): ValidationErrors | null => control?.get('passwordValue')?.value === control?.get('passwordConfirm')?.value
-      ? null : { 'mismatch': 'Son distintos' };
+    return (control: AbstractControl): ValidationErrors | null =>
+      control?.get('passwordValue')?.value ===
+      control?.get('passwordConfirm')?.value
+        ? null
+        : { mismatch: 'Son distintos' };
   }
 
   ngOnInit() {
@@ -28,13 +44,45 @@ export class RegisterUserComponent implements OnInit {
     //   new FormGroup({ role: new FormControl(r.role , Validators.required) })
     // ));
     this.miForm = new FormGroup({
-      idUsuario: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(20), Validators.email]),
-      nombre: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
-      password: new FormGroup({
-        passwordValue: new FormControl('', [Validators.required, Validators.minLength(2)]),
-        passwordConfirm: new FormControl('', Validators.minLength(2)),
-      }, this.passwordMatchValidator()),
-      roles: new FormArray([])
+      username: new FormControl('', [
+        Validators.required,
+        Validators.minLength(2),
+        Validators.maxLength(100),
+        Validators.email,
+      ]),
+      nombre: new FormControl('', [
+        Validators.required,
+        Validators.minLength(2),
+        Validators.maxLength(50),
+      ]),
+      apellido1: new FormControl('', [
+        Validators.required,
+        Validators.minLength(2),
+        Validators.maxLength(50),
+      ]),
+      apellido2: new FormControl('', [
+        Validators.required,
+        Validators.minLength(2),
+        Validators.maxLength(50),
+      ]),
+      telefono: new FormControl('', [
+        Validators.required,
+        Validators.minLength(9),
+        Validators.maxLength(30),
+      ]),
+      password: new FormGroup(
+        {
+          passwordValue: new FormControl('', [
+            Validators.required,
+            Validators.minLength(8),
+            Validators.pattern(
+              /^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$/
+            ),
+          ]),
+          passwordConfirm: new FormControl('', Validators.minLength(2)),
+        },
+        this.passwordMatchValidator()
+      ),
     });
     // for (const name in this.miForm.controls) {
     //   if (this.miForm.controls[name] instanceof FormControl) {
@@ -47,7 +95,7 @@ export class RegisterUserComponent implements OnInit {
     // }
   }
   public getErrorMessage(name: string): string {
-    let cntr = this.miForm.get(name)
+    let cntr = this.miForm.get(name);
     let msg = '';
     if (cntr)
       for (let err in cntr.errors) {
@@ -71,11 +119,18 @@ export class RegisterUserComponent implements OnInit {
           case 'max':
             msg += `El valor debe ser inferior o igual a ${cntr.errors[err].max}. `;
             break;
+          case 'telefono':
+            msg += `El valor debe ser igual a ${cntr.errors[err].max}. `;
+            break;
           default:
             if (typeof cntr.errors[err] === 'string')
-              msg += `${cntr.errors[err]}${cntr.errors[err].endsWith('.') ? '' : '.'} `;
+              msg += `${cntr.errors[err]}${
+                cntr.errors[err].endsWith('.') ? '' : '.'
+              } `;
             else if (typeof cntr.errors[err]?.message === 'string')
-              msg += `${cntr.errors[err].message}${cntr.errors[err].message.endsWith('.') ? '' : '.'} `;
+              msg += `${cntr.errors[err].message}${
+                cntr.errors[err].message.endsWith('.') ? '' : '.'
+              } `;
             break;
         }
       }
@@ -104,15 +159,22 @@ export class RegisterUserComponent implements OnInit {
         case 'max':
           msg += `El valor debe ser inferior o igual a ${cntr.errors[err].max}. `;
           break;
+        case 'telefono':
+          msg += `El valor debe ser igual a ${cntr.errors[err].max}. `;
+          break;
         default:
           if (typeof cntr.errors[err] === 'string')
-            msg += `${cntr.errors[err]}${cntr.errors[err].endsWith('.') ? '' : '.'} `;
+            msg += `${cntr.errors[err]}${
+              cntr.errors[err].endsWith('.') ? '' : '.'
+            } `;
           else if (typeof cntr.errors[err]?.message === 'string')
-            msg += `${cntr.errors[err].message}${cntr.errors[err].message.endsWith('.') ? '' : '.'} `;
+            msg += `${cntr.errors[err].message}${
+              cntr.errors[err].message.endsWith('.') ? '' : '.'
+            } `;
           break;
       }
     }
-    cntr.setErrors(Object.assign({}, cntr.errors, { 'customMsg': msg }));
+    cntr.setErrors(Object.assign({}, cntr.errors, { customMsg: msg }));
   }
   addRole(): void {
     (this.miForm.get('roles') as FormArray).push(
@@ -124,16 +186,18 @@ export class RegisterUserComponent implements OnInit {
   }
   send(): void {
     const data = this.miForm.value;
-    this.model = ({
-      idUsuario: data.idUsuario,
-      password: data.password.passwordValue,
+    this.model = {
+      username: data.username,
       nombre: data.nombre,
-      roles: data.roles
-    } as User);
+      apellido1: data.apellido1,
+      apellido2: data.apellido2,
+      telefono: data.telefono,
+      password: data.password.passwordValue,
+    } as User;
     this.dao.add(this.model).subscribe(
-      rslt => {
-        this.login.login(data.idUsuario, data.password.passwordValue).subscribe(
-          datos => {
+      (rslt) => {
+        this.login.login(data.username, data.password.passwordValue).subscribe(
+          (datos) => {
             if (datos) {
               this.notify.add('Usuario registrado', NotificationType.log);
               this.router.navigateByUrl('/');
@@ -141,10 +205,14 @@ export class RegisterUserComponent implements OnInit {
               this.notify.add('Error en el registro.');
             }
           },
-          err => { this.notify.add(err.message); }
+          (err) => {
+            this.notify.add(err.message);
+          }
         );
       },
-      err => { this.notify.add(err.message); }
+      (err) => {
+        this.notify.add(err.message);
+      }
     );
   }
 }

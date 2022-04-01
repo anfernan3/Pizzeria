@@ -127,11 +127,12 @@ export class Role {
   role: string = '';
 }
 export class User {
-  idUsuario: string = '';
-  password: string = '';
+  username: string = '';
   nombre: string = '';
-  roles: Array<Role> = [];
-
+  apellido1: string = '';
+  apellido2: string = '';
+  telefono: string = '';
+  password: string = '';
 }
 
 @Injectable({providedIn: 'root'})

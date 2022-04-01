@@ -25,7 +25,7 @@ public class NuevoUsuarioDTO {
 	@JsonProperty("apellido2")
 	private String apellido2;
 	@NotBlank
-	@Pattern(regexp = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])([A-Za-z\\d$@$!%*?&]|[^ ]){8,15}$/")
+	@Pattern(regexp = "^(?=.*\\d)(?=.*[\\u0021-\\u002b\\u003c-\\u0040])(?=.*[A-Z])(?=.*[a-z])\\S{8,16}$")
 	@JsonProperty("password")
 	private String password;
 	@JsonProperty("telefono")
