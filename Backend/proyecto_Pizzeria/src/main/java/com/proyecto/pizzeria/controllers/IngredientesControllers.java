@@ -81,7 +81,7 @@ public class IngredientesControllers {
 	}
 	
 	
-	@GetMapping(path = "/{page}", params = "page")
+	@GetMapping(params = "page")
 	@ApiOperation(value = "Listado paginable de ingredientes")
 	public Page<IngredientesEditDTO> getAll(@ApiParam(required = false) Pageable page) {
 		var content = srv.getAll(page);
