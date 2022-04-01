@@ -9,3 +9,8 @@ ul{
 ul li{
   margin: 1%;
 }
+
+.promociones{
+    background-color: #f5f9e7;
+    display: flex;
+}

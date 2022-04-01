@@ -1,3 +1,4 @@
+<div class="pagina">
 <select [(ngModel)]="VM.tipo">
   <option value="">Todos</option>
   <option value="/bases">Bases para Pizzas</option>
@@ -38,3 +39,4 @@
 </table>
 <p-paginator *ngIf="VM.tipo === ''" [first]="VM.rowsPerPage*VM.page" [rows]="VM.rowsPerPage" [totalRecords]="VM.totalRows"
     [pageLinkSize]="5" (onPageChange)="VM.load($event.page)"></p-paginator>
+  </div>

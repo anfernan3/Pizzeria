@@ -8,7 +8,18 @@ table {
 }
 
 
-div form-group{
+div.form-group{
+  margin-left: 25px;
   padding-top: 40px;
   padding-bottom: 40px;
+}
+
+.body {
+  background-color: #f5f9e7;
+  margin: 0px;
+  display: flex;
+}
+
+.pagina{
+  background-color: #f5f9e7;
 }

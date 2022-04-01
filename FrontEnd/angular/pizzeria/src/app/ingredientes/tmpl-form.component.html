@@ -1,3 +1,4 @@
+<div class="body">
 <h1>Ingredientes</h1>
 <form #miForm="ngForm">
   <div class="form-group col-md-4">
@@ -19,6 +20,8 @@
       [errors]="nombre.errors"
     ></app-show-errors-messages>
   </div>
+
+
   <fieldset class="form-group col-md-2">
     <legend class="col-form-label col-sm-2 pt-0">Tipo</legend>
     <div class="col-sm-10">
@@ -30,6 +33,7 @@
           id="tipo1"
           value="base"
           [(ngModel)]="VM.Elemento.tipo"
+          checked
         />
         <label class="form-check-label" for="tipo1">Bases para Pizzas</label>
       </div>
@@ -60,6 +64,7 @@
     </div>
   </fieldset>
 
+
   <div class="form-group col-md-4">
     <label class="form-label" for="precio">Precio:</label>
     <input
@@ -89,4 +94,5 @@
     <input type="button" class="btn btn-info" value="Volver" (click)="VM.cancel()">
   </div> -->
 </form>
+</div>
 
