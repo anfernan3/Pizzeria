@@ -5,25 +5,25 @@ import { RouterModule, Routes } from '@angular/router';
 import { MyCoreModule } from 'src/lib/my-core';
 import { CommonServicesModule } from '../common-services';
 import {
-  PizzasAddComponent,
-  PizzasEditComponent,
-  PizzasListComponent,
-  PizzasViewComponent,
-  PIZZAS_COMPONENTES,
+  CarritoAddComponent,
+  CarritoEditComponent,
+  CarritoListComponent,
+  CarritoViewComponent,
+  CARRITO_COMPONENTES,
 } from './componente.component';
 import { PaginatorModule } from 'primeng/paginator';
 import { CommonComponentModule } from '../common-component';
 const routes: Routes = [
-  { path: '', component: PizzasListComponent },
-  { path: 'add', component: PizzasAddComponent },
-  { path: ':id', component: PizzasViewComponent },
-  { path: ':id/edit', component: PizzasEditComponent },
-  { path: ':id/:kk', component: PizzasViewComponent },
+  { path: '', component: CarritoListComponent },
+  { path: 'add', component: CarritoAddComponent },
+  { path: ':id', component: CarritoViewComponent },
+  { path: ':id/edit', component: CarritoEditComponent },
+  { path: ':id/:kk', component: CarritoViewComponent },
 ];
 @NgModule({
-  declarations: [PIZZAS_COMPONENTES],
+  declarations: [CARRITO_COMPONENTES],
   exports: [
-    PIZZAS_COMPONENTES,
+    CARRITO_COMPONENTES,
   ],
   imports: [
     CommonModule,
@@ -36,4 +36,4 @@ const routes: Routes = [
     MyCoreModule,
   ],
 })
-export class PizzasModule {}
+export class CarritoModule {}

@@ -1,0 +1,6 @@
+<ng-container [ngSwitch]="VM.Modo" >
+  <app-pizzas-add *ngSwitchCase="'add'"></app-pizzas-add>
+  <app-pizzas-edit *ngSwitchCase="'edit'"></app-pizzas-edit>
+  <app-pizzas-view *ngSwitchCase="'view'"></app-pizzas-view>
+  <app-pizzas-list *ngSwitchDefault></app-pizzas-list>
+</ng-container>
