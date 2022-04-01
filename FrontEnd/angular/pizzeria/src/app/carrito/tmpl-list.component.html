@@ -1,12 +1,12 @@
 
 <section class="container-carrito">
   <button *ngIf="VM.auth.isAutenticated" class="btn btn-success" routerLink="add"><i class="pi pi-plus-circle"></i> Añadir</button>
-  <div class="container-card-pizza" *ngFor="let item of VM.Listado">
-    <img [src]="item.foto??'assets/img/carrito/pizza-margarita.jpg'" alt="Foto de la pizza {{item.nombre}}" height="auto" width="100">
+  <div class="container-card-carrito" *ngFor="let item of VM.Listado">
+    <img [src]="item.foto??'assets/img/carrito/carrito-margarita.jpg'" alt="Foto de la carrito {{item.nombre}}" height="auto" width="100">
     <div class="card-circle">
       <a class="no-decoration"><h2 class="cart-button">🛒</h2></a>
   </div>
-    <div class="container-text-card-pizza">
+    <div class="container-text-card-carrito">
       <button class="product-text" routerLink="{{item.id}}">{{item.nombre}}</button>
       <p class="product-text">{{item.precio | currency:'EUR':'symbol':'1.2-2'}}</p>
     </div>

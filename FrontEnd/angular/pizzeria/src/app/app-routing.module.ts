@@ -10,12 +10,14 @@ import { MainimageComponent } from './mainimage/mainimage.component';
 import { ComentariosComponent } from './comentarios/componente.component';
 import { PizzasAddComponent, PizzasComponent, PizzasEditComponent, PizzasListComponent, PizzasViewComponent } from './pizzas';
 import { LoginComponent, RegisterUserComponent } from './security';
+import { CarritoComponent } from './carrito';
 
 
 // Array de rutas
 const routes: Routes = [
   {path: '', component: MainimageComponent},
   {path: 'chef', component: ChefComponent},
+  {path: 'carrito', component: CarritoComponent},
   {path: 'promociones', component: PromocionesComponent},
   {path: 'comentarios', component: ComentariosComponent},
   {path: 'login', component: LoginComponent},
