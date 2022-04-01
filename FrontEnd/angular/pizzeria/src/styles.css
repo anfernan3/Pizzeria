@@ -1,6 +1,9 @@
 body {
   margin: 0;
 }
+.p-menubar{
+  background-color: blanchedalmond;
+}
 
 .notificaciones .notificacion {
   border: solid 1px rgb(255, 208, 0);

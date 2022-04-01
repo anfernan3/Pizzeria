@@ -1,3 +1,4 @@
+
 <p-menubar [model]="items">
   <ng-template pTemplate="start">
       <img src="../assets/img/logo.png" height="40" class="mr-2" routerLink="/" />
@@ -5,13 +6,22 @@
 
   <ng-template pTemplate="end">
     <div>
-      <a id="cart-icon" routerLink="/carrito">🛒</a>
+      <button
+      type="button"
+      pButton
+      icon="pi pi-shopping-cart"
+      style="margin-left: 0.25em"
+      class="p-button-secondary p-button-text"
+      routerLink="/cart"
+    ></button>
+
       <button
       type="button"
       pButton
       label="Login"
       icon="pi pi-power-off"
       style="margin-left: 0.25em"
+      class="p-button-secondary p-button-text"
       routerLink="/login"
     ></button>
     </div>

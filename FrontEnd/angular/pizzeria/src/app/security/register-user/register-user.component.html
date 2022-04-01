@@ -1,82 +1,115 @@
-<form [formGroup]="miForm" [class.is-invalid]="miForm.invalid">
+<form [formGroup]="miForm" [hidden]="miForm.invalid || miForm.pristine">
   <div class="form-group">
-    <label>Email: </label>
-    <input
-      class="form-control"
-      [class.is-invalid]="miForm?.get('username')?.invalid"
-      type="text"
-      formControlName="username"
-    />
-    <span class="invalid-feedback">{{ getErrorMessage("username") }}</span>
-  </div>
-  <div class="form-group">
-    <label>Nombre: </label>
-    <input
-      class="form-control"
-      [class.is-invalid]="miForm?.get('nombre')?.invalid"
-      type="text"
-      formControlName="nombre"
-    />
-    <span class="invalid-feedback">{{ getErrorMessage("nombre") }}</span>
-  </div>
-  <div class="form-group">
-    <label>Primer apellido: </label>
-    <input
-      class="form-control"
-      [class.is-invalid]="miForm?.get('apellido1')?.invalid"
-      type="text"
-      formControlName="apellido1"
-    />
-    <span class="invalid-feedback">{{ getErrorMessage("apellido1") }}</span>
-  </div>
-  <div class="form-group">
-    <label>Segundo apellido: </label>
-    <input
-      class="form-control"
-      [class.is-invalid]="miForm?.get('apellido2')?.invalid"
-      type="text"
-      formControlName="apellido2"
-    />
-    <span class="invalid-feedback">{{ getErrorMessage("apellido2") }}</span>
-  </div>
-  <div class="form-group">
-    <label>Telefono: </label>
-    <input
-      class="form-control"
-      [class.is-invalid]="miForm?.get('telefono')?.invalid"
-      type="text"
-      formControlName="telefono"
-    />
-    <span class="invalid-feedback">{{ getErrorMessage("telefono") }}</span>
-  </div>
-  <fieldset formGroupName="password">
-    <div class="form-group">
-      <label>Contraseña: </label>
-      <input
-        class="form-control"
-        type="password"
-        formControlName="passwordValue"
-      />
-      <span [hidden]="!miForm?.get('passwordValue')?.invalid">{{
-        getErrorMessage("passwordValue")
+    <!-- INPUT DE EMAIL -->
+    <div class="field">
+      <h5>Username</h5>
+      <div class="p-inputgroup">
+        <span class="p-float-label">
+          <input class="form-control" type="text" formControlName="username" />
+        </span>
+      </div>
+      <span [hidden]="miForm?.get('username')?.valid || miForm.pristine">{{
+        getErrorMessage("email")
       }}</span>
     </div>
-    <div class="form-group">
-      <label>Confirmar contraseña: </label>
-      <input
-        class="form-control"
-        type="password"
-        formControlName="passwordConfirm"
-      />
-      <span [hidden]="!miForm?.get('password')?.invalid">No coincide la confirmación</span>
+
+    <!-- INPUT DE USERNAME -->
+    <div class="field">
+      <h5>Nombre</h5>
+      <div class="p-inputgroup">
+        <span class="p-float-label">
+          <input class="form-control" type="text" formControlName="nombre" />
+        </span>
+      </div>
     </div>
-  </fieldset>
+    <span [hidden]="miForm?.get('nombre')?.valid || miForm.pristine">{{
+      getErrorMessage("username")
+    }}</span>
+  </div>
+
+  <!-- INPUT PRIMER APELLIDO -->
+  <div class="field">
+    <h5>Primer apellido</h5>
+
+    <div class="p-inputgroup">
+      <span class="p-float-label">
+        <input class="form-control" type="text" formControlName="apellido1" />
+      </span>
+    </div>
+  </div>
+  <span [hidden]="miForm?.get('apellido1')?.valid || miForm.pristine">{{
+    getErrorMessage("apellido1")
+  }}</span>
+
+  <!-- INPUT SEGUNDO APELLIDO -->
+  <div class="field">
+    <h5>Segundo apellido</h5>
+    <div class="p-inputgroup">
+      <span class="p-float-label">
+        <input class="form-control" type="text" formControlName="apellido2" />
+      </span>
+    </div>
+  </div>
+  <span [hidden]="miForm?.get('apellido2')?.valid || miForm.pristine">{{
+    getErrorMessage("apellido2")
+  }}</span>
+
+  <!-- INPUT DE TELEFONO -->
+  <div class="field">
+    <h5>Telefono</h5>
+    <div class="p-inputgroup">
+      <span class="p-float-label">
+        <input class="form-control" type="text" formControlName="telefono" />
+      </span>
+    </div>
+  </div>
+  <span [hidden]="miForm?.get('telefono')?.valid || miForm.pristine">{{
+    getErrorMessage("telefono")
+  }}</span>
+
+  <div formGroupName="password">
+    <div class="field">
+      <h5>Contraseña</h5>
+      <div class="p-inputgroup">
+        <span class="p-float-label">
+          <input
+            class="form-control"
+            type="password"
+            formControlName="passwordValue"
+          />
+        </span>
+      </div>
+    </div>
+    <span
+      [hidden]="!miForm?.get('passwordValue')?.invalid || miForm.pristine"
+      >{{ getErrorMessage("passwordValue") }}</span
+    >
+
+    <div class="field">
+      <h5>Repite contraseña:</h5>
+      <div class="p-inputgroup">
+        <span class="p-float-label">
+          <input
+            class="form-control"
+            type="password"
+            formControlName="passwordConfirm"
+          />
+        </span>
+      </div>
+    </div>
+    <span [hidden]="!miForm?.get('password')?.invalid || miForm.pristine"
+      >No coincide la confirmación</span
+    >
+  </div>
+
   <button
-    class="btn btn-outline-primary"
+    pButton
+    pRipple
+    type="button"
+    label="Enviar"
+    class="p-button-rounded p-button-help"
     (click)="send()"
-    [disabled]="miForm.invalid"
-  >
-    Send
-  </button>
+    [disabled]="miForm.invalid || miForm.pristine"
+  ></button>
 </form>
-{{ miForm.errors | json }}
+<!-- {{ miForm.errors | json }} -->

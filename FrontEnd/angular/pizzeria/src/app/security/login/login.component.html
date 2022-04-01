@@ -2,19 +2,57 @@
   <form #logForm="ngForm" class="form-inline my-2 my-lg-0">
     <div class="input-group" role="group" aria-label="Login Form">
       <label for="usuario">Usuario:</label>
-      <input class="form-control-sm" [size]="8" type="text" [(ngModel)]="txtUsuario" required minlength="4" placeholder="Usuario"
-        [ngModelOptions]="{standalone: true}">
-        <label for="password">password</label>
-      <input class="form-control-sm" [size]="8" type="password" [(ngModel)]="txtPassword" required minlength="4" placeholder="Contraseña"
-        [ngModelOptions]="{standalone: true}">
+      <input
+      class="form-control"
+        [size]="8"
+        type="text"
+        [(ngModel)]="txtUsuario"
+        required
+        minlength="4"
+        placeholder="Usuario"
+        [ngModelOptions]="{ standalone: true }"
+      />
+
+      <label for="password">password</label>
+      <input
+      class="form-control"
+        [size]="8"
+        type="password"
+        [(ngModel)]="txtPassword"
+        required
+        minlength="4"
+        placeholder="Contraseña"
+        [ngModelOptions]="{ standalone: true }"
+      />
+
       <div class="input-group-append">
-        <input class="btn btn-outline-success btn-sm" type="button" [disabled]="logForm.invalid" value="Enviar" (click)="logInOut()">
-        <input class="btn btn-outline-success btn-sm" type="button" value="Registrar" (click)="registrar()">
+        <input
+          pButton
+          pRipple
+          class="p-button-rounded p-button-help"
+          type="button"
+          [disabled]="logForm.invalid"
+          value="Enviar"
+          (click)="logInOut()"
+        />
+        <input
+          pButton
+          pRipple
+          class="p-button-rounded p-button-warning"
+          type="button"
+          value="Registrar"
+          (click)="registrar()"
+        />
       </div>
     </div>
   </form>
 </ng-container>
 <small *ngIf="loginSrv.isAutenticated">
-  Hola {{loginSrv.Name}}
-  <input class="btn btn-outline-success btn-sm" type="button" value="Desconectar" (click)="logInOut()">
+  Hola {{ loginSrv.Name }}
+  <input
+    class="btn btn-outline-success btn-sm"
+    type="button"
+    value="Desconectar"
+    (click)="logInOut()"
+  />
 </small>

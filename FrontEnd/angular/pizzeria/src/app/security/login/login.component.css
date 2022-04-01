@@ -1,3 +1,41 @@
-:host-context(.navbar-dark) small {
-  color: white;
+form{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 2%;
+  justify-content: center;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+.form-control{
+  margin: 2%;
+}
+
+.p-inputgroup {
+    display: flex;
+    margin: 2%;
+    width: 100%;
+}
+
+.p-float-label  {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  align-content: stretch;
+  flex-direction: column;
+}
+.input-group
+{
+  display: flex;
+  flex-direction: column;
+  margin: 2%;
+}
+
+.input-group-append {
+  display: flex;
+  justify-content: space-evenly;
+  align-content: center;
 }

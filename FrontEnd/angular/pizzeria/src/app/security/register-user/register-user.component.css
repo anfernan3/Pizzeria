@@ -1,0 +1,27 @@
+form{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 2%;
+  justify-content: center;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+.p-inputgroup {
+    display: flex;
+    margin: 2%;
+    width: 100%;
+}
+
+.p-float-label  {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  align-content: stretch;
+  flex-direction: column;
+}
+
+
