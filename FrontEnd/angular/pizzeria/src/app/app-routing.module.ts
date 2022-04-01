@@ -2,16 +2,15 @@
 import { RouterModule, Routes } from '@angular/router';
 
 // Importar componentes a los cuales les quiero hacer una página exclusiva
-import { CartaComponent } from './carta/carta.component';
 import { ChefComponent } from './chef/chef.component';
 import { PromocionesComponent } from './promociones/promociones.component';
 import { ErrorComponent } from './error/error.component';
 import { NgModule } from '@angular/core';
 import { MainimageComponent } from './mainimage/mainimage.component';
 import { ComentariosComponent } from './comentarios/componente.component';
-import { IngredientesComponent } from './ingredientes';
 import { PizzasComponent } from './pizzas';
 import { LoginComponent, RegisterUserComponent } from './security';
+
 
 // Array de rutas
 const routes: Routes = [
@@ -20,10 +19,10 @@ const routes: Routes = [
   {path: 'chef', component: ChefComponent},
   {path: 'promociones', component: PromocionesComponent},
   {path: 'comentarios', component: ComentariosComponent},
-  {path: 'ingredientes', component: IngredientesComponent},
+  {path: 'ingredientes', loadChildren: () => import('./ingredientes/modulo.module').then(mod => mod.IngredientesModule) },
   {path: 'login', component: LoginComponent},
   {path: 'registro', component: RegisterUserComponent},
-  {path : '**', component: ErrorComponent},
+  {path: '**', component: ErrorComponent},
 ];
 
 

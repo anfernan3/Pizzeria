@@ -17,9 +17,8 @@ import { CommonServicesModule } from './common-services';
 import { CommonComponentModule } from './common-component';
 import { SecurityModule } from './security';
 import { LoggerService, MyCoreModule } from 'src/lib/my-core';
-import { ComentariosComponent } from './comentarios/componente.component';
 import { ComentariosModule } from './comentarios';
-import { IngredientesModule } from './ingredientes';
+
 
 
 @NgModule({
@@ -45,7 +44,8 @@ import { IngredientesModule } from './ingredientes';
     SecurityModule,
     MyCoreModule,
     ComentariosModule,
-    IngredientesModule,
+
+
   ],
 
   providers: [LoggerService],
