@@ -13,6 +13,7 @@ import {
 } from './componente.component';
 import { PaginatorModule } from 'primeng/paginator';
 import { CommonComponentModule } from '../common-component';
+import { CarritoComponent, CARRITO_COMPONENTES } from '../carrito';
 const routes: Routes = [
   { path: '', component: PizzasListComponent },
   { path: 'add', component: PizzasAddComponent },

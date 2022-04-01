@@ -9,6 +9,7 @@ import { CarritoViewModelService } from './servicios.service';
   styleUrls: ['./componente.component.css']
 })
 export class CarritoComponent implements OnInit, OnDestroy {
+  public pizzasAgregadas: Array<any> = [{}];
   constructor(protected vm: CarritoViewModelService) { }
   public get VM(): CarritoViewModelService { return this.vm; }
   ngOnInit(): void {
@@ -26,6 +27,7 @@ export class CarritoComponent implements OnInit, OnDestroy {
 })
 export class CarritoListComponent implements OnInit {
   constructor(protected vm: CarritoViewModelService) { }
+
   public get VM(): CarritoViewModelService { return this.vm; }
   ngOnInit(): void {
     //this.vm.list();

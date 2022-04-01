@@ -11,6 +11,12 @@
   background-color:#f5f9e7;
 }
 
+.fondo-claro{
+  display:flex;
+  flex-direction: column;
+  background-color:#f5f9e7;
+}
+
 .container-card-pizza{
   display: flex;
   flex-direction: column;
@@ -34,8 +40,8 @@
   width: 15em;
 }
 
-.img-ficha {
-   margin-top:10em;
+#img-ficha {
+   height: 25em;
  }
 .img-descripcion{
   position: relative;
