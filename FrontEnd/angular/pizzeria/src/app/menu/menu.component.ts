@@ -15,28 +15,28 @@ export class MenuComponent {
       {
         label: 'Carta',
         icon: 'pi pi-fw pi-book',
-        url: '../carta'
+        routerLink: '/carta'
       },
       {
         label: 'Nuestros Chef',
         icon: 'pi pi-fw pi-user',
-        url: '../chef'
+        routerLink: '/chef'
       },
       {
         label: 'Promociones',
         icon: 'pi pi-fw pi-wallet',
-        url: '../promociones'
+        routerLink: '/promociones'
       },
 
       {
         label: 'Ingredientes',
         icon: 'pi pi-fw pi-book',
-        url: '../ingredientes'
+        routerLink: '/ingredientes'
       },
       {
         label: 'Comentarios',
         icon: 'pi pi-fw pi-book',
-        url: '../comentarios'
+        routerLink: '/comentarios'
       },
     ];
   }

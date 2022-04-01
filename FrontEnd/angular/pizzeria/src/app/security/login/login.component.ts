@@ -32,7 +32,8 @@ export class LoginComponent implements OnInit {
             this.notify.add('Usuario o contraseña invalida.');
           }
         },
-        error: err => { this.notify.add(err.message); }
+        error: err => {
+          this.notify.add(err.message); }
       });
     }
   }

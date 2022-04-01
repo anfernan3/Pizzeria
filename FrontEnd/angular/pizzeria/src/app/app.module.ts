@@ -17,8 +17,10 @@ import { CommonServicesModule } from './common-services';
 import { CommonComponentModule } from './common-component';
 import { SecurityModule } from './security';
 import { LoggerService, MyCoreModule } from 'src/lib/my-core';
+import { ComentariosComponent } from './comentarios/componente.component';
 import { ComentariosModule } from './comentarios';
-
+import { IngredientesModule } from './ingredientes';
+import { NotificationComponent } from './notification/notification.component';
 
 
 @NgModule({
@@ -26,6 +28,7 @@ import { ComentariosModule } from './comentarios';
     AppComponent,
     PromocionesComponent,
     ErrorComponent,
+    NotificationComponent
   ],
 
   imports:[
@@ -44,8 +47,7 @@ import { ComentariosModule } from './comentarios';
     SecurityModule,
     MyCoreModule,
     ComentariosModule,
-
-
+    IngredientesModule,
   ],
 
   providers: [LoggerService],
