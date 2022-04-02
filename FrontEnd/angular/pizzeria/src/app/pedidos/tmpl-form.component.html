@@ -80,22 +80,14 @@
       ></app-show-errors-messages>
       <br>
       <hr>
-      <label class="form-label" for="nombre">Estado:</label>
-      <input
-        class="form-control"
-        [class.is-invalid]="nombre.invalid"
-        type="text"
-        name="estado"
-        id="estado"
-        [(ngModel)]="VM.Elemento.estado"
-        #nombre="ngModel"
-        required
-        minlength="2"
-        maxlength="50"
-        placeholder="solicitado/elaborandose"
-        pattern="[A-Za-z\s]+"
-      />
-      <p>Estados posibles: solicitado/elaborandose/preparado/enviado/recibido</p>
+      <label for="estado">Estado: </label>
+      <select id="estado" name="estado" [(ngModel)]="VM.Elemento.estado">
+        <option value="solicitado">solicitado</option>
+        <option value="elaborandose">elaborandose</option>
+        <option value="/preparado">preparado</option>
+        <option value="enviado">enviado</option>
+        <option value="/recibido">recibido</option>
+      </select>
       <app-show-errors-messages
         [errors]="nombre.errors"
       ></app-show-errors-messages>
