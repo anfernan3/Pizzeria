@@ -8,19 +8,25 @@ import { ModoCRUD } from '../base-code/tipos';
 import { NavigationService, NotificationService } from '../common-services';
 import { AuthService, AUTH_REQUIRED } from '../security';
 
-export class Ingrediente {
-  id: number = 0;
-  nombre: string | null = null;
-  precio: number | null = null;
-  tipo: string | null = null;
+export class Pedido {
+  idPedido: number = 0;
+  entregadoPor: string | null = null;
+  estado: string | null = null;
+  fecha: Date | null = null;
+  fechaEntrega: Date | null = null;
+  importe: number = 0;
+  preparadoPor: string | null = null;
+  direccionEntrega: string | null = null;
+  usuario: string | null = null;
+
 }
 
 @Injectable({
   providedIn: 'root'
 })
-export class PedidosDAOService extends RESTDAOService<Ingrediente, any> {
+export class PedidosDAOService extends RESTDAOService<Pedido, any> {
   constructor(http: HttpClient) {
-    super(http, 'Pedidos', { context: new HttpContext().set(AUTH_REQUIRED, true) });
+    super(http, 'pedidos', { context: new HttpContext().set(AUTH_REQUIRED, true) });
   }
   page(page: number, rows: number = 20): Observable<{ page: number, pages: number, rows: number, list: Array<any> }> {
     return new Observable(subscriber => {
@@ -48,7 +54,7 @@ export class PedidosViewModelService {
   protected listado: Array<any> = [];
   protected elemento: any = {};
   protected idOriginal: any = null;
-  protected listURL = '/Pedidos';
+  protected listURL = '/pedidos';
 
   constructor(protected notify: NotificationService, protected out: LoggerService, protected dao: PedidosDAOService,
     public auth: AuthService, protected router: Router, private navigation: NavigationService) { }

@@ -22,7 +22,7 @@ const routes: Routes = [
   {path: 'comentarios', component: ComentariosComponent},
   {path: 'login', component: LoginComponent},
   {path: 'carta', loadChildren: () => import('./pizzas/modulo.module').then(mod => mod.PizzasModule)},
-  {path: 'ingredientes', loadChildren: () => import('./ingredientes/modulo.module').then(mod => mod.IngredientesModule) },
+  {path: 'ingredientes', loadChildren: () => import('./ingredientes/modulo.module').then(mod => mod.IngredientesModule)},
   {path: 'pedidos', loadChildren: () => import('./pedidos/pedidos.module').then(mod => mod.PedidosModule)},
   {path: 'registro', component: RegisterUserComponent},
   {path: '**', component: ErrorComponent},

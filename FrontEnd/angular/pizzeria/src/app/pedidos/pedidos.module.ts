@@ -17,8 +17,8 @@ import { CarritoComponent, CARRITO_COMPONENTES } from '../carrito';
 const routes: Routes = [
   { path: '', component: PedidosListComponent },
   { path: 'add', component: PedidosAddComponent },
-  { path: ':id', component: PedidosViewComponent },
   { path: ':id/edit', component: PedidosEditComponent },
+  { path: ':id', component: PedidosViewComponent },
   { path: ':id/:kk', component: PedidosViewComponent },
 ];
 @NgModule({
