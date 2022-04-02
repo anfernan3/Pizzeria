@@ -20,9 +20,11 @@
         [errors]="nombre.errors"
       ></app-show-errors-messages>
     </div>
+    <hr>
     <label for="fecha">Fecha:</label>
     <input type="date" id="fecha" name="fecha" [(ngModel)]="VM.Elemento.fecha">
     <br>
+    <hr>
     <label class="form-label" for="nombre">Preparado por:</label>
       <input
         class="form-control"
@@ -40,6 +42,7 @@
         [errors]="nombre.errors"
       ></app-show-errors-messages>
       <br>
+      <hr>
       <label class="form-label" for="nombre">Entregado por:</label>
       <input
         class="form-control"
@@ -57,6 +60,7 @@
         [errors]="nombre.errors"
       ></app-show-errors-messages>
       <br>
+      <hr>
       <label class="form-label" for="nombre">Dirección de entrega:</label>
       <input
         class="form-control"
@@ -75,6 +79,7 @@
         [errors]="nombre.errors"
       ></app-show-errors-messages>
       <br>
+      <hr>
       <label class="form-label" for="nombre">Estado:</label>
       <input
         class="form-control"
@@ -95,9 +100,11 @@
         [errors]="nombre.errors"
       ></app-show-errors-messages>
       <br>
+      <hr>
       <label for="fecha">Fecha Entrega:</label>
     <input type="date" id="fecha" name="fecha" [(ngModel)]="VM.Elemento.fechaEntrega">
     <br>
+    <hr>
     <div class="form-group col-md-4">
       <label class="form-label" for="precio">Importe:</label>
       <input
@@ -122,6 +129,7 @@
       [send-disabled]="miForm.invalid"
       (cancel)="VM.cancel()"
     ></app-form-buttons>
+    <br>
     <!-- <div class="form-group">
       <input type="button" class="btn btn-success" value="Enviar" (click)="VM.send()" [disabled]="miForm.invalid">
       <input type="button" class="btn btn-info" value="Volver" (click)="VM.cancel()">
