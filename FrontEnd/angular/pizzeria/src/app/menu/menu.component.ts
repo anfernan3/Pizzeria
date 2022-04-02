@@ -30,13 +30,18 @@ export class MenuComponent {
 
       {
         label: 'Ingredientes',
-        icon: 'pi pi-fw pi-book',
+        icon: 'pi pi-fw pi-box',
         routerLink: '/ingredientes'
       },
       {
         label: 'Comentarios',
-        icon: 'pi pi-fw pi-book',
+        icon: 'pi pi-fw pi-comments',
         routerLink: '/comentarios'
+      },
+      {
+        label: 'Pedidos',
+        icon: 'pi pi-fw pi-euro',
+        routerLink: '/pedidos'
       },
     ];
   }

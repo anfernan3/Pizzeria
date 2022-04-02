@@ -1,27 +1,41 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PedidosComponent, PEDIDOS_COMPONENTES } from './pedidos.component';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { MyCoreModule } from 'src/lib/my-core';
 import { CommonServicesModule } from '../common-services';
+import {
+  PedidosAddComponent,
+  PedidosEditComponent,
+  PedidosListComponent,
+  PedidosViewComponent,
+  PEDIDOS_COMPONENTES,
+} from './pedidos.component';
 import { PaginatorModule } from 'primeng/paginator';
 import { CommonComponentModule } from '../common-component';
-
-
-
+import { CarritoComponent, CARRITO_COMPONENTES } from '../carrito';
+const routes: Routes = [
+  { path: '', component: PedidosListComponent },
+  { path: 'add', component: PedidosAddComponent },
+  { path: ':id', component: PedidosViewComponent },
+  { path: ':id/edit', component: PedidosEditComponent },
+  { path: ':id/:kk', component: PedidosViewComponent },
+];
 @NgModule({
-  declarations: [
-    PedidosComponent
-  ],
-  ,
+  declarations: [PEDIDOS_COMPONENTES],
   exports: [
     PEDIDOS_COMPONENTES,
   ],
   imports: [
-    CommonModule, FormsModule, RouterModule.forChild([]),
-    MyCoreModule, CommonServicesModule,
-    PaginatorModule, CommonComponentModule, MyCoreModule,
-  ]
+    CommonModule,
+    FormsModule,
+    RouterModule.forChild(routes),
+    MyCoreModule,
+    CommonServicesModule,
+    PaginatorModule,
+    CommonComponentModule,
+    MyCoreModule,
+  ],
 })
-export class PedidosModule { }
+export class PedidosModule {}
+

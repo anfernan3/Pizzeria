@@ -21,7 +21,7 @@ export class PedidosComponent implements OnInit, OnDestroy {
     }
 
   @Component({
-    selector: 'app-ingredientes-list',
+    selector: 'app-pedidos-list',
     templateUrl: './tmpl-list.component.html',
     styleUrls: ['./pedidos.component.css']
   })
@@ -36,7 +36,7 @@ export class PedidosComponent implements OnInit, OnDestroy {
   }
 
   @Component({
-    selector: 'app-ingredientes-add',
+    selector: 'app-pedidos-add',
     templateUrl: './tmpl-form.component.html',
     styleUrls: ['./pedidos.component.css']
   })
@@ -75,7 +75,7 @@ export class PedidosComponent implements OnInit, OnDestroy {
   }
 
   @Component({
-    selector: 'app-ingredientes-view',
+    selector: 'app-pedidos-view',
     templateUrl: './tmpl-view.component.html',
     styleUrls: ['./pedidos.component.css']
   })
@@ -104,7 +104,7 @@ export class PedidosComponent implements OnInit, OnDestroy {
     PedidosComponent, PedidosListComponent, PedidosAddComponent,
     PedidosEditComponent, PedidosViewComponent,
   ];
-}
+
   function ngOnDestroy() {
     throw new Error('Function not implemented.');
   }
