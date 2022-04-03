@@ -13,6 +13,7 @@ export class Ingrediente {
   nombre: string | null = null;
   precio: number | null = null;
   tipo: string | null = null;
+
 }
 
 @Injectable({

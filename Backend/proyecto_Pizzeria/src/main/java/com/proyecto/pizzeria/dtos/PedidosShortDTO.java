@@ -10,13 +10,14 @@ public class PedidosShortDTO {
 	private int idPedido;
 	private String usuario;
 	private Date fecha;
+	private String estado;
 
 
 	public static PedidosShortDTO from(Pedido source) {
 		return new PedidosShortDTO(
 				source.getIdPedido(),
 				source.getUsuario(),
-				source.getFecha()
-				);
+				source.getFecha(),
+				source.getEstado());
 	}
 }
