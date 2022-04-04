@@ -3,13 +3,14 @@
   <form>
       <hr>
       <label for="estado">Estado: </label>
-      <select id="estado" name="estado" [(ngModel)]="VM.Elemento.estado">
+      <b>{{VM.Elemento.estado}}</b>
+      <!-- <select id="estado" name="estado" [(ngModel)]="VM.Elemento.estado">
         <option value="solicitado">solicitado</option>
         <option value="elaborandose">elaborandose</option>
         <option value="/preparado">preparado</option>
         <option value="enviado">enviado</option>
         <option value="/recibido">recibido</option>
-      </select>
+      </select> -->
       <app-form-buttons
       (send)="VM.send()"
       (cancel)="VM.cancel()"

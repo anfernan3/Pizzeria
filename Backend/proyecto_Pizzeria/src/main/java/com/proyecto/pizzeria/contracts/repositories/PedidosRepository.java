@@ -15,5 +15,5 @@ public interface PedidosRepository extends JpaRepository<Pedido, Integer> {
 	<T> List<T> findByIdPedidoIsNotNull(Class<T> type);
 	<T> Iterable<T> findByIdPedidoIsNotNull(Sort sort, Class<T> type);
 	<T> Page<T> findByIdPedidoIsNotNull(Pageable pageable, Class<T> type);
-
+	<T> List<T> findByEstado (String tipo, Class<T> type);
 }

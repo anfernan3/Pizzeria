@@ -28,6 +28,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.proyecto.pizzeria.contracts.services.PedidosService;
 import com.proyecto.pizzeria.dtos.PedidosEditDTO;
+import com.proyecto.pizzeria.dtos.IngredientesEditDTO;
 import com.proyecto.pizzeria.dtos.PedidosDetailsDTO;
 import com.proyecto.pizzeria.dtos.PedidosShortDTO;
 import com.proyecto.pizzeria.exceptions.DuplicateKeyException;
@@ -66,11 +67,53 @@ public class PedidosControllers {
 
 	@Transactional(readOnly = true)
 	@GetMapping(path = "/{id}")
-	public PedidosDetailsDTO getOneDetails(@PathVariable int id,
+	public PedidosShortDTO getOneDetails(@PathVariable int id,
 			@RequestParam(required = false, defaultValue = "details") String mode) throws NotFoundException {
-		return PedidosDetailsDTO.from(srv.getOne(id));
+		return PedidosShortDTO.from(srv.getOne(id));
 	}
 
+	@GetMapping(path = "/solicitado")
+	@ApiOperation(value = "Listado por estado: solicitado")
+	public List<PedidosShortDTO> getOneDetails(@RequestParam(required = false, defaultValue = "details") String mode)
+			throws NotFoundException {
+			return srv.getSolicitado(PedidosShortDTO.class);
+	}
+	
+	@GetMapping(path = "/elaborandose")
+	@ApiOperation(value = "Listado por estado: elaborandose")
+	public List<PedidosShortDTO> getOneDetails1(@RequestParam(required = false, defaultValue = "details") String mode)
+			throws NotFoundException {
+			return srv.getElaborandose(PedidosShortDTO.class);
+	}
+	
+	@GetMapping(path = "/preparado")
+	@ApiOperation(value = "Listado por estado: preparado")
+	public List<PedidosShortDTO> getOneDetails2(@RequestParam(required = false, defaultValue = "details") String mode)
+			throws NotFoundException {
+			return srv.getPreparado(PedidosShortDTO.class);
+	}
+	
+	@GetMapping(path = "/enviado")
+	@ApiOperation(value = "Listado por estado: enviado")
+	public List<PedidosShortDTO> getOneDetails3(@RequestParam(required = false, defaultValue = "details") String mode)
+			throws NotFoundException {
+			return srv.getElaborandose(PedidosShortDTO.class);
+	}
+	@GetMapping(path = "/recibido")
+	@ApiOperation(value = "Listado por estado: recibido")
+	public List<PedidosShortDTO> getOneDetails4(@RequestParam(required = false, defaultValue = "details") String mode)
+			throws NotFoundException {
+			return srv.getRecibido(PedidosShortDTO.class);
+	}
+	
+	@GetMapping(path = "/cancelado")
+	@ApiOperation(value = "Listado por estado: cancelado")
+	public List<PedidosShortDTO> getOneDetails5(@RequestParam(required = false, defaultValue = "details") String mode)
+			throws NotFoundException {
+			return srv.getCancelado(PedidosShortDTO.class);
+	}
+	
+	
 //	@Transactional (readOnly = true)
 //	@GetMapping(path = "/{id}", params = "mode=edit")
 //	@ApiOperation(value = "Recupera un Pedido")

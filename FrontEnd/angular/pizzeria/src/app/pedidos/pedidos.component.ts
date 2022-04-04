@@ -66,7 +66,7 @@ export class PedidosComponent implements OnInit, OnDestroy {
       //   initialValue
       // );
       // this.vm.Elemento = elem;
-      this.vm.send();
+      // this.vm.send();
     }
   }
 

@@ -29,9 +29,9 @@
         {{item.precio | currency:'EUR':'symbol':'1.2-2'}}
       </td>
      <td class="align-middle text-end">
-        <div class="btn-group" role="group">
-          <button *ngIf="VM.auth.isAutenticated" class="btn btn-success" [routerLink]="[item.id, 'edit']"><i class="pi pi-pencil"></i></button>
-          <button *ngIf="VM.auth.isAutenticated" class="btn btn-danger" (click)="VM.delete(item.id)"><i class="pi pi-times"></i></button>
+        <div *ngIf="VM.auth.isAutenticated" class="btn-group" role="group">
+          <button  class="btn btn-success" [routerLink]="[item.id, 'edit']"><i class="pi pi-pencil"></i></button>
+          <button  class="btn btn-danger" (click)="VM.delete(item.id)"><i class="pi pi-times"></i></button>
         </div>
       </td>
     </tr>

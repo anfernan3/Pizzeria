@@ -89,6 +89,43 @@ public class PedidosServiceImpl implements PedidosService {
 	public void deleteById(Integer id) {
 		dao.deleteById(id);
 	}
+	
+	@Override
+	public <T> List<T> getSolicitado(Class<T> type) {
+		// TODO Auto-generated method stub
+		return dao.findByEstado("solicitado", type);
+	}
+
+	@Override
+	public <T> List<T> getElaborandose(Class<T> type) {
+		// TODO Auto-generated method stub
+		return dao.findByEstado("elaborandose", type);
+	}
+	@Override
+	public <T> List<T> getPreparado(Class<T> type) {
+		// TODO Auto-generated method stub
+		return dao.findByEstado("preparado", type);
+	}
+
+	@Override
+	public <T> List<T> getEnviado(Class<T> type) {
+		// TODO Auto-generated method stub
+		return dao.findByEstado("enviado", type);
+	}
+	@Override
+	public <T> List<T> getRecibido(Class<T> type) {
+		// TODO Auto-generated method stub
+		return dao.findByEstado("recibido", type);
+	}
+
+	@Override
+	public <T> List<T> getCancelado(Class<T> type) {
+		// TODO Auto-generated method stub
+		return dao.findByEstado("cancelado", type);
+	}
 }
 
+	
 
+
+	
