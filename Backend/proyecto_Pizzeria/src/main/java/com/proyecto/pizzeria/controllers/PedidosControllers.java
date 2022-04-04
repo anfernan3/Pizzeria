@@ -91,9 +91,11 @@ public class PedidosControllers {
 	@ApiResponses({ @ApiResponse(code = 201, message = "Pedido añadida"),
 			@ApiResponse(code = 400, message = "Error al validar los datos o clave duplicada"),
 			@ApiResponse(code = 404, message = "Pedido no encontrado") })
-	public ResponseEntity<Object> create(@RequestBody PedidosEditDTO item)
+	public ResponseEntity<Object> create(@RequestBody PedidosEditDTO item, Principal usr)
 			throws InvalidDataException, DuplicateKeyException, NotFoundException {
 		var entity = PedidosEditDTO.from(item);
+		entity.setUsuario(usr.getName());
+		entity.setEstado("solicitado");
 		if (entity.isInvalid())
 			throw new InvalidDataException(entity.getErrorsMessage());
 		entity = srv.add(entity);

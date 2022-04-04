@@ -16,7 +16,7 @@ export class Pedido {
   fechaEntrega: Date | null = null;
   importe: number = 0;
   preparadoPor: string | null = null;
-  direccionEntrega: string | null = null;
+  direccion: string | null = null;
   usuario: string | null = null;
 
 }

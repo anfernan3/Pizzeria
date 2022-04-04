@@ -37,7 +37,7 @@ export class PedidosComponent implements OnInit, OnDestroy {
 
   @Component({
     selector: 'app-pedidos-add',
-    templateUrl: './tmpl-form.component.html',
+    templateUrl: './tmpl-formadd.component.html',
     styleUrls: ['./pedidos.component.css']
   })
   export class PedidosAddComponent implements OnInit {

@@ -17,7 +17,7 @@ import lombok.Value;
 public class PedidosEditDTO {
 	@NotNull
 	@Length(max=250)
-	private String direccion;
+	private String direccionEntrega;
 	@DecimalMin(value = "0.0", inclusive = false)
 	@Digits(integer = 7, fraction = 2)
 	@ApiModelProperty(value = "Un máximo de 7 dígitos enteros y 2 decimales.")
@@ -45,7 +45,7 @@ public class PedidosEditDTO {
 	public static Pedido from(PedidosEditDTO source) {
 		return new Pedido(
 				0,
-				source.getDireccion(),
+				source.getDireccionEntrega(),
 				new Date(),
 				source.getImporte(),
 				"kk"

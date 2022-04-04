@@ -7,7 +7,7 @@ import {ButtonModule} from 'primeng/button';
 import {MenubarModule} from 'primeng/menubar';
 import { MenuModule } from './menu/menu.module';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { PromocionesComponent } from './promociones/promociones.component';
 import { FooterModule } from './footer/footer.module';
 import { ErrorComponent } from './error/error.component';
@@ -15,7 +15,7 @@ import { MainimageModule } from './mainimage/mainimage.module';
 import {CardModule} from 'primeng/card';
 import { CommonServicesModule } from './common-services';
 import { CommonComponentModule } from './common-component';
-import { SecurityModule } from './security';
+import { AuthInterceptor, SecurityModule } from './security';
 import { LoggerService, MyCoreModule } from 'src/lib/my-core';
 import { ComentariosComponent } from './comentarios/componente.component';
 import { ComentariosModule } from './comentarios';
@@ -50,7 +50,7 @@ import { NotificationComponent } from './notification/notification.component';
     IngredientesModule,
   ],
 
-  providers: [LoggerService],
+  providers: [LoggerService, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true, },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

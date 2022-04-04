@@ -1,0 +1,128 @@
+<div class="body">
+  <h1>Añadir Pedido</h1>
+  <form class="formulario" #miForm="ngForm">
+    <div class="form-group col-md-4">
+      <label class="form-label" for="nombre">Usuario:</label>
+      <input
+        class="form-control"
+        [class.is-invalid]="nombre.invalid"
+        type="text"
+        name="usuario"
+        id="usuario"
+        [(ngModel)]="VM.Elemento.usuario"
+        #nombre="ngModel"
+        minlength="2"
+        maxlength="50"
+        pattern="[A-Za-z\s]+"
+      />
+      <app-show-errors-messages
+        [errors]="nombre.errors"
+      ></app-show-errors-messages>
+    </div>
+    <hr>
+    <label for="fecha">Fecha:</label>
+    <input type="date" id="fecha" name="fecha" [(ngModel)]="VM.Elemento.fecha">
+    <br>
+    <hr>
+    <label class="form-label" for="nombre">Preparado por:</label>
+      <input
+        class="form-control"
+        [class.is-invalid]="nombre.invalid"
+        type="text"
+        name="preparadoPor"
+        id="preparadoPor"
+        [(ngModel)]="VM.Elemento.preparadoPor"
+        #nombre="ngModel"
+        minlength="2"
+        maxlength="50"
+        pattern="[A-Za-z\s]+"
+      />
+      <app-show-errors-messages
+        [errors]="nombre.errors"
+      ></app-show-errors-messages>
+      <br>
+      <hr>
+      <label class="form-label" for="nombre">Entregado por:</label>
+      <input
+        class="form-control"
+        [class.is-invalid]="nombre.invalid"
+        type="text"
+        name="entregadoPor"
+        id="entregadoPor"
+        [(ngModel)]="VM.Elemento.entregadoPor"
+        #nombre="ngModel"
+        minlength="2"
+        maxlength="50"
+        pattern="[A-Za-z\s]+"
+      />
+      <app-show-errors-messages
+        [errors]="nombre.errors"
+      ></app-show-errors-messages>
+      <br>
+      <hr>
+      <label class="form-label" for="nombre">Dirección de entrega:</label>
+      <input
+        class="form-control"
+        [class.is-invalid]="nombre.invalid"
+        type="text"
+        name="direccionEntrega"
+        id="direccionEntrega"
+        [(ngModel)]="VM.Elemento.direccionEntrega"
+        #nombre="ngModel"
+        minlength="2"
+        maxlength="50"
+        pattern="[A-Za-z\s]+"
+      />
+      <app-show-errors-messages
+        [errors]="nombre.errors"
+      ></app-show-errors-messages>
+      <br>
+      <hr>
+      <label for="estado">Estado: </label>
+      <select id="estado" name="estado" [(ngModel)]="VM.Elemento.estado">
+        <option value="solicitado">solicitado</option>
+        <option value="elaborandose">elaborandose</option>
+        <option value="/preparado">preparado</option>
+        <option value="enviado">enviado</option>
+        <option value="/recibido">recibido</option>
+      </select>
+      <app-show-errors-messages
+        [errors]="nombre.errors"
+      ></app-show-errors-messages>
+      <br>
+      <hr>
+      <label for="fecha">Fecha Entrega:</label>
+    <input type="date" id="fecha" name="fecha" [(ngModel)]="VM.Elemento.fechaEntrega">
+    <br>
+    <hr>
+    <div class="form-group col-md-4">
+      <label class="form-label" for="precio">Importe:</label>
+      <input
+        class="form-control"
+        [class.is-invalid]="precio.invalid"
+        type="number"
+        name="importe"
+        id="importe"
+        [(ngModel)]="VM.Elemento.importe"
+        #precio="ngModel"
+        precio
+        min="0.01"
+        step="0.01"
+      />
+      <app-show-errors-messages
+        [errors]="precio.errors"
+      ></app-show-errors-messages>
+    </div>
+
+    <app-form-buttons
+      (send)="VM.send()"
+      [send-disabled]="miForm.invalid"
+      (cancel)="VM.cancel()"
+    ></app-form-buttons>
+    <br>
+    <!-- <div class="form-group">
+      <input type="button" class="btn btn-success" value="Enviar" (click)="VM.send()" [disabled]="miForm.invalid">
+      <input type="button" class="btn btn-info" value="Volver" (click)="VM.cancel()">
+    </div> -->
+  </form>
+  </div>

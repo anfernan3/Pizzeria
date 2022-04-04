@@ -85,8 +85,6 @@ export class LoginService {
     this.auth.logout();
   }
 }
-
-// { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true, },
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
   constructor(private auth: AuthService) { }
