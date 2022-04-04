@@ -27,7 +27,6 @@ const routes: Routes = [
   {path: 'registro', component: RegisterUserComponent},
   {path: '**', component: ErrorComponent},
 ];
-reload
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
