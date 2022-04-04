@@ -50,9 +50,10 @@ export class PedidosComponent implements OnInit, OnDestroy {
 
     send() {
       let elem = {
+        "idPedido": 0,
+        "usuario": this.vm.Elemento.usuario.username,
         "direccion": this.vm.Elemento.direccion,
-        "importe": 0,
-        "pizzas": []
+        "estado": "solicitado"
       }
       // this.carrito.pizzasCarrito.forEach(item => elem.pizzas.push({
       //       "cantidad": item.cantidad,

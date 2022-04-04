@@ -1,11 +1,11 @@
 <div class="pagina">
-<select [(ngModel)]="VM.tipo">
+<select  class="form-control" [(ngModel)]="VM.tipo">
   <option value="">Todos</option>
   <option value="/bases">Bases para Pizzas</option>
   <option value="/salsas">Salsas</option>
   <option value="/otros">Ingredientes para añadir a la pizza</option>
 </select>
-<input type="button" value="Buscar" (click)="VM.list()">
+<input type="button" class="btn" value="Buscar" (click)="VM.list()">
 <table class="table table-striped table-hover">
   <thead>
     <tr class="table-info">

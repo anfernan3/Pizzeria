@@ -84,6 +84,7 @@
               <th>Nombre</th>
               <th>Precio</th>
               <th>Cantidad</th>
+              <th>Precio</th>
               <th>Total</th>
             </tr>
             <tr *ngFor="let item of carrito.pizzasCarrito; let indice=index;">
@@ -92,6 +93,8 @@
               <td>{{item.pizza.precio}}</td>
               <td>{{item.cantidad}}</td>
               <td>{{item.precio}}</td>
+              <td >{{ item.precio * item.cantidad}}</td>
+
               <hr><br>
             </tr>
 

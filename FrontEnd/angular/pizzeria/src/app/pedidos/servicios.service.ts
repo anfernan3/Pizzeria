@@ -8,7 +8,7 @@ import { RESTDAOService } from '../base-code/RESTDAOService';
 import { ModoCRUD } from '../base-code/tipos';
 import { NavigationService, NotificationService } from '../common-services';
 import { AuthService, AUTH_REQUIRED } from '../security';
-
+import {Carrito} from '../carrito/servicios.service'
 export class Pedido {
   idPedido: number = 0;
   entregadoPor: string | null = null;
@@ -25,13 +25,15 @@ export class Pedido {
 @Injectable({
   providedIn: 'root'
 })
-export class PedidosDAOService extends RESTDAOService<Pedido, any> {
+export class PedidosDAOService extends RESTDAOService<any, any> {
   constructor(http: HttpClient) {
     super(http, 'pedidos', { context: new HttpContext().set(AUTH_REQUIRED, true) });
   }
   override query(estado: string = ''): Observable<Array<Pedido>> {
     return this.http.get<Array<Pedido>>(`${this.baseUrl + estado}`, this.option);
   }
+
+
 
   page(page: number, rows: number = 20, estado: string = ''): Observable<{ page: number, pages: number, rows: number, list: Array<any> }> {
     return new Observable(subscriber => {
@@ -57,6 +59,7 @@ export class PedidosViewModelService {
   protected idOriginal: any = null;
   protected listURL = '/pedidos';
 
+
   constructor(protected notify: NotificationService, protected out: LoggerService, protected dao: PedidosDAOService,
     public auth: AuthService, protected router: Router, private navigation: NavigationService) { }
 
@@ -64,6 +67,7 @@ export class PedidosViewModelService {
   public get Listado(): Array<any> { return this.listado; }
   public get Elemento(): any { return this.elemento; }
   public get isAutenticated(): boolean { return this.auth.isAutenticated; }
+
 
   public list(): void {
     this.dao.query().subscribe({
@@ -89,6 +93,7 @@ export class PedidosViewModelService {
       error: err => this.notify.add(err.message)
     });
   }
+
   public view(key: any): void {
     this.dao.get(key).subscribe({
       next: data => {

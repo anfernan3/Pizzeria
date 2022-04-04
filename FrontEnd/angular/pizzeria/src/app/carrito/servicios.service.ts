@@ -10,7 +10,7 @@ import { Ingrediente, IngredientesDAOService } from "../ingredientes/servicios.s
 import { Pizza } from "../pizzas/servicios.service";
 import { AuthService, AUTH_REQUIRED } from "../security";
 
-class Carrito {
+export class Carrito {
   constructor(public pizza: Pizza, public cantidad: number) {}
   public get precio() { return (this.pizza.precio??0) * this.cantidad; }
 }
