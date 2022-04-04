@@ -1,46 +1,73 @@
-import { HttpClient, HttpContext } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { LoggerService } from 'src/lib/my-core';
-import { RESTDAOService } from '../base-code/RESTDAOService';
-import { ModoCRUD } from '../base-code/tipos';
-import { NavigationService, NotificationService } from '../common-services';
-import { AuthService, AUTH_REQUIRED } from '../security';
+import { HttpClient, HttpContext } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
+import { Observable } from "rxjs";
+import { LoggerService } from "src/lib/my-core";
+import { RESTDAOService } from "../comentarios/RESTDAOService";
+import { ModoCRUD } from "../comentarios/servicios.service";
+import { NotificationService, NavigationService } from "../common-services";
+import { Ingrediente, IngredientesDAOService } from "../ingredientes/servicios.service";
+import { Pizza } from "../pizzas/servicios.service";
+import { AuthService, AUTH_REQUIRED } from "../security";
 
-export class Carrito {
-  id: number = 0;
-  nombre: string | null = null;
-  descripcion: string | null = null;
-  fotoUrl: string | null = null;
-  precio: number | null = null;
-  gusta: number | null = null;
+@Injectable({
+  providedIn: 'root'
+})
+export class CarritoService {
+  public pizzasCarrito:Array<Pizza> = []
+  /*
+  public pizzasCarrito:Array<any> = [
+    {
+      id: 1,
+      nombre: 'Pizza Barbacoa',
+      descripcion:'Deliciosa pizza barbacoa con los mejores ingredientes',
+      fotoUrl:'../assets/img/pizzas/barbacoa.webp',
+      precio: 10,
+      gusta:10
+    }]
+    */
+
+
+  constructor() { }
+
+
+  agregarAlCarrito(elemento: Pizza){
+    this.pizzasCarrito.push(elemento);
+    console.log(this.pizzasCarrito[0].nombre);
+  }
+
+  quitarDelCarrito(indice: number){
+    this.pizzasCarrito.splice(indice, 1);
+  }
 }
 
 @Injectable({
   providedIn: 'root'
 })
-export class CarritoDAOService extends RESTDAOService<Carrito, any> {
+export class CarritoDAOService extends RESTDAOService<any, any> {
   constructor(http: HttpClient) {
     super(http, 'carrito', { context: new HttpContext().set(AUTH_REQUIRED, true) });
   }
-  page(page: number, rows: number = 20): Observable<{ page: number, pages: number, rows: number, list: Array<any> }> {
+  override query(tipo: string = ''): Observable<Array<any>> {
+    return this.http.get<Array<any>>(`${this.baseUrl + tipo}`, this.option);
+  }
+
+  page(page: number, rows: number = 20, tipo: string = ''): Observable<{ page: number, pages: number, rows: number, list: Array<any> }> {
     return new Observable(subscriber => {
-      this.http.get<{ pages: number, rows: number }>(`${this.baseUrl}?_page=count&_rows=${rows}`, this.option)
+      this.http.get<any>(`${this.baseUrl + tipo}?page=${page}&size=${rows}&sort=nombre`, this.option)
         .subscribe({
           next: data => {
             if (page >= data.pages) page = data.pages > 0 ? data.pages - 1 : 0;
-            this.http.get<Array<any>>(`${this.baseUrl}?_page=${page}&_rows=${rows}&_sort=nombre`, this.option)
-              .subscribe({
-                next: lst => subscriber.next({ page, pages: data.pages, rows: data.rows, list: lst }),
-                error: err => subscriber.error(err)
-              })
+            subscriber.next({ page: data.number, pages: data.totalPages, rows: data.totalElements, list: data.content })
           },
           error: err => subscriber.error(err)
         })
     })
   }
 }
+
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -61,7 +88,7 @@ export class CarritoViewModelService {
   public get isAutenticated(): boolean { return this.auth.isAutenticated; }
 
   public list(): void {
-    this.dao.query().subscribe({
+    this.dao.query(this.tipo).subscribe({
       next: data => {
         this.listado = data;
         this.modo = 'list';
@@ -101,57 +128,63 @@ export class CarritoViewModelService {
       error: err => this.notify.add(err.message)
     });
   }
+    public cancel(): void {
+      this.elemento = {};
+      this.idOriginal = null;
+      // this.list();
+      // this.load(this.page)
+      // this.router.navigateByUrl(this.listURL);
+      this.navigation.back()
+    }
 
-  public cancel(): void {
-    this.elemento = {};
-    this.idOriginal = null;
-    // this.list();
-    // this.load(this.page)
-    // this.router.navigateByUrl(this.listURL);
-    this.navigation.back()
-  }
+    public send(): void {
+      switch (this.modo) {
+        case 'add':
+          this.dao.add(this.elemento).subscribe({
+            next: data => this.cancel(),
+            error: err => this.notify.add(err.message)
+          });
+          break;
+        case 'edit':
+          this.dao.change(this.idOriginal, this.elemento).subscribe({
+            next: data => this.cancel(),
+            error: err => this.notify.add(err.message)
+          });
+          break;
+        case 'view':
+          this.cancel();
+          break;
+      }
+    }
 
-  public send(): void {
-    switch (this.modo) {
-      case 'add':
-        this.dao.add(this.elemento).subscribe({
-          next: data => this.cancel(),
-          error: err => this.notify.add(err.message)
-        });
-        break;
-      case 'edit':
-        this.dao.change(this.idOriginal, this.elemento).subscribe({
-          next: data => this.cancel(),
-          error: err => this.notify.add(err.message)
-        });
-        break;
-      case 'view':
-        this.cancel();
-        break;
+    clear() {
+      this.elemento = {};
+      this.idOriginal = null;
+      this.listado = [];
+    }
+
+
+
+
+    page = 0;
+    totalPages = 0;
+    totalRows = 0;
+    rowsPerPage = 8;
+    tipo: string = '';
+    load(page: number = -1) {
+      if(page < 0) page = this.page
+      this.dao.page(page, this.rowsPerPage, this.tipo).subscribe({
+        next: rslt => {
+          this.page = rslt.page;
+          this.totalPages = rslt.pages;
+          this.totalRows = rslt.rows;
+          this.listado = rslt.list;
+          this.modo = 'list';
+        },
+        error: err => this.notify.add(err.message)
+      })
     }
   }
 
-  clear() {
-    this.elemento = {};
-    this.idOriginal = null;
-    this.listado = [];
-  }
 
-  page = 0;
-  totalPages = 0;
-  totalRows = 0;
-  rowsPerPage = 8;
-  load(page: number = -1) {
-    if(page < 0) page = this.page
-    this.dao.page(page, this.rowsPerPage).subscribe({
-      next: rslt => {
-        this.page = rslt.page;
-        this.totalPages = rslt.pages;
-        this.totalRows = rslt.rows;
-        this.listado = rslt.list;
-        this.modo = 'list';
-      },
-      error: err => this.notify.add(err.message)
-    })
-  }
-}
+

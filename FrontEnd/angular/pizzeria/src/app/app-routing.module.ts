@@ -10,7 +10,7 @@ import { MainimageComponent } from './mainimage/mainimage.component';
 import { ComentariosComponent } from './comentarios/componente.component';
 import { PizzasAddComponent, PizzasComponent, PizzasEditComponent, PizzasListComponent, PizzasViewComponent } from './pizzas';
 import { LoginComponent, RegisterUserComponent } from './security';
-import { CarritoComponent } from './carrito';
+import { CarritoComponent } from './carrito/componente.component';
 
 
 // Array de rutas

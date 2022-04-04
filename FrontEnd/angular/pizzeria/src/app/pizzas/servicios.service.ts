@@ -8,6 +8,8 @@ import { ModoCRUD } from '../base-code/tipos';
 import { NavigationService, NotificationService } from '../common-services';
 import { AuthService, AUTH_REQUIRED } from '../security';
 
+
+
 export class Pizza {
   id: number = 0;
   nombre: string | null = null;
@@ -40,6 +42,9 @@ export class PizzasDAOService extends RESTDAOService<Pizza, any> {
         })
     })
   }
+
+
+
 }
 
 @Injectable({
@@ -52,6 +57,7 @@ export class PizzasViewModelService {
   protected idOriginal: any = null;
   protected listURL = '/pizzas';
 
+
   constructor(protected notify: NotificationService, protected out: LoggerService, protected dao: PizzasDAOService,
     public auth: AuthService, protected router: Router, private navigation: NavigationService) { }
 
@@ -59,6 +65,8 @@ export class PizzasViewModelService {
   public get Listado(): Array<any> { return this.listado; }
   public get Elemento(): any { return this.elemento; }
   public get isAutenticated(): boolean { return this.auth.isAutenticated; }
+
+
 
   public list(): void {
     this.dao.query().subscribe({
@@ -154,4 +162,5 @@ export class PizzasViewModelService {
       error: err => this.notify.add(err.message)
     })
   }
+
 }

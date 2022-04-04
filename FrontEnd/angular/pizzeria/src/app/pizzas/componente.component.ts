@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/cor
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { PizzasViewModelService } from './servicios.service';
 
+
 @Component({
   selector: 'app-pizzas',
   templateUrl: './tmpl-anfitrion.component.html',
@@ -31,6 +32,7 @@ export class PizzasListComponent implements OnInit {
     //this.vm.list();
     this.vm.load();
   }
+
 }
 
 @Component({

@@ -1,21 +1,24 @@
-
-<section class="container-carrito">
-  <button *ngIf="VM.auth.isAutenticated" class="btn btn-success" routerLink="add"><i class="pi pi-plus-circle"></i> Añadir</button>
-  <div class="container-card-carrito" *ngFor="let item of VM.Listado">
-    <img [src]="item.foto??'assets/img/carrito/carrito-margarita.jpg'" alt="Foto de la carrito {{item.nombre}}" height="auto" width="100">
-    <div class="card-circle">
-      <a class="no-decoration"><h2 class="cart-button">🛒</h2></a>
+<div>
+  <div>    <h2>Carrito de la compra</h2>
   </div>
-    <div class="container-text-card-carrito">
-      <button class="product-text" routerLink="{{item.id}}">{{item.nombre}}</button>
-      <p class="product-text">{{item.precio | currency:'EUR':'symbol':'1.2-2'}}</p>
-    </div>
-    <div class="btn-group" role="group">
-      <button class="btn btn-success" [routerLink]="[item.id, 'edit']"><i class="pi pi-pencil"></i></button>
-      <button class="btn btn-danger" (click)="VM.delete(item.id)"><i class="pi pi-times"></i></button>
-    </div>
-  </div>
-</section>
+  <div>
+    <table>
+      <tr>
+        <th>Foto</th>
+        <th>Nombre</th>
+        <th>Precio</th>
+        <th>Cantidad</th>
+      </tr>
+      <tr>
+        <!--<td><img src="pizzasCarrito[item].fotoUrl" alt="foto"></td>-->
+        <td>{{pizzasCarrito[1].nombre}}</td>
+        <td>{{pizzasCarrito[1].precio}}</td>
+        <td>{{cantidad}}</td>
+      </tr>
 
-<p-paginator [first]="VM.rowsPerPage*VM.page" [rows]="VM.rowsPerPage" [totalRecords]="VM.totalRows"
-    [pageLinkSize]="5" (onPageChange)="VM.load($event.page)"></p-paginator>
+    </table>
+    <!--
+    <h2 >{{(pizzasCarrito[0].precio)*cantidad}}</h2>
+    -->
+  </div>
+</div>
