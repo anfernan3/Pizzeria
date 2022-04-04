@@ -37,7 +37,7 @@
         {{item.fecha | date:'fullDate'}}
       </td>
      <td class="align-middle text-end">
-        <div *ngIf="VM.auth.isAutenticated && item.estado !== 'cancelado'" class="btn-group" role="group">
+        <div *ngIf="VM.auth.isAutenticated && item.estado !== 'cancelado' && item.estado !== 'recibido'" class="btn-group" role="group">
           <button  class="btn btn-success" [routerLink]="[item.idPedido, 'edit']"><i class="pi pi-pencil"></i></button>
           <button  class="btn btn-danger" (click)="VM.delete(item.idPedido)"><i class="pi pi-times"></i></button>
         </div>
