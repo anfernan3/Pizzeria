@@ -63,7 +63,6 @@
       <label class="form-label" for="nombre">Dirección de entrega:</label>
       <input
         class="form-control"
-        [class.is-invalid]="nombre.invalid"
         type="text"
         name="direccionEntrega"
         id="direccionEntrega"
@@ -71,11 +70,8 @@
         #nombre="ngModel"
         minlength="2"
         maxlength="50"
-        pattern="[A-Za-z\s]+"
+        placeholder="C/ nombre, número"
       />
-      <app-show-errors-messages
-        [errors]="nombre.errors"
-      ></app-show-errors-messages>
       <br>
       <hr>
       <div>
