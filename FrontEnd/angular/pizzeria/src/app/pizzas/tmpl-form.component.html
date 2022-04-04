@@ -4,28 +4,13 @@
     <div class="form-group col-md-2">
       <label class="form-label" for="id">Código:</label>
       <ng-container *ngIf="VM.Modo==='add'">
-        <input class="form-control" [class.is-invalid]="id.invalid && miForm.dirty" type="number" name="id" id="id"
-          [(ngModel)]="VM.Elemento.id" #id="ngModel" required min="0">
+        <label class="form-control" [class.is-invalid]="id.invalid && miForm.dirty" type="number" name="id" id="id"
+          [(ngModel)]="VM.Elemento.id" #id="ngModel" required min="0"></label>
         <div class="invalid-feedback" [hidden]="!id.hasError('required') || miForm.pristine">Es obligatorio</div>
       </ng-container>
       <ng-container *myUnless="VM.Modo==='add'">
         {{VM.Elemento.id}}
       </ng-container>
-    </div>
-    <div class="form-group col-md-2">
-      <label class="form-label" for="tratamiento">Tratamiento:</label>
-      <select class="form-control form-select" name="tratamiento" id="tratamiento" [(ngModel)]="VM.Elemento.tratamiento"
-        #tratamiento="ngModel">
-        <option>Sr.</option>
-        <option>Sra.</option>
-        <option>Srta.</option>
-        <option>Dr.</option>
-        <option>Dra.</option>
-        <option>Ilmo.</option>
-        <option>Ilma.</option>
-        <option>Excmo.</option>
-        <option>Excma.</option>
-      </select>
     </div>
     <div class="form-group col-md-4">
       <label class="form-label" for="nombre">Nombre:</label>
@@ -35,68 +20,52 @@
       <output [myShowErrors]="nombre.errors"></output>
     </div>
     <div class="form-group col-md-4">
-      <label class="form-label" for="apellidos">Apellidos:</label>
-      <input class="form-control" [class.is-invalid]="apellidos.invalid" type="text" name="apellidos" id="apellidos"
-        [(ngModel)]="VM.Elemento.apellidos" #apellidos="ngModel" minlength="2" maxlength="50">
-      <div class="invalid-feedback" [hidden]="!apellidos.hasError('minlength') && !apellidos.hasError('maxlength')">
+      <label class="form-label" for="descripcion">Descripción:</label>
+      <input class="form-control" [class.is-invalid]="descripcion.invalid" type="text" name="descripcion" id="descripcion"
+        [(ngModel)]="VM.Elemento.descripcion" #descripcion="ngModel" minlength="2" maxlength="50">
+      <div class="invalid-feedback" [hidden]="!descripcion.hasError('minlength') && !descripcion.hasError('maxlength')">
         Debe tener entre 2 y 10 letras</div>
     </div>
   </div>
   <div class="form-row">
-    <div class="form-group col-md-2">
-      <label class="form-label" for="telefono">Teléfono:</label>
-      <input class="form-control" [class.is-invalid]="telefono.invalid" type="tel" name="telefono" id="telefono"
-        [(ngModel)]="VM.Elemento.telefono" #telefono="ngModel" maxlength="11">
-      <div class="invalid-feedback" [show]="telefono.hasError('maxlength')">
-        No debe tener mas de 9 dígitos</div>
-    </div>
     <div class="form-group col-md-4">
-      <label class="form-label" for="email">Correo:</label>
-      <input class="form-control" [class.is-invalid]="email.invalid" type="email" name="email" id="email"
-        [(ngModel)]="VM.Elemento.email" #email="ngModel" email maxlength="100">
-      <div class="invalid-feedback" [hidden]="email.valid">
-        <span [hidden]="!email.hasError('maxlength')">Debe tener menos 100 caracteres. </span>
-        <span [hidden]="!email.hasError('email')">Debe ser un correo electrónico. </span>
+      <label class="form-label" for="base">Base:</label>
+      <input class="form-control" [class.is-invalid]="base.invalid" type="text" name="base" id="base"
+        [(ngModel)]="VM.Elemento.base" #base="ngModel" base maxlength="100">
+      <div class="invalid-feedback" [hidden]="base.valid">
+        <span [hidden]="!base.hasError('maxlength')">Debe tener menos 100 caracteres. </span>
+        <span [hidden]="!base.hasError('base')">Debe ser un ingrediente base. </span>
       </div>
     </div>
-    <div class="form-group col-md-2">
-      <label class="form-label" for="nacimiento">F. Nacimiento:</label>
-      <input class="form-control" type="date" name="nacimiento" id="nacimiento" [(ngModel)]="VM.Elemento.nacimiento"
-        #nacimiento="ngModel">
-    </div>
-    <fieldset class="form-group col-md-2">
-      <legend class="col-form-label col-sm-2 pt-0">Sexo</legend>
-      <div class="col-sm-10">
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="sexo" id="sexo1" value="H" [(ngModel)]="VM.Elemento.sexo">
-          <label class="form-check-label" for="sexo1">Hombre</label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="sexo" id="sexo2" value="M" [(ngModel)]="VM.Elemento.sexo">
-          <label class="form-check-label" for="sexo2">Mujer</label>
-        </div>
-      </div>
-    </fieldset>
-    <div class="form-group col-md-2">
-      <div>Situación:</div>
-      <div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="conflictivo" name="conflictivo"
-            [(ngModel)]="VM.Elemento.conflictivo" #conflictivo="ngModel">
-          <label class="form-check-label" for="conflictivo">Conflictivo</label>
-        </div>
+
+    <div class="form-group col-md-4">
+      <label class="form-label" for="salsa">Salsa:</label>
+      <input class="form-control" [class.is-invalid]="salsa.invalid" type="text" name="salsa" id="salsa"
+        [(ngModel)]="VM.Elemento.salsa" #salsa="ngModel" salsa maxlength="100">
+      <div class="invalid-feedback" [hidden]="salsa.valid">
+        <span [hidden]="!salsa.hasError('maxlength')">Debe tener menos 100 caracteres. </span>
+        <span [hidden]="!salsa.hasError('salsa')">Debe ser un ingrediente salsa. </span>
       </div>
     </div>
   </div>
   <div class="form-group row">
     <div class="form-group col-md-12">
-      <label class="form-label" for="avatar">Avatar:</label>
-      <input class="form-control" [class.is-invalid]="avatar.invalid" type="url" name="avatar" id="avatar"
-        [(ngModel)]="VM.Elemento.avatar" #avatar="ngModel" maxlength="500">
-      <div class="invalid-feedback" [hidden]="!avatar.hasError('maxlength')">
+      <label class="form-label" for="foto">Foto:</label>
+      <input class="form-control" [class.is-invalid]="foto.invalid" type="url" name="foto" id="foto"
+        [(ngModel)]="VM.Elemento.foto" #foto="ngModel" maxlength="500">
+      <div class="invalid-feedback" [hidden]="!foto.hasError('maxlength')">
         Debe tener menos 500 caracteres.</div>
-      <div class="invalid-feedback" [hidden]="!avatar.hasError('type')">
-        {{avatar.hasError('type')}}</div>
+      <div class="invalid-feedback" [hidden]="!foto.hasError('type')">
+        {{foto.hasError('type')}}</div>
+    </div>
+  </div>
+  <div class="form-group col-md-4">
+    <label class="form-label" for="precio">Precio:</label>
+    <input class="form-control" [class.is-invalid]="precio.invalid" type="number" name="precio" id="precio"
+      [(ngModel)]="VM.Elemento.precio" #precio="ngModel" precio maxlength="100">
+    <div class="invalid-feedback" [hidden]="precio.valid">
+      <span [hidden]="!precio.hasError('maxlength')">Debe tener menos 100 caracteres. </span>
+      <span [hidden]="!precio.hasError('base')">Debe ser un número. </span>
     </div>
   </div>
   <app-form-buttons (send)="VM.send()" [send-disabled]="miForm.invalid" (cancel)="VM.cancel()"></app-form-buttons>
