@@ -17,7 +17,7 @@ import { CarritoComponent } from './carrito/componente.component';
 const routes: Routes = [
   {path: '', component: MainimageComponent},
   {path: 'chef', component: ChefComponent},
-  {path: 'carrito', component: CarritoComponent},
+  {path: 'carrito', redirectTo: '/pedidos/add'},
   {path: 'promociones', component: PromocionesComponent},
   {path: 'comentarios', component: ComentariosComponent},
   {path: 'login', component: LoginComponent},
@@ -27,7 +27,7 @@ const routes: Routes = [
   {path: 'registro', component: RegisterUserComponent},
   {path: '**', component: ErrorComponent},
 ];
-
+reload
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

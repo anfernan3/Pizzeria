@@ -4,7 +4,7 @@
   <div class="container-card-pizza" *ngFor="let item of VM.Listado">
     <img [src]="item.foto??'assets/img/pizzas/pizza-margarita.jpg'" alt="Foto de la pizza {{item.nombre}}" height="auto" width="100">
     <div class="card-circle">
-      <a class="no-decoration"><h2 class="cart-button">🛒</h2></a>
+      <a class="no-decoration"><h2 class="cart-button" (click)="carrito.agregarAlCarrito(item)">🛒</h2></a>
   </div>
     <div class="container-text-card-pizza">
       <button class="product-text" routerLink="{{item.id}}">{{item.nombre}}</button>

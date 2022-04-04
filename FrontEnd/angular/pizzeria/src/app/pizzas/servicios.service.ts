@@ -14,7 +14,7 @@ export class Pizza {
   id: number = 0;
   nombre: string | null = null;
   descripcion: string | null = null;
-  fotoUrl: string | null = null;
+  foto: string | null = null;
   precio: number | null = null;
   gusta: number | null = null;
 }

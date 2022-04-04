@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
+import { CarritoService } from '../carrito/servicios.service';
 import { PedidosViewModelService } from './servicios.service';
 
 @Component({
@@ -41,10 +42,31 @@ export class PedidosComponent implements OnInit, OnDestroy {
     styleUrls: ['./pedidos.component.css']
   })
   export class PedidosAddComponent implements OnInit {
-    constructor(protected vm: PedidosViewModelService) { }
+    constructor(protected vm: PedidosViewModelService, public carrito: CarritoService) { }
     public get VM(): PedidosViewModelService { return this.vm; }
     ngOnInit(): void {
       this.VM.add();
+    }
+
+    send() {
+      let elem = {
+        "direccion": this.vm.Elemento.direccion,
+        "importe": 0,
+        "pizzas": []
+      }
+      // this.carrito.pizzasCarrito.forEach(item => elem.pizzas.push({
+      //       "cantidad": item.cantidad,
+      //       "pizza": item.pizza.id,
+      //       "precio": item.precio
+      //     }))
+
+      //     const initialValue = 0;
+      // elem.importe = this.carrito.pizzasCarrito.reduce(
+      //   (previousValue, currentValue) => previousValue + currentValue,
+      //   initialValue
+      // );
+      // this.vm.Elemento = elem;
+      this.vm.send();
     }
   }
 

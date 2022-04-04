@@ -1,7 +1,7 @@
 <div class="body">
   <h1>Añadir Pedido</h1>
   <form class="formulario" #miForm="ngForm">
-    <div class="form-group col-md-4">
+    <!-- <div class="form-group col-md-4">
       <label class="form-label" for="nombre">Usuario:</label>
       <input
         class="form-control"
@@ -59,7 +59,7 @@
         [errors]="nombre.errors"
       ></app-show-errors-messages>
       <br>
-      <hr>
+      <hr> -->
       <label class="form-label" for="nombre">Dirección de entrega:</label>
       <input
         class="form-control"
@@ -78,7 +78,33 @@
       ></app-show-errors-messages>
       <br>
       <hr>
-      <label for="estado">Estado: </label>
+      <div>
+        <div>    <h2>Pizzas</h2>
+        </div>
+        <div>
+          <table>
+            <tr>
+              <th>Foto</th>
+              <th>Nombre</th>
+              <th>Precio</th>
+              <th>Cantidad</th>
+              <th>Total</th>
+            </tr>
+            <tr *ngFor="let item of carrito.pizzasCarrito; let indice=index;">
+              <td><img [src]="item.pizza.foto" alt="{{item.pizza.foto}}" width="50" height="auto"></td>
+              <td>{{item.pizza.nombre}}</td>
+              <td>{{item.pizza.precio}}</td>
+              <td>{{item.cantidad}}</td>
+              <td>{{item.precio}}</td>
+            </tr>
+
+          </table>
+          <!--
+          <h2 >{{(pizzasCarrito[0].precio)*cantidad}}</h2>
+          -->
+        </div>
+      </div>
+      <!-- <label for="estado">Estado: </label>
       <select id="estado" name="estado" [(ngModel)]="VM.Elemento.estado">
         <option value="solicitado">solicitado</option>
         <option value="elaborandose">elaborandose</option>
@@ -112,7 +138,7 @@
       <app-show-errors-messages
         [errors]="precio.errors"
       ></app-show-errors-messages>
-    </div>
+    </div> -->
 
     <app-form-buttons
       (send)="VM.send()"

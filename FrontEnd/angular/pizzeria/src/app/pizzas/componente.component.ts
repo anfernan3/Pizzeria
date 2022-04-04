@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
+import { CarritoService } from '../carrito/servicios.service';
 import { PizzasViewModelService } from './servicios.service';
 
 
@@ -26,7 +27,7 @@ export class PizzasComponent implements OnInit, OnDestroy {
   styleUrls: ['./componente.component.css']
 })
 export class PizzasListComponent implements OnInit {
-  constructor(protected vm: PizzasViewModelService) { }
+  constructor(protected vm: PizzasViewModelService, public carrito: CarritoService) { }
   public get VM(): PizzasViewModelService { return this.vm; }
   ngOnInit(): void {
     //this.vm.list();

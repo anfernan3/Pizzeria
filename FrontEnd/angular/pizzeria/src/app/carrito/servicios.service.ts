@@ -10,11 +10,15 @@ import { Ingrediente, IngredientesDAOService } from "../ingredientes/servicios.s
 import { Pizza } from "../pizzas/servicios.service";
 import { AuthService, AUTH_REQUIRED } from "../security";
 
+class Carrito {
+  constructor(public pizza: Pizza, public cantidad: number) {}
+  public get precio() { return (this.pizza.precio??0) * this.cantidad; }
+}
 @Injectable({
   providedIn: 'root'
 })
 export class CarritoService {
-  public pizzasCarrito:Array<Pizza> = []
+  public pizzasCarrito:Array<Carrito> = []
   /*
   public pizzasCarrito:Array<any> = [
     {
@@ -31,13 +35,22 @@ export class CarritoService {
   constructor() { }
 
 
-  agregarAlCarrito(elemento: Pizza){
-    this.pizzasCarrito.push(elemento);
-    console.log(this.pizzasCarrito[0].nombre);
+  agregarAlCarrito(elemento: Pizza, cantidad: number = 1){
+    if(!elemento) return;
+    const pizzaEnCarrito = this.pizzasCarrito.find(item => item.pizza.id == elemento.id)
+    if(pizzaEnCarrito) {
+      pizzaEnCarrito.cantidad++
+    } else {
+      this.pizzasCarrito.push(new Carrito(elemento, cantidad));
+    }
   }
 
   quitarDelCarrito(indice: number){
     this.pizzasCarrito.splice(indice, 1);
+  }
+
+  limpiaCarrito() {
+    this.pizzasCarrito = []
   }
 }
 
