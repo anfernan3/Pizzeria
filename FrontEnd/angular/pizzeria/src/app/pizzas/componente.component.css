@@ -40,6 +40,12 @@
   width: 15em;
 }
 
+.container-button{
+  display: flex;
+  flex-direction: col;
+  background-color: #f5f9e7;
+}
+
 #img-ficha {
    height: 25em;
  }
@@ -51,6 +57,27 @@
 /**
 Botones
 **/
+.button{
+  margin-top: 0em;
+  height: 3em;
+  border-radius: 20%;
+  background-color: #ff4747;
+  border-color: white;
+  color:white;
+  align-items: center;
+}
+
+.button-cart{
+  margin-top: -10em;
+  margin-left: 10em;
+  height: 4em;
+  width: 4em;
+  border-color: white;
+  color:white;
+  background-color: #ff4747;
+  border-radius: 100%;
+}
+
 .card-circle{
   margin-top: -4em;
   margin-left: 10em;
