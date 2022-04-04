@@ -1,7 +1,7 @@
 
 <section>
   <div class="container-button">
-  <button *ngIf="VM.auth.isAutenticated" class="btn btn-success" routerLink="add"><i class="pi pi-plus-circle"></i> Añadir</button>
+  <button *ngIf="VM.auth.isInRoles('GERENTE')" class="btn btn-success" routerLink="add"><i class="pi pi-plus-circle"></i> Añadir</button>
   </div>
   <div class="container-pizzas">
   <div class="container-card-pizza" *ngFor="let item of VM.Listado">
@@ -14,8 +14,8 @@
       <p class="product-text">{{item.precio | currency:'EUR':'symbol':'1.2-2'}}</p>
     </div>
     <div class="btn-group" role="group">
-      <button class="btn btn-success" [routerLink]="[item.id, 'edit']"><i class="pi pi-pencil"></i></button>
-      <button class="btn btn-danger" (click)="VM.delete(item.id)"><i class="pi pi-times"></i></button>
+      <button class="btn btn-success" *ngIf="VM.auth.isInRoles('GERENTE')" [routerLink]="[item.id, 'edit']"><i class="pi pi-pencil"></i></button>
+      <button class="btn btn-danger" *ngIf="VM.auth.isInRoles('GERENTE')" (click)="VM.delete(item.id)"><i class="pi pi-times"></i></button>
     </div>
   </div>
   </div>
