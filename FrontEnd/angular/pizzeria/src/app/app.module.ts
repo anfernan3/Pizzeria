@@ -21,7 +21,7 @@ import { ComentariosComponent } from './comentarios/componente.component';
 import { ComentariosModule } from './comentarios';
 import { IngredientesModule } from './ingredientes';
 import { NotificationComponent } from './notification/notification.component';
-import { GestionUsuariosComponent } from './gestion-usuarios/gestion-usuarios.component';
+
 
 
 @NgModule({
@@ -30,7 +30,6 @@ import { GestionUsuariosComponent } from './gestion-usuarios/gestion-usuarios.co
     PromocionesComponent,
     ErrorComponent,
     NotificationComponent,
-    GestionUsuariosComponent
   ],
 
   imports:[

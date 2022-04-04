@@ -1,0 +1,38 @@
+<div class="pagina">
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr class="table-info">
+        <th class="display-4">Username</th>
+        <th class="display-4">Rol</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of VM.Listado">
+        <td>
+          <p>{{ item.username }}</p>
+        </td>
+        <td>
+          {{ item.Roles }}
+        </td>
+        <td class="align-middle text-end">
+          <div class="btn-group" role="group">
+            <button
+              *ngIf="VM.auth.isAutenticated"
+              class="btn btn-success"
+              [routerLink]="[item.username, 'edit']"
+            >
+              <i class="pi pi-pencil"></i>
+            </button>
+            <button
+              *ngIf="VM.auth.isAutenticated"
+              class="btn btn-danger"
+              (click)="VM.delete(item.username)"
+            >
+              <i class="pi pi-times"></i>
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

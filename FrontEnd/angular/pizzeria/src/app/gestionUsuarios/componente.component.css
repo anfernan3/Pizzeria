@@ -1,0 +1,47 @@
+th {
+  padding-right: 150px;
+}
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+div.form-group{
+  margin-left: 25px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+h1{
+  margin-top: 0px;
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+  margin-left: 30px;
+}
+
+form{
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 30px;
+}
+
+.body {
+  background-color: #f5f9e7;
+  margin: 0px;
+  display: flex;
+}
+
+.pagina{
+  background-color: #f5f9e7;
+}
+
+.p-paginator{
+background-color: rgb(250, 238, 219) !important;
+}
+
+app-form-buttons {
+  margin-bottom: 20px;
+}

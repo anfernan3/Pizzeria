@@ -4,10 +4,12 @@ import { environment } from 'src/environments/environment';
 
 export abstract class RESTDAOService<T, K> {
   protected baseUrl = environment.apiURL;
+  protected securityUrl = environment.securityApiURL;
 
   constructor(protected http: HttpClient, entidad: string, protected option = {}) {
     this.baseUrl += entidad;
   }
+
   query(): Observable<Array<T>> {
     return this.http.get<Array<T>>(this.baseUrl, this.option);
   }
@@ -23,4 +25,5 @@ export abstract class RESTDAOService<T, K> {
   remove(id: K): Observable<T> {
     return this.http.delete<T>(this.baseUrl + '/' + id, this.option);
   }
+
 }

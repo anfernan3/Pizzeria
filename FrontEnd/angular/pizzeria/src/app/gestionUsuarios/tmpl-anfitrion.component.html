@@ -1,0 +1,4 @@
+<ng-container [ngSwitch]="VM.Modo" >
+  <app-gestionUsuarios-edit *ngSwitchCase="'edit'"></app-gestionUsuarios-edit>
+  <app-gestionUsuarios-list *ngSwitchDefault></app-gestionUsuarios-list>
+</ng-container>

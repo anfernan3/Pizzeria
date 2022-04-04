@@ -11,6 +11,8 @@ import { ComentariosComponent } from './comentarios/componente.component';
 import { PizzasAddComponent, PizzasComponent, PizzasEditComponent, PizzasListComponent, PizzasViewComponent } from './pizzas';
 import { LoginComponent, RegisterUserComponent } from './security';
 import { CarritoComponent } from './carrito/componente.component';
+import { gestionUsuariosComponent } from './gestionUsuarios';
+
 
 
 // Array de rutas
@@ -18,14 +20,14 @@ const routes: Routes = [
   {path: '', component: MainimageComponent},
   {path: 'chef', component: ChefComponent},
   {path: 'carrito', redirectTo: '/pedidos/add'},
-  {path: 'promociones', component: PromocionesComponent},
+  {path: 'ofertas', component: PromocionesComponent},
   {path: 'comentarios', component: ComentariosComponent},
   {path: 'login', component: LoginComponent},
   {path: 'carta', loadChildren: () => import('./pizzas/modulo.module').then(mod => mod.PizzasModule)},
   {path: 'ingredientes', loadChildren: () => import('./ingredientes/modulo.module').then(mod => mod.IngredientesModule)},
   {path: 'pedidos', loadChildren: () => import('./pedidos/pedidos.module').then(mod => mod.PedidosModule)},
   {path: 'registro', component: RegisterUserComponent},
-  {path: 'gestionUsuarios', component: RegisterUserComponent},
+  {path: 'gestionUsuarios', loadChildren: () => import('./gestionUsuarios/modulo.module').then(mod => mod.gestionUsuariosModule)},
   {path: '**', component: ErrorComponent},
 ];
 

@@ -72,7 +72,7 @@ public class UsuarioResource {
 		if (!item.getUsername().equals(id))
 			throw new InvalidDataException("No coinciden los identificadores");
 		Usuario Usuario = UsuarioDTO.from(item);
-		var validos = List.of("","");
+		var validos = List.of("ROLE_USUARIO","ROLE_TIENDA","ROLE_REPARTIDOR","ROLE_GERENTE");
 		for(var rol: item.getRoles())
 		if(!validos.contains(rol))
 			throw new InvalidDataException("Rol no válido");
