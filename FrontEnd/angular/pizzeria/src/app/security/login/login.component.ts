@@ -23,11 +23,13 @@ export class LoginComponent implements OnInit {
     if (this.loginSrv.isAutenticated) {
       this.loginSrv.logout();
       this.cambiaTexto();
+      this.router.navigateByUrl('/');
     } else {
       this.loginSrv.login(this.txtUsuario, this.txtPassword).subscribe({
         next: data => {
           if (data) {
             this.cambiaTexto();
+            this.router.navigateByUrl('/');
           } else {
             this.notify.add('Usuario o contraseña invalida.');
           }

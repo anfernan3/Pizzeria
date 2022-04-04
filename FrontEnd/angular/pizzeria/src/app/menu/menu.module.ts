@@ -6,15 +6,21 @@ import { MenubarModule } from 'primeng/menubar';
 import {ButtonModule} from 'primeng/button';
 import {TabViewModule} from 'primeng/tabview';
 
+
+
 @NgModule({
   declarations: [
-    MenuComponent
+    MenuComponent,
   ],
   exports: [
     MenuComponent
   ],
   imports: [
-    CommonModule, FormsModule, MenubarModule, ButtonModule, TabViewModule,
+    CommonModule,
+    FormsModule,
+    MenubarModule,
+    ButtonModule,
+    TabViewModule,
   ]
 })
 export class MenuModule { }

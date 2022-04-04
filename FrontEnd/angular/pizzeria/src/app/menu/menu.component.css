@@ -2,3 +2,9 @@
   font-size: 2.5em;
 }
 
+.p-menubar {
+  display: flex;
+  align-items: center;
+  background-color: blanchedalmond;
+}
+

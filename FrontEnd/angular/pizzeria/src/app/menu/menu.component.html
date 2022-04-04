@@ -1,7 +1,7 @@
 
 <p-menubar [model]="items">
   <ng-template pTemplate="start">
-      <img src="../assets/img/logo.png" height="40" class="mr-2" routerLink="/" />
+      <img src="../assets/img/logo.png" width="100" height="40" class="mr-2" routerLink="/" />
   </ng-template>
 
   <ng-template pTemplate="end">
@@ -13,6 +13,7 @@
       style="margin-left: 0.25em"
       class="p-button-secondary p-button-text"
       routerLink="/carrito"
+      *ngIf="auth.isAutenticated"
     >
   </button>
 
