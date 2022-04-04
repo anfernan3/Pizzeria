@@ -25,6 +25,7 @@ const routes: Routes = [
   {path: 'ingredientes', loadChildren: () => import('./ingredientes/modulo.module').then(mod => mod.IngredientesModule)},
   {path: 'pedidos', loadChildren: () => import('./pedidos/pedidos.module').then(mod => mod.PedidosModule)},
   {path: 'registro', component: RegisterUserComponent},
+  {path: 'gestionUsuarios', component: RegisterUserComponent},
   {path: '**', component: ErrorComponent},
 ];
 

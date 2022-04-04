@@ -21,6 +21,7 @@ import { ComentariosComponent } from './comentarios/componente.component';
 import { ComentariosModule } from './comentarios';
 import { IngredientesModule } from './ingredientes';
 import { NotificationComponent } from './notification/notification.component';
+import { GestionUsuariosComponent } from './gestion-usuarios/gestion-usuarios.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { NotificationComponent } from './notification/notification.component';
     AppComponent,
     PromocionesComponent,
     ErrorComponent,
-    NotificationComponent
+    NotificationComponent,
+    GestionUsuariosComponent
   ],
 
   imports:[

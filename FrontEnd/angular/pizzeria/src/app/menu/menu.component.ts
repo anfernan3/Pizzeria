@@ -53,6 +53,12 @@ export class MenuComponent {
         routerLink: '/pedidos',
         visible: this.auth.isInRoles('GERENTE', 'TIENDA')
       },
+      {
+        label: 'Gestion de usuarios',
+        icon: 'pi pi-fw pi-user',
+        routerLink: '/gestionUsuarios',
+        visible: this.auth.isInRoles('GERENTE')
+      },
     ];
   }
 }
