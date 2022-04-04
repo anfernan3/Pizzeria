@@ -35,7 +35,7 @@ public class NuevoUsuarioDTO {
 	
 	public static Usuario from(NuevoUsuarioDTO source) {
 		return new Usuario(source.getNombre(), source.getApellido1(), source.getApellido2(),
-				source.getTelefono(), source.getUsername(), "ROLE_USUARIO");
+				source.getTelefono(), source.getUsername(), "ROL_USUARIO");
 	}
 
 }
