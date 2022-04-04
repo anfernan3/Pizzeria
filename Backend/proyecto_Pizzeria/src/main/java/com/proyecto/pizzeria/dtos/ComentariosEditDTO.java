@@ -1,6 +1,7 @@
 package com.proyecto.pizzeria.dtos;
 
 import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -16,34 +17,25 @@ public class ComentariosEditDTO {
 
 	@JsonProperty("id")
 	private int idComentario;
-	@NotNull
-	private Timestamp fecha;
+	private Date fecha;
 	@NotNull
 	private String comentario;
-	@NotNull
-	private Pizza pizza;
-	@NotNull
-	private String usuario;
 
 	
 
 	public static ComentariosEditDTO from(Comentario source) {
 		return new ComentariosEditDTO(
 				source.getIdComentario(),
-				source.getFecha(),
-				source.getComentario(),
-				source.getPizza(),
-				source.getUsuario()
+				new Date(),
+				source.getComentario()
 		);
 	}
 	
 	public static Comentario from (ComentariosEditDTO source) {
 		return new Comentario(
 				source.getIdComentario(),
-				source.getFecha(),
-				source.getComentario(),
-				source.getPizza(),
-				source.getUsuario()
+				new Date(),
+				source.getComentario()
 		);
 	}
 }

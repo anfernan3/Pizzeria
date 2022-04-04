@@ -6,33 +6,8 @@
 <form #miForm="ngForm">
   <div class="form-row">
     <div class="grid p-fluid">
-      <div class="col-12 md:col-4">
-        <div class="p-inputgroup">
-          <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
-          <input
-            type="text"
-            pInputText
-            placeholder="Username"
-            [class.is-invalid]="id.invalid && miForm.dirty"
-            type="string"
-            name="usuario"
-            id="id"
-            [(ngModel)]="VM.Elemento.id"
-            #id="ngModel"
-            required
-            min="0"
-          />
-        </div>
-        <app-show-errors-messages
-          [errors]="id.errors"
-          [pristine]="miForm.pristine"
-        ></app-show-errors-messages>
-      </div>
-      <textarea pInputTextarea [(ngModel)]="VM.Elemento.comentario"></textarea>
-      <app-show-errors-messages
-        [errors]="id.errors"
-        [pristine]="miForm.pristine"
-      ></app-show-errors-messages>
+      <p>Usuario:</p>
+      <textarea pInputTextarea [(ngModel)]="VM.Elemento.comentario" name="comentario"></textarea>
     </div>
     <app-form-buttons
       (send)="VM.send()"

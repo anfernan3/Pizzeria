@@ -41,10 +41,6 @@ public class Pizza extends EntityBase<Pizza> implements Serializable {
 	private int gusta;
 	
 
-	//bi-directional many-to-one association to Comentario
-	@OneToMany(mappedBy="pizza")
-	private List<Comentario> comentarios;
-
 	//bi-directional many-to-one association to Ingredientes_por_pizza
 	@OneToMany(mappedBy="pizza")
 	private List<Ingredientes_por_pizza> ingredientesPorPizzas;
@@ -91,7 +87,6 @@ public class Pizza extends EntityBase<Pizza> implements Serializable {
 			String salsa, 
 			double precio, 
 			int gusta, 			
-			List<Comentario> comentarios, 
 			List<Ingredientes_por_pizza> ingredientesPorPizzas,
 			List<Pizzas_por_pedido> pizzasPorPedidos
 			) {
@@ -104,7 +99,6 @@ public class Pizza extends EntityBase<Pizza> implements Serializable {
 		this.salsa = salsa;
 		this.precio = precio;
 		this.gusta = gusta;		
-		this.comentarios = comentarios;
 		this.ingredientesPorPizzas = ingredientesPorPizzas;
 		this.pizzasPorPedidos = pizzasPorPedidos;
 	}
@@ -175,27 +169,6 @@ public class Pizza extends EntityBase<Pizza> implements Serializable {
 		this.salsa = salsa;
 	}
 
-	public List<Comentario> getComentarios() {
-		return this.comentarios;
-	}
-
-	public void setComentarios(List<Comentario> comentarios) {
-		this.comentarios = comentarios;
-	}
-
-	public Comentario addComentario(Comentario comentario) {
-		getComentarios().add(comentario);
-		comentario.setPizza(this);
-
-		return comentario;
-	}
-
-	public Comentario removeComentario(Comentario comentario) {
-		getComentarios().remove(comentario);
-		comentario.setPizza(null);
-
-		return comentario;
-	}
 
 	public List<Ingredientes_por_pizza> getIngredientesPorPizzas() {
 		return this.ingredientesPorPizzas;
@@ -241,13 +214,11 @@ public class Pizza extends EntityBase<Pizza> implements Serializable {
 		return pizzasPorPedido;
 	}
 
-
 	@Override
 	public int hashCode() {
-		return Objects.hash(base, comentarios, descripcion, fotoUrl, gusta, idPizza, ingredientesPorPizzas, nombre,
-				pizzasPorPedidos, precio, salsa);
+		return Objects.hash(base, descripcion, fotoUrl, gusta, idPizza, ingredientesPorPizzas, nombre, pizzasPorPedidos,
+				precio, salsa);
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -258,24 +229,31 @@ public class Pizza extends EntityBase<Pizza> implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Pizza other = (Pizza) obj;
-		return Objects.equals(base, other.base) && Objects.equals(comentarios, other.comentarios)
-				&& Objects.equals(descripcion, other.descripcion) && Objects.equals(fotoUrl, other.fotoUrl)
-				&& gusta == other.gusta && idPizza == other.idPizza
+		return Objects.equals(base, other.base) && Objects.equals(descripcion, other.descripcion)
+				&& Objects.equals(fotoUrl, other.fotoUrl) && gusta == other.gusta && idPizza == other.idPizza
 				&& Objects.equals(ingredientesPorPizzas, other.ingredientesPorPizzas)
 				&& Objects.equals(nombre, other.nombre) && Objects.equals(pizzasPorPedidos, other.pizzasPorPedidos)
 				&& Double.doubleToLongBits(precio) == Double.doubleToLongBits(other.precio)
 				&& Objects.equals(salsa, other.salsa);
 	}
 
-
 	@Override
 	public String toString() {
-		return "Pizza [idPizza=" + idPizza + ", base=" + base + ", descripcion=" + descripcion + ", fotoUrl=" + fotoUrl
-				+ ", gusta=" + gusta + ", nombre=" + nombre + ", precio=" + precio + ", salsa=" + salsa
-				+ ", comentarios=" + comentarios + ", ingredientesPorPizzas=" + ingredientesPorPizzas
-				+ ", pizzasPorPedidos=" + pizzasPorPedidos + "]";
+		return "Pizza [idPizza=" + idPizza + ", nombre=" + nombre + ", descripcion=" + descripcion + ", fotoUrl="
+				+ fotoUrl + ", base=" + base + ", salsa=" + salsa + ", precio=" + precio + ", gusta=" + gusta
+				+ ", ingredientesPorPizzas=" + ingredientesPorPizzas + ", pizzasPorPedidos=" + pizzasPorPedidos + "]";
 	}
+
+
+
 	
+	
+
+
+
+
+
+
 	
 	
 	

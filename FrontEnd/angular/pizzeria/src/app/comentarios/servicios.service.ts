@@ -12,7 +12,7 @@ export class Comentarios {
   id: number = 0;
   comentario: string | null = null;
   fecha: string | null = null;
-  id_usuario: number | null = null;
+  id_usuario: string | null = null;
   id_pizza: number | null = null;
 }
 
