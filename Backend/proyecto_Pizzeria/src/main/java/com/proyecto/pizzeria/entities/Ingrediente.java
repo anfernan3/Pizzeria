@@ -43,6 +43,12 @@ public class Ingrediente extends EntityBase<Ingrediente> implements Serializable
 	}
 	
 
+	public Ingrediente(int idIngrediente) {
+		super();
+		this.idIngrediente = idIngrediente;
+	}
+
+
 	public Ingrediente(int idIngrediente, @NotNull @Length(max = 50) String nombre, @NotNull double precio,
 			@NotNull String tipo) {
 		super();

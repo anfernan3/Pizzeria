@@ -6,6 +6,7 @@ import { LoggerService } from 'src/lib/my-core';
 import { RESTDAOService } from '../base-code/RESTDAOService';
 import { ModoCRUD } from '../base-code/tipos';
 import { NavigationService, NotificationService } from '../common-services';
+import { IngredientesDAOService } from '../ingredientes/servicios.service';
 import { AuthService, AUTH_REQUIRED } from '../security';
 
 
@@ -26,6 +27,10 @@ export class PizzasDAOService extends RESTDAOService<Pizza, any> {
   constructor(http: HttpClient) {
     super(http, 'pizzas', { context: new HttpContext().set(AUTH_REQUIRED, true) });
   }
+  override get(id: any, modo: string = 'edit'): Observable<any> {
+    return this.http.get<any>(this.baseUrl + '/' + id + '?mode=' + modo, this.option);
+  }
+
   page(page: number, rows: number = 20): Observable<{ page: number, pages: number, rows: number, list: Array<any> }> {
     return new Observable(subscriber => {
       this.http.get<{ pages: number, rows: number }>(`${this.baseUrl}?_page=count&_rows=${rows}`, this.option)
@@ -56,9 +61,10 @@ export class PizzasViewModelService {
   protected elemento: any = {};
   protected idOriginal: any = null;
   protected listURL = '/pizzas';
+  protected listadoIngredientes: Array<any> = [];
 
 
-  constructor(protected notify: NotificationService, protected out: LoggerService, protected dao: PizzasDAOService,
+  constructor(protected notify: NotificationService, protected out: LoggerService, protected dao: PizzasDAOService, protected dao2: IngredientesDAOService,
     public auth: AuthService, protected router: Router, private navigation: NavigationService) { }
 
   public get Modo(): ModoCRUD { return this.modo; }
@@ -93,7 +99,7 @@ export class PizzasViewModelService {
     });
   }
   public view(key: any): void {
-    this.dao.get(key).subscribe({
+    this.dao.get(key, 'details').subscribe({
       next: data => {
         this.elemento = data;
         this.modo = 'view';

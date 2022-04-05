@@ -7,6 +7,7 @@ import org.hibernate.validator.constraints.Length;
 
 import com.proyecto.pizzeria.entitybase.EntityBase;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -42,7 +43,7 @@ public class Pizza extends EntityBase<Pizza> implements Serializable {
 	
 
 	//bi-directional many-to-one association to Ingredientes_por_pizza
-	@OneToMany(mappedBy="pizza")
+	@OneToMany(mappedBy="pizza", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Ingredientes_por_pizza> ingredientesPorPizzas;
 
 	//bi-directional many-to-one association to Pizzas_por_pedido
@@ -50,10 +51,11 @@ public class Pizza extends EntityBase<Pizza> implements Serializable {
 	private List<Pizzas_por_pedido> pizzasPorPedidos;
 
 	public Pizza() {
+		ingredientesPorPizzas = new ArrayList<Ingredientes_por_pizza>();
 	}
 	
 	public Pizza(int idPizza) {
-		super();
+		this();
 		this.idPizza = idPizza;
 	}
 
@@ -67,7 +69,7 @@ public class Pizza extends EntityBase<Pizza> implements Serializable {
 			double precio, 
 			int gusta
 			) {
-		super();
+		this();
 		this.idPizza = idPizza;
 		this.nombre = nombre;
 		this.descripcion = descripcion;

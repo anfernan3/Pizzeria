@@ -7,21 +7,21 @@
               <div class="col-sm-6 col-md-4">
                   <img id="img-ficha" src="{{VM.Elemento.foto}}"
                         alt="Foto de {{VM.Elemento.nombre}} {{VM.Elemento.precio}}" class="rounded" />
-                        <button class="no-decoration button-cart" (click)="carrito"><h2 class="cart-button">🛒</h2></button>
               </div>
+              <div>
+                <button class="no-decoration button-cart" (click)="carrito.agregarAlCarrito(VM.Elemento)"><h2 class="cart-button">🛒</h2></button>
+            </div>
               <div class="col-sm-6 col-md-8">
                   <h4>{{VM.Elemento.tratamiento}} {{VM.Elemento.nombre}} {{VM.Elemento.precio| currency:'EUR':'symbol':'1.2-2' }}</h4>
                   <h4>{{VM.Elemento.descripcion}}</h4>
-                  <p [hidden]="!VM.Elemento.conflictivo"><small class="text-danger">
-                        <i class="fas fa-skull-crossbones mr-2"></i>Persona conflictiva</small></p>
-                  <p>
-                      <i class="fas fa-phone-alt mr-2"></i>{{VM.Elemento.telefono}}
-                      <br />
-                      <i class="fas fa-envelope mr-2"></i>
-                        <a href="mailto:{{VM.Elemento.email}}">{{VM.Elemento.email}}</a>
-                      <br />
-                      <i class="fas fa-gifts mr-2"></i>{{VM.Elemento.nacimiento | date:'dd/MMMM/yyyy'}}
-                  </p>
+                  <p>Base: {{VM.Elemento.base}}</p>
+                  <p>Salsa: {{VM.Elemento.salsa}}</p>
+                  <h2>Ingredientes</h2>
+<ul>
+  <li *ngFor="let item of VM.Elemento.ingredientes;">
+    {{item.ingrediente}} ({{item.cantidad}})
+  </li>
+</ul>
                   <div class="btn-group">
                       <input class="btn btn-secondary" type="button" value="Volver" (click)="VM.cancel()">
                   </div>
