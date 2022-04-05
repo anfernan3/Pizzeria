@@ -1,7 +1,6 @@
-
 <p-menubar [model]="items">
   <ng-template pTemplate="start">
-    <a class="logo" routerLink = "/">🍕PizzaXpress</a>
+    <a class="logo" routerLink="/">🍕PizzaXpress</a>
     <!--
     <img src="../assets/img/logo.png" width="100" height="40" class="mr-2" routerLink="/" />
     -->
@@ -10,28 +9,25 @@
   <ng-template pTemplate="end">
     <div>
       <button
-      type="button"
-      pButton
-      icon="pi pi-shopping-cart"
-      style="margin-left: 0.25em"
-      class="p-button-secondary p-button-text"
-      routerLink="/carrito"
-      *ngIf="auth.isAutenticated"
-    >
-  </button>
-  <span>{{this.auth.Name}}</span>
+        type="button"
+        pButton
+        icon="pi pi-shopping-cart"
+        style="margin-left: 0.25em"
+        class="p-button-secondary p-button-text"
+        routerLink="/carrito"
+        *ngIf="auth.isAutenticated"
+      ></button>
 
       <button
-      type="button"
-      pButton
-      label="Login"
-      icon="pi pi-power-off"
-      style="margin-left: 0.25em"
-      class="p-button-secondary p-button-text"
-      routerLink="/login"
-    ></button>
+        type="button"
+        pButton
+        style="margin-left: 0.25em"
+        class="p-button-secondary p-button-text"
+        routerLink="/login"
+      >
+        <i class="pi pi-power-off"> </i> &nbsp;
+        {{ auth.isAutenticated ? this.auth.Name : "Login" }}
+      </button>
     </div>
-
   </ng-template>
-
 </p-menubar>
