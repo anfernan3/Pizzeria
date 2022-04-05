@@ -2,7 +2,6 @@
 <ng-container [ngSwitch]="VM.Modo">
   <app-comentarios-add *ngSwitchCase="'add'"></app-comentarios-add>
   <app-comentarios-edit *ngSwitchCase="'edit'"></app-comentarios-edit>
-  <app-comentarios-view *ngSwitchCase="'view'"></app-comentarios-view>
   <app-comentarios-list *ngSwitchDefault></app-comentarios-list>
 </ng-container>
 <div class="pagina"></div>

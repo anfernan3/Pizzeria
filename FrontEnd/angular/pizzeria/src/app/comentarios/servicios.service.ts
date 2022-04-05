@@ -43,7 +43,7 @@ export class ComentariosViewModelService {
     protected out: LoggerService,
     protected dao: ComentariosDAOService,
     protected router: Router,
-    protected auth: AuthService,
+    public auth: AuthService,
   ) {}
 
   public get Modo(): ModoCRUD { return this.modo; }

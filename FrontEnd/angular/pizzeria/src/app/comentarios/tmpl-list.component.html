@@ -24,11 +24,8 @@
         </div>
       </td>
       <td class="align-middle text-end">
-        <div class="btn-group" role="group">
-          <button class="btn btn-info" (click)="VM.view(item.id)">
-            Ver
-          </button>
-          <button class="btn btn-success" (click)="VM.edit(item.id)">
+        <div class="btn-group" role="group" *ngIf="this.VM.auth.isInRoles('GERENTE')">
+          <button class="btn btn-success" (click)="VM.edit(item.id)"  >
             Editar
           </button>
           <button class="btn btn-danger" (click)="VM.delete(item.id)">
