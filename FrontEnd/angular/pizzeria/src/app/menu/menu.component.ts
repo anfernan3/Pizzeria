@@ -55,7 +55,7 @@ export class MenuComponent implements OnChanges {
             visible: this.auth.isInRoles('GERENTE', 'TIENDA'),
           },
           {
-            label: 'Gestion de usuarios',
+            label: 'Usuarios',
             icon: 'pi pi-fw pi-user',
             routerLink: '/gestionUsuarios',
             visible: this.auth.isInRoles('GERENTE'),
