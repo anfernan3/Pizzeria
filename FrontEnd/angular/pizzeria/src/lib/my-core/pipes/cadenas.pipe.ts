@@ -29,4 +29,13 @@ export class StripTagsPipe implements PipeTransform {
   }
 }
 
-export const PIPES_CADENAS = [ ElipsisPipe, CapitalizePipe, StripTagsPipe, ]
+@Pipe({name: 'cutemail'})
+export class CutemailPipe implements PipeTransform {
+  transform(value: string): string {
+    return value ?
+      value.substring(0,value.lastIndexOf('@')) :value;
+  }
+}
+
+
+export const PIPES_CADENAS = [ ElipsisPipe, CapitalizePipe, StripTagsPipe, CutemailPipe ]
