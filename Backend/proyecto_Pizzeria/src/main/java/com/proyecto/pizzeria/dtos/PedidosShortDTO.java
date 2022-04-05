@@ -11,6 +11,9 @@ public class PedidosShortDTO {
 	private String usuario;
 	private Date fecha;
 	private String estado;
+	private String preparadoPor;
+	private String entregadoPor;
+	
 
 
 	public static PedidosShortDTO from(Pedido source) {
@@ -18,6 +21,9 @@ public class PedidosShortDTO {
 				source.getIdPedido(),
 				source.getUsuario(),
 				source.getFecha(),
-				source.getEstado());
+				source.getEstado(),
+				source.getPreparadoPor(),
+				source.getEntregadoPor()
+				);
 	}
 }
