@@ -63,12 +63,16 @@ body {
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
+  width:90%;
+  justify-content: center;
 }
 
 th{
   background-color: #870909;
   color: white;
   border: 1px solid #dddddd;
+  width:90%;
+  justify-content: center;
 }
 
 
@@ -76,11 +80,15 @@ td {
   border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
-  }
+  width: 90%;
+  justify-content: center;
+}
 
 tr:nth-child(even) {
   text-align: center;
   background-color: #dddddd;
+  width: 90%;
+  justify-content: center;
 }
 
 .form-control{

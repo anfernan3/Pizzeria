@@ -5,7 +5,7 @@
   </div>
   <div class="container-pizzas">
   <div class="container-card-pizza" *ngFor="let item of VM.Listado">
-    <img [src]="item.foto??'assets/img/pizzas/pizza-margarita.jpg'" alt="Foto de la pizza {{item.nombre}}" height="auto" width="100">
+    <img [src]="item.foto??'assets/img/pizzas/pizza-margarita-redux.webp'" alt="Foto de la pizza {{item.nombre}}" height="auto" width="100">
     <div>
       <button class="no-decoration button-cart" (click)="carrito.agregarAlCarrito(item)"><h2 class="cart-button">🛒</h2></button>
   </div>
