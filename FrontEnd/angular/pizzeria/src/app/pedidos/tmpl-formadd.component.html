@@ -78,15 +78,26 @@
       <div>
         <div>    <h2>Pizzas</h2>
         </div>
-        <div>
-          <table>
+        <div class = "container-tablas">
+          <table class="flex-box">
+            <thead>
             <tr>
-              <th></th>
+              <th>Foto</th>
               <th>Nombre</th>
               <th>Precio</th>
               <th>Cantidad</th>
               <th>Total</th>
             </tr>
+          </thead>
+            <tfoot>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><b>Total:</b> {{carrito.Importe | currency:'EUR':'symbol':'1.2-2'}}</td>
+              </tr>
+           </tfoot>
             <tr *ngFor="let item of carrito.pizzasCarrito; let indice=index;">
               <td><img [src]="item.pizza.foto" alt="{{item.pizza.foto}}" width="70" height="auto"></td>
               <td>{{item.pizza.nombre}}</td>
@@ -102,7 +113,6 @@
           -->
         </div>
       </div>
-      <div>Importe: {{carrito.Importe | currency:'EUR':'symbol':'1.2-2'}}</div>
       <!-- <label for="estado">Estado: </label>
       <select id="estado" name="estado" [(ngModel)]="VM.Elemento.estado">
         <option value="solicitado">solicitado</option>

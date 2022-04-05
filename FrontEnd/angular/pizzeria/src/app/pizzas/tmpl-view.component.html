@@ -1,32 +1,52 @@
-
-<div class="row fondo-claro" >
-  <h1>Pizza</h1>
+<div class="row fondo-claro">
+  <p class="title">Pizza</p>
   <div class="col-xs-12 col-sm-6 col-md-6 container-pizzas">
-      <div class="well well-sm">
-          <div class="row">
-              <div class="col-sm-6 col-md-4">
-                  <img id="img-ficha" src="{{VM.Elemento.foto}}"
-                        alt="Foto de {{VM.Elemento.nombre}} {{VM.Elemento.precio}}" class="rounded" />
-              </div>
-              <div>
-                <button *ngIf="VM.auth.isAutenticated" class="no-decoration button-cart" (click)="carrito.agregarAlCarrito(VM.Elemento)"><h2 class="cart-button">🛒</h2></button>
-            </div>
-              <div class="col-sm-6 col-md-8">
-                  <h4>{{VM.Elemento.tratamiento}} {{VM.Elemento.nombre}} {{VM.Elemento.precio| currency:'EUR':'symbol':'1.2-2' }}</h4>
-                  <h4>{{VM.Elemento.descripcion}}</h4>
-                  <p>Base: {{VM.Elemento.base}}</p>
-                  <p>Salsa: {{VM.Elemento.salsa}}</p>
-                  <h2>Ingredientes</h2>
-<ul>
-  <li *ngFor="let item of VM.Elemento.ingredientes;">
-    {{item.ingrediente}} ({{item.cantidad}})
-  </li>
-</ul>
-                  <div class="btn-group">
-                      <input class="btn btn-secondary" type="button" value="Volver" (click)="VM.cancel()">
-                  </div>
-              </div>
+    <div class="well well-sm">
+      <div class="container-producto">
+        <div class="container-foto">
+          <img
+            id="img-ficha"
+            src="{{ VM.Elemento.foto }}"
+            alt="Foto de {{ VM.Elemento.nombre }} {{ VM.Elemento.precio }}"
+            class="rounded"
+          />
+
+          <div>
+            <button
+              *ngIf="VM.auth.isAutenticated"
+              class="no-decoration button-cart"
+              (click)="carrito.agregarAlCarrito(VM.Elemento)"
+            >
+              <h2 class="cart-button">🛒</h2>
+            </button>
           </div>
+        </div>
+
+        <div class="card-descripcion-producto">
+          <h2>
+            {{ VM.Elemento.tratamiento }} {{ VM.Elemento.nombre }}
+            {{ VM.Elemento.precio | currency: "EUR":"symbol":"1.2-2" }}
+          </h2>
+          <h1>Descripción y detalles</h1>
+          <h2>{{ VM.Elemento.descripcion }}</h2>
+          <p>Base: {{ VM.Elemento.base }}</p>
+          <p>Salsa: {{ VM.Elemento.salsa }}</p>
+          <h2>Ingredientes</h2>
+          <ul class="lista-ingredientes">
+            <li *ngFor="let item of VM.Elemento.ingredientes">
+              {{ item.ingrediente }} ({{ item.cantidad }})
+            </li>
+          </ul>
+          <div class="btn-group">
+            <input
+              class="btn btn-secondary"
+              type="button"
+              value="Volver"
+              (click)="VM.cancel()"
+            />
+          </div>
+        </div>
       </div>
+    </div>
   </div>
 </div>
