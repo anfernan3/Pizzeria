@@ -62,6 +62,7 @@ export class PedidosComponent implements OnInit, OnDestroy {
       }
       this.vm.Elemento = elem;
       this.vm.send();
+      this.carrito.limpiaCarrito();
     }
   }
 

@@ -85,17 +85,14 @@
               <th>Nombre</th>
               <th>Precio</th>
               <th>Cantidad</th>
-              <th>Precio</th>
               <th>Total</th>
             </tr>
             <tr *ngFor="let item of carrito.pizzasCarrito; let indice=index;">
               <td><img [src]="item.pizza.foto" alt="{{item.pizza.foto}}" width="70" height="auto"></td>
               <td>{{item.pizza.nombre}}</td>
-              <td>{{item.pizza.precio}}</td>
+              <td>{{item.pizza.precio | currency:'EUR':'symbol':'1.2-2'}}</td>
               <td>{{item.cantidad}}</td>
-              <td>{{item.precio}}</td>
-              <td >{{ item.precio * item.cantidad}}</td>
-
+              <td>{{item.precio | currency:'EUR':'symbol':'1.2-2'}}</td>
               <hr><br>
             </tr>
 
@@ -105,7 +102,7 @@
           -->
         </div>
       </div>
-      <div>Importe: {{carrito.Importe}}</div>
+      <div>Importe: {{carrito.Importe | currency:'EUR':'symbol':'1.2-2'}}</div>
       <!-- <label for="estado">Estado: </label>
       <select id="estado" name="estado" [(ngModel)]="VM.Elemento.estado">
         <option value="solicitado">solicitado</option>

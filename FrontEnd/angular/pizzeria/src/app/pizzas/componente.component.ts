@@ -82,7 +82,7 @@ export class PizzasEditComponent implements OnInit, OnDestroy {
 })
 export class PizzasViewComponent implements OnInit, OnDestroy {
   private obs$: any;
-  constructor(protected vm: PizzasViewModelService,
+  constructor(protected vm: PizzasViewModelService, public carrito: CarritoService,
     protected route: ActivatedRoute, protected router: Router) { }
   public get VM(): PizzasViewModelService { return this.vm; }
   ngOnInit(): void {
