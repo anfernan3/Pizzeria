@@ -6,6 +6,7 @@ form{
   justify-content: center;
   margin-left: 25%;
   margin-right: 25%;
+
 }
 
 .form-control{
@@ -32,6 +33,7 @@ form{
   display: flex;
   flex-direction: column;
   margin: 2%;
+  align-items: center;
 }
 
 .input-group-append {
