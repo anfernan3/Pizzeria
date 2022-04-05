@@ -10,15 +10,14 @@
   </select>
   <input type="button" value="Buscar" (click)="VM.list()">
   <table class="table table-striped table-hover">
-<table class="table table-striped table-hover">
   <thead>
     <tr class="table-info">
-      <th class="display-4">IdPedido</th>
-      <th class="display-4">Usuario</th>
-      <th class="display-4">Estado</th>
-      <th class="display-4">Fecha</th>
-      <th class="display-4">Preparado por</th>
-      <th class="display-4">Entregado por</th>
+      <th>IdPedido</th>
+      <th>Usuario</th>
+      <th>Estado</th>
+      <th>Fecha</th>
+      <th>Preparado por</th>
+      <th>Entregado por</th>
       <th class="text-end">
         <button *ngIf="VM.auth.isAutenticated" class="btn btn-success" routerLink="add"><i class="pi pi-plus-circle"></i> Añadir</button>
       </th>
@@ -27,7 +26,7 @@
   <tbody>
     <tr *ngFor="let item of VM.Listado">
       <td>
-      <p>{{item.idPedido}}</p>
+      {{item.idPedido}}
       </td>
       <td>
         {{item.usuario}}
