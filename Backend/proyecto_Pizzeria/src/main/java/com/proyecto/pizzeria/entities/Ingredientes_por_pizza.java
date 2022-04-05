@@ -25,15 +25,27 @@ public class Ingredientes_por_pizza implements Serializable {
 
 	//bi-directional many-to-one association to Ingrediente
 	@ManyToOne
-	@JoinColumn(name="id_ingrediente", insertable=false, updatable=false)
+	@JoinColumn(name="id_ingrediente")
 	private Ingrediente ingrediente;
 
 	//bi-directional many-to-one association to Pizza
 	@ManyToOne
-	@JoinColumn(name="id_pizza", insertable=false, updatable=false)
+	@JoinColumn(name="id_pizza")
 	private Pizza pizza;
 
 	public Ingredientes_por_pizza() {
+	}
+
+	public Ingredientes_por_pizza(Ingrediente ingrediente, int cantidad) {
+		super();
+		this.cantidad = cantidad;
+		this.ingrediente = ingrediente;
+	}
+	public Ingredientes_por_pizza(Pizza pizza, Ingrediente ingrediente, int cantidad) {
+		super();
+		this.pizza = pizza;
+		this.cantidad = cantidad;
+		this.ingrediente = ingrediente;
 	}
 
 	public int getIdIngredientesPorPizza() {

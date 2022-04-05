@@ -16,11 +16,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.proyecto.pizzeria.contracts.services.PizzasService;
+import com.proyecto.pizzeria.dtos.PizzasDetailsDTO;
 import com.proyecto.pizzeria.dtos.PizzasEditDTO;
 import com.proyecto.pizzeria.exceptions.DuplicateKeyException;
 import com.proyecto.pizzeria.exceptions.InvalidDataException;
@@ -43,10 +45,16 @@ public class PizzasControllers {
 		return srv.getByProjection(PizzasEditDTO.class);
 	}
 
-	@GetMapping(path = "/{id}")
+	@GetMapping(path = "/{id}", params = "mode=edit")
 	@ApiOperation(value = "Listado de pizzas por id")
-	public PizzasEditDTO getOne(@PathVariable int id) throws NotFoundException {
+	public PizzasEditDTO getOne(@PathVariable int id, @RequestParam String mode) throws NotFoundException {
 		return PizzasEditDTO.from(srv.getOne(id));
+	}
+
+	@GetMapping(path = "/{id}", params = "mode=details")
+	@ApiOperation(value = "Listado de pizzas por id")
+	public PizzasDetailsDTO getDetailsOne(@PathVariable int id, @RequestParam String mode) throws NotFoundException {
+		return PizzasDetailsDTO.from(srv.getOne(id));
 	}
 
 	@PostMapping
@@ -56,11 +64,13 @@ public class PizzasControllers {
 			@ApiResponse(code = 400, message = "Error al validar los datos o clave duplicada"),
 			@ApiResponse(code = 404, message = "Pizza no encontrada") })
 	public ResponseEntity<Object> create(@Valid @RequestBody PizzasEditDTO item)
-			throws InvalidDataException, DuplicateKeyException {
+			throws InvalidDataException, DuplicateKeyException, NotFoundException {
 		var entity = PizzasEditDTO.from(item);
 		if (entity.isInvalid())
 			throw new InvalidDataException(entity.getErrorsMessage());
 		entity = srv.add(entity);
+		item.incorporarNuevosIngredientes(entity);
+		srv.change(entity);
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 				.buildAndExpand(entity.getIdPizza()).toUri();
 		return ResponseEntity.created(location).build();
@@ -78,7 +88,8 @@ public class PizzasControllers {
 			throws InvalidDataException, NotFoundException {
 		if (id != item.getIdPizza())
 			throw new InvalidDataException("No coinciden los identificadores");
-		var entity = PizzasEditDTO.from(item);
+		var entity = srv.getOne(id);
+		item.update(entity);
 		if (entity.isInvalid())
 			throw new InvalidDataException(entity.getErrorsMessage());
 		srv.change(entity);
