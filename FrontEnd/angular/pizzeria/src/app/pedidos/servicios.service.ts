@@ -59,18 +59,18 @@ export class PedidosViewModelService {
   protected idOriginal: any = null;
   protected listURL = '/pedidos';
 
-
   constructor(protected notify: NotificationService, protected out: LoggerService, protected dao: PedidosDAOService,
     public auth: AuthService, protected router: Router, private navigation: NavigationService) { }
 
   public get Modo(): ModoCRUD { return this.modo; }
   public get Listado(): Array<any> { return this.listado; }
   public get Elemento(): any { return this.elemento; }
+  public set Elemento(value: any) { this.elemento = value; }
   public get isAutenticated(): boolean { return this.auth.isAutenticated; }
 
 
   public list(): void {
-    this.dao.query().subscribe({
+    this.dao.query(this.estado).subscribe({
       next: data => {
         this.listado = data;
         this.modo = 'list';

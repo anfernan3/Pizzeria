@@ -51,23 +51,17 @@ export class PedidosComponent implements OnInit, OnDestroy {
     send() {
       let elem = {
         "idPedido": 0,
-        "usuario": this.vm.Elemento.usuario.username,
-        "direccion": this.vm.Elemento.direccion,
-        "estado": "solicitado"
+        "direccionEntrega": this.vm.Elemento.direccionEntrega,
+        "estado": "solicitado",
+        "importe": this.carrito.Importe,
+        "pizzas": this.carrito.pizzasCarrito.map(item => ({
+                "cantidad": item.cantidad,
+                "pizza": item.pizza.id,
+                "precio": item.precio
+              }))
       }
-      // this.carrito.pizzasCarrito.forEach(item => elem.pizzas.push({
-      //       "cantidad": item.cantidad,
-      //       "pizza": item.pizza.id,
-      //       "precio": item.precio
-      //     }))
-
-      //     const initialValue = 0;
-      // elem.importe = this.carrito.pizzasCarrito.reduce(
-      //   (previousValue, currentValue) => previousValue + currentValue,
-      //   initialValue
-      // );
-      // this.vm.Elemento = elem;
-      // this.vm.send();
+      this.vm.Elemento = elem;
+      this.vm.send();
     }
   }
 

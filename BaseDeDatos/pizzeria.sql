@@ -20,15 +20,13 @@ USE `pizzeria`;
 -- Volcando estructura para tabla pizzeria.comentarios
 CREATE TABLE IF NOT EXISTS `comentarios` (
   `id_comentario` int NOT NULL AUTO_INCREMENT,
-  `puntuacion` int NOT NULL,
-  `fecha` timestamp NOT NULL,
-  `id_usuario` int NOT NULL,
+  `comentario` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `fecha` datetime NOT NULL,
+  `id_usuario` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `id_pizza` int NOT NULL,
   PRIMARY KEY (`id_comentario`),
   KEY `FK_comentarios_usuarios` (`id_usuario`),
-  KEY `FK_comentarios_pizzas` (`id_pizza`),
-  CONSTRAINT `FK_comentarios_pizzas` FOREIGN KEY (`id_pizza`) REFERENCES `pizzas` (`id_pizza`),
-  CONSTRAINT `FK_comentarios_usuarios` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`)
+  KEY `FK_comentarios_pizzas` (`id_pizza`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Volcando datos para la tabla pizzeria.comentarios: ~0 rows (aproximadamente)
@@ -56,20 +54,6 @@ INSERT INTO `direcciones` (`id_direccion`, `calle`, `ciudad`, `pais`, `id_usuari
 	(4, 'C/ Picasso', 'Murcia', 'España', 2);
 /*!40000 ALTER TABLE `direcciones` ENABLE KEYS */;
 
--- Volcando estructura para tabla pizzeria.funciones
-CREATE TABLE IF NOT EXISTS `funciones` (
-  `id_funcion` int NOT NULL AUTO_INCREMENT,
-  `id_usuario` int NOT NULL,
-  `rol` enum('usuario','tienda','repartidor','gerente') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id_funcion`),
-  KEY `FK_funciones_usuarios` (`id_usuario`),
-  CONSTRAINT `FK_funciones_usuarios` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- Volcando datos para la tabla pizzeria.funciones: ~0 rows (aproximadamente)
-/*!40000 ALTER TABLE `funciones` DISABLE KEYS */;
-/*!40000 ALTER TABLE `funciones` ENABLE KEYS */;
-
 -- Volcando estructura para tabla pizzeria.ingredientes
 CREATE TABLE IF NOT EXISTS `ingredientes` (
   `id_ingrediente` int NOT NULL AUTO_INCREMENT,
@@ -77,9 +61,9 @@ CREATE TABLE IF NOT EXISTS `ingredientes` (
   `tipo` enum('base','salsa','otros') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `precio` double NOT NULL,
   PRIMARY KEY (`id_ingrediente`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla pizzeria.ingredientes: ~18 rows (aproximadamente)
+-- Volcando datos para la tabla pizzeria.ingredientes: ~19 rows (aproximadamente)
 /*!40000 ALTER TABLE `ingredientes` DISABLE KEYS */;
 INSERT INTO `ingredientes` (`id_ingrediente`, `nombre`, `tipo`, `precio`) VALUES
 	(1, 'cebolla', 'otros', 0.3),
@@ -99,7 +83,8 @@ INSERT INTO `ingredientes` (`id_ingrediente`, `nombre`, `tipo`, `precio`) VALUES
 	(15, 'boloñesa', 'salsa', 0.6),
 	(16, 'queso azul', 'salsa', 0.8),
 	(17, 'yogur', 'salsa', 0.4),
-	(18, 'pesto', 'salsa', 0.6);
+	(18, 'pesto', 'salsa', 0.6),
+	(19, 'tomate', 'salsa', 0.5);
 /*!40000 ALTER TABLE `ingredientes` ENABLE KEYS */;
 
 -- Volcando estructura para tabla pizzeria.ingredientes por pizza
@@ -131,15 +116,20 @@ CREATE TABLE IF NOT EXISTS `pedidos` (
   `importe` decimal(9,2) NOT NULL DEFAULT '0.00',
   `estado` enum('solicitado','elaborandose','preparado','enviado','recibido','cancelado') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id_pedido`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla pizzeria.pedidos: ~4 rows (aproximadamente)
+-- Volcando datos para la tabla pizzeria.pedidos: ~9 rows (aproximadamente)
 /*!40000 ALTER TABLE `pedidos` DISABLE KEYS */;
 INSERT INTO `pedidos` (`id_pedido`, `usuario`, `fecha`, `direccion_entrega`, `preparado_por`, `fecha_entrega`, `entregado_por`, `importe`, `estado`) VALUES
-	(1, 'Juan', '2022-03-28 16:20:48', 'C/ Churruca', NULL, NULL, NULL, 99.00, 'recibido'),
-	(2, 'Antonio', '2022-03-28 16:20:48', 'C/ Churruca', NULL, NULL, NULL, 44.00, 'cancelado'),
-	(3, 'Federico', '2022-03-28 16:20:48', 'C/ Churruca', NULL, NULL, NULL, 50.00, 'preparado'),
-	(4, 'Roberto', '2022-03-28 16:20:48', 'C/ Churruca', NULL, NULL, NULL, 70.00, 'solicitado');
+	(1, '', '2022-03-28 16:20:48', 'C/ Churruca', 'admin1@admin1.com', '2022-04-04 14:02:46', 'admin1@admin1.com', 99.00, 'cancelado'),
+	(2, '', '2022-03-28 16:20:48', 'C/ Churruca', 'admin1@admin1.com', '2022-04-05 13:04:15', NULL, 44.00, 'enviado'),
+	(3, '', '2022-03-28 16:20:48', 'C/ Churruca', 'admin1@admin1.com', '2022-04-04 17:42:47', 'admin1@admin1.com', 50.00, 'recibido'),
+	(4, '', '2022-03-28 16:20:48', 'C/ Churruca', 'admin1@admin1.com', '2022-04-04 17:07:28', 'admin1@admin1.com', 70.00, 'elaborandose'),
+	(5, '', '2022-03-28 16:20:48', 'C/ Churruca', 'admin1@admin1.com', '2022-04-04 09:38:13', 'admin1@admin1.com', 70.00, 'solicitado'),
+	(6, '', '2022-04-04 09:29:13', 'rr', NULL, NULL, NULL, 20.00, 'solicitado'),
+	(7, '', '2022-04-04 09:34:42', 'rr', NULL, NULL, NULL, 20.00, 'solicitado'),
+	(9, 'admin1@admin1.com', '2022-04-05 12:36:44', 'C/ Churruca 2', NULL, NULL, NULL, 17.80, 'solicitado'),
+	(10, 'admin1@admin1.com', '2022-04-05 12:39:07', 'rr', NULL, NULL, NULL, 45.00, 'solicitado');
 /*!40000 ALTER TABLE `pedidos` ENABLE KEYS */;
 
 -- Volcando estructura para tabla pizzeria.pizzas
@@ -174,7 +164,7 @@ CREATE TABLE IF NOT EXISTS `pizzas por pedido` (
   `id_pedido` int NOT NULL,
   `id_pizza` int NOT NULL,
   `cantidad` int NOT NULL,
-  `precio` decimal(9,0) NOT NULL DEFAULT '0',
+  `precio` decimal(9,2) NOT NULL DEFAULT '0.00',
   PRIMARY KEY (`id_pedido`,`id_pizza`),
   KEY `id_pedido` (`id_pedido`),
   KEY `id_pizza` (`id_pizza`),
@@ -182,28 +172,16 @@ CREATE TABLE IF NOT EXISTS `pizzas por pedido` (
   CONSTRAINT `FK_pizzas por pedido_pizzas` FOREIGN KEY (`id_pizza`) REFERENCES `pizzas` (`id_pizza`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla pizzeria.pizzas por pedido: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla pizzeria.pizzas por pedido: ~6 rows (aproximadamente)
 /*!40000 ALTER TABLE `pizzas por pedido` DISABLE KEYS */;
+INSERT INTO `pizzas por pedido` (`id_pedido`, `id_pizza`, `cantidad`, `precio`) VALUES
+	(1, 1, 2, 0.00),
+	(9, 1, 2, 12.00),
+	(9, 2, 1, 6.00),
+	(10, 1, 2, 11.60),
+	(10, 2, 1, 6.20),
+	(10, 6, 4, 27.20);
 /*!40000 ALTER TABLE `pizzas por pedido` ENABLE KEYS */;
-
--- Volcando estructura para tabla pizzeria.usuarios
-CREATE TABLE IF NOT EXISTS `usuarios` (
-  `id_usuario` int NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `primer_apellido` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `segundo_apellido` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `password` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `telefono` int DEFAULT NULL,
-  `email` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- Volcando datos para la tabla pizzeria.usuarios: ~2 rows (aproximadamente)
-/*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` (`id_usuario`, `nombre`, `primer_apellido`, `segundo_apellido`, `password`, `telefono`, `email`) VALUES
-	(1, 'admin', NULL, NULL, 'texto', NULL, ''),
-	(2, 'pepe', 'García', 'Garcia', 'texto', NULL, '');
-/*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;

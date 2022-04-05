@@ -70,6 +70,7 @@
         #nombre="ngModel"
         minlength="2"
         maxlength="50"
+        required
         placeholder="C/ nombre, número"
       />
       <br>
@@ -104,6 +105,7 @@
           -->
         </div>
       </div>
+      <div>Importe: {{carrito.Importe}}</div>
       <!-- <label for="estado">Estado: </label>
       <select id="estado" name="estado" [(ngModel)]="VM.Elemento.estado">
         <option value="solicitado">solicitado</option>
@@ -141,8 +143,8 @@
     </div> -->
 
     <app-form-buttons
-      (send)="VM.send()"
-      [send-disabled]="miForm.invalid"
+      (send)="send()"
+      [send-disabled]="miForm.invalid || carrito.Importe == 0"
       (cancel)="VM.cancel()"
     ></app-form-buttons>
     <hr><br>

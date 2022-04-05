@@ -8,10 +8,8 @@ import lombok.Value;
 @Value
 public class PizzasPorPedidoEditDTO {
 	@NotNull
-	@Length(max=10)
 	private int cantidad;
 	@NotNull
-	@Length(max=10)
 	private double precio;
 	private int pizza;
 	

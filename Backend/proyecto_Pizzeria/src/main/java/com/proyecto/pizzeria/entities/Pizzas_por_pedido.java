@@ -6,6 +6,8 @@ import java.io.Serializable;
 import java.util.Objects;
 
 import javax.persistence.*;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Length;
@@ -24,11 +26,11 @@ public class Pizzas_por_pedido implements Serializable {
 	private Pizzas_por_pedidoPK id;
 
 	@NotNull
-	@Length(max=10)
 	private int cantidad;
 
 	@NotNull
-	@Length(max=10)
+	@DecimalMin(value = "0.0", inclusive = false)
+	@Digits(integer = 9, fraction = 2)
 	private double precio;
 
 	//bi-directional many-to-one association to Pedido
@@ -46,7 +48,7 @@ public class Pizzas_por_pedido implements Serializable {
 	
 
 
-public Pizzas_por_pedido(@NotNull @Length(max = 10) int cantidad, @NotNull @Length(max = 10) double precio,
+public Pizzas_por_pedido(int cantidad,  double precio,
 			Pedido pedido, Pizza pizza) {
 		super();
 		this.cantidad = cantidad;
