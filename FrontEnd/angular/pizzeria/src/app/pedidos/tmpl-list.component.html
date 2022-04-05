@@ -17,6 +17,8 @@
       <th class="display-4">Usuario</th>
       <th class="display-4">Estado</th>
       <th class="display-4">Fecha</th>
+      <!-- <th class="display-4">Preparado por</th>
+      <th class="display-4">Entregado por</th> -->
       <th class="text-end">
         <button *ngIf="VM.auth.isAutenticated" class="btn btn-success" routerLink="add"><i class="pi pi-plus-circle"></i> Añadir</button>
       </th>
@@ -25,7 +27,7 @@
   <tbody>
     <tr *ngFor="let item of VM.Listado">
       <td>
-        <p>{{item.idPedido}}</p>
+      <p>{{item.idPedido}}</p>
       </td>
       <td>
         {{item.usuario}}
@@ -35,6 +37,12 @@
       </td>
       <td>
         {{item.fecha | date:'fullDate'}}
+      </td>
+      <td>
+        {{item.preparadoPor}}
+      </td>
+      <td>
+        {{item.entregadoPor}}
       </td>
      <td class="align-middle text-end">
         <div *ngIf="VM.auth.isAutenticated && item.estado !== 'cancelado' && item.estado !== 'recibido'" class="btn-group" role="group">
