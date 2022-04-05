@@ -46,8 +46,8 @@
       </td>
      <td class="align-middle text-end">
         <div *ngIf="VM.auth.isAutenticated && item.estado !== 'cancelado' && item.estado !== 'recibido'" class="btn-group" role="group">
-          <button  class="btn btn-success" [routerLink]="[item.idPedido, 'edit']"><i class="pi pi-pencil"></i></button>
-          <button  class="btn btn-danger" (click)="VM.delete(item.idPedido)"><i class="pi pi-times"></i></button>
+          <button  class="btn btn-success" [routerLink]="[item.idPedido, 'edit']" *ngIf="this.VM.auth.isInRoles('GERENTE', 'TIENDA')"><i class="pi pi-pencil"></i></button>
+          <button  class="btn btn-danger" (click)="VM.delete(item.idPedido)" *ngIf="this.VM.auth.isInRoles('GERENTE', 'TIENDA')"><i class="pi pi-times"></i></button>
         </div>
       </td>
     </tr>
