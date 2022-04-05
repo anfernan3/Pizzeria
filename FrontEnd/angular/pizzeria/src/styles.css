@@ -3,26 +3,27 @@ body {
   background-color: #f5f9e7;
 }
 
-.logo {
+.logo{
   text-decoration: none;
-  font-size: 1.2em;
+  font-size: 1.5em;
   font-style: italic;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   padding: 0em;
   margin: 0em;
-  color: #ff4747;
+  color:#ff4747;
   margin-top: -0.2em;
 }
 
-.btn {
+.btn{
   margin-top: 0em;
   height: 3em;
   border-radius: 20%;
   background-color: #ff4747;
   border-color: white;
-  color: white;
+  color:white;
   align-items: center;
 }
+
 
 .notificaciones .notificacion {
   border: solid 1px rgb(255, 208, 0);
@@ -62,17 +63,18 @@ body {
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
-  width: 90%;
+  width:90%;
   justify-content: center;
 }
 
-th {
+th{
   background-color: #870909;
   color: white;
   border: 1px solid #dddddd;
-  width: 90%;
+  width:90%;
   justify-content: center;
 }
+
 
 td {
   border: 1px solid #dddddd;
@@ -89,7 +91,7 @@ tr:nth-child(even) {
   justify-content: center;
 }
 
-.form-control {
+.form-control{
   width: 50%;
   height: 3em;
   margin-top: 1em;
@@ -98,16 +100,8 @@ tr:nth-child(even) {
   align-self: right;
 }
 
-.form-label {
+.form-label{
   font-size: x-large;
   font-weight: bold;
 }
 
-.p-button.p-button-secondary.p-button-text,
-.p-buttonset.p-button-secondary > .p-button.p-button-text,
-.p-splitbutton.p-button-secondary > .p-button.p-button-text {
-  font-size: 12px;
-}
-.p-menuitem-text{
-  font-size: 12px;
-}
