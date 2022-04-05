@@ -31,7 +31,7 @@ export class MenuComponent implements OnChanges {
             routerLink: '/chef',
           },
           {
-            label: 'ofertas',
+            label: 'Ofertas',
             icon: 'pi pi-fw pi-wallet',
             routerLink: '/ofertas',
           },
