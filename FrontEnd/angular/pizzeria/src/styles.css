@@ -4,6 +4,8 @@ body {
 }
 
 .logo{
+  text-decoration: none;
+  font-size: 2.5em;
   font-style: italic;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   padding: 0em;
