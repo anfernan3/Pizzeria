@@ -134,4 +134,12 @@ export class gestionUsuariosViewModelService {
       error: err => this.notify.add(err.message)
     })
   }
+
+  addDetalle(item: any) {
+    if(!this.Elemento.Roles) this.Elemento.Roles = []
+    this.Elemento.Roles.push(item)
+  }
+  removeDetalle(index: number) {
+    this.Elemento.Roles.splice(index, 1)
+  }
 }

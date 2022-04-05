@@ -9,7 +9,7 @@
                         alt="Foto de {{VM.Elemento.nombre}} {{VM.Elemento.precio}}" class="rounded" />
               </div>
               <div>
-                <button class="no-decoration button-cart" (click)="carrito.agregarAlCarrito(VM.Elemento)"><h2 class="cart-button">🛒</h2></button>
+                <button *ngIf="VM.auth.isAutenticated" class="no-decoration button-cart" (click)="carrito.agregarAlCarrito(VM.Elemento)"><h2 class="cart-button">🛒</h2></button>
             </div>
               <div class="col-sm-6 col-md-8">
                   <h4>{{VM.Elemento.tratamiento}} {{VM.Elemento.nombre}} {{VM.Elemento.precio| currency:'EUR':'symbol':'1.2-2' }}</h4>

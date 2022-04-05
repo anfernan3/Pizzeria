@@ -61,11 +61,17 @@ export class PizzasViewModelService {
   protected elemento: any = {};
   protected idOriginal: any = null;
   protected listURL = '/pizzas';
-  protected listadoIngredientes: Array<any> = [];
+  public listadoIngredientes: Array<any> = [];
+  public listadoBases: Array<any> = [];
+  public listadoSalsas: Array<any> = [];
 
 
   constructor(protected notify: NotificationService, protected out: LoggerService, protected dao: PizzasDAOService, protected dao2: IngredientesDAOService,
-    public auth: AuthService, protected router: Router, private navigation: NavigationService) { }
+    public auth: AuthService, protected router: Router, private navigation: NavigationService) {
+      dao2.query('/bases').subscribe(data => this.listadoBases = data)
+      dao2.query('/salsas').subscribe(data => this.listadoSalsas = data)
+      dao2.query('/otros').subscribe(data => this.listadoIngredientes = data)
+    }
 
   public get Modo(): ModoCRUD { return this.modo; }
   public get Listado(): Array<any> { return this.listado; }
@@ -132,6 +138,8 @@ export class PizzasViewModelService {
           next: data => this.cancel(),
           error: err => this.notify.add(err.message)
         });
+
+
         break;
       case 'edit':
         this.dao.change(this.idOriginal, this.elemento).subscribe({
@@ -169,4 +177,11 @@ export class PizzasViewModelService {
     })
   }
 
+  addDetalle(item: any) {
+    if(!this.Elemento.ingredientes) this.Elemento.ingredientes = []
+    this.Elemento.ingredientes.push(item)
+  }
+  removeDetalle(index: number) {
+    this.Elemento.ingredientes.splice(index, 1)
+  }
 }

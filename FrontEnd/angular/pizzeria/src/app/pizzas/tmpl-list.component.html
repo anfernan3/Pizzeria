@@ -7,7 +7,7 @@
   <div class="container-card-pizza" *ngFor="let item of VM.Listado">
     <img [src]="item.foto??'assets/img/pizzas/pizza-margarita-redux.webp'" alt="Foto de la pizza {{item.nombre}}" height="auto" width="100">
     <div>
-      <button class="no-decoration button-cart" (click)="carrito.agregarAlCarrito(item)"><h2 class="cart-button">🛒</h2></button>
+      <button *ngIf="VM.auth.isAutenticated" class="no-decoration button-cart"  (click)="carrito.agregarAlCarrito(item)"><h2 class="cart-button">🛒</h2></button>
   </div>
     <div class="container-text-card-pizza">
       <button class="product-text button" routerLink="{{item.id}}">{{item.nombre}}</button>

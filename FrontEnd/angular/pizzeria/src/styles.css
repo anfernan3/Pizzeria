@@ -14,8 +14,10 @@ body {
   margin-top: -0.2em;
 }
 
-.btn:disabled{
-  background-color: rgab(0,0,0,0.5);
+
+.btn:disabled {
+  background-color: #f5f9e7;
+  color:#c8ccba ;
 }
 
 .btn{
@@ -117,3 +119,11 @@ tr:nth-child(even) {
 .p-menubar .p-menuitem-link .p-menuitem-text {
   font-size: 12px;
 }
+@media only screen and (max-width: 600px) {
+  table{
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+

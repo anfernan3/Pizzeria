@@ -1,6 +1,8 @@
 <div class="body">
 <form class="formulario" #miForm="ngForm">
+     <p> Usuario: {{VM.Elemento.nombre}} {{VM.Elemento.apellido1}} {{VM.Elemento.apellido2}}</p>
   <h1>Roles</h1>
+  <input type="button" (click)="VM.addDetalle('ROLE_USUARIO')" value="Añadir">
   <fieldset class="form-group col-md-2" *ngFor="let item of VM.Elemento.Roles; let indice=index">
     <legend class="col-form-label col-sm-2 pt-0">rol {{indice}}</legend>
     <div class="col-sm-10">
@@ -14,6 +16,7 @@
           <option value="ROLE_REPARTIDOR">REPARTIDOR</option>
           <option value="ROLE_USUARIO" selected>USUARIO</option>
         </select>
+        <input type="button" (click)="VM.removeDetalle(indice)" value="X">
       </div>
     </div>
   </fieldset>

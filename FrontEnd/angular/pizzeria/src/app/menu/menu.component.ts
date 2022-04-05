@@ -19,48 +19,53 @@ export class MenuComponent implements OnChanges {
   ngOnInit() {
     this.auth.Notificacion.subscribe(
       (data) =>
-        (this.items = [
-          {
-            label: 'Carta',
-            icon: 'pi pi-fw pi-book',
-            routerLink: '/carta',
-          },
-          {
-            label: 'Chef',
-            icon: 'pi pi-fw pi-user',
-            routerLink: '/chef',
-          },
-          {
-            label: 'Ofertas',
-            icon: 'pi pi-fw pi-wallet',
-            routerLink: '/ofertas',
-          },
-
-          {
-            label: 'Ingredientes',
-            icon: 'pi pi-fw pi-box',
-            visible: this.auth.isInRoles('GERENTE', 'TIENDA'),
-            routerLink: '/ingredientes',
-          },
-          {
-            label: 'Comentarios',
-            icon: 'pi pi-fw pi-comments',
-            routerLink: '/comentarios',
-            visible: this.auth.isInRoles('USUARIO', 'GERENTE'),
-          },
-          {
-            label: 'Pedidos',
-            icon: 'pi pi-fw pi-euro',
-            routerLink: '/pedidos',
-            visible: this.auth.isInRoles('GERENTE', 'TIENDA'),
-          },
-          {
-            label: 'Usuarios',
-            icon: 'pi pi-fw pi-user',
-            routerLink: '/gestionUsuarios',
-            visible: this.auth.isInRoles('GERENTE'),
-          },
-        ])
+        this.init()
     );
+    this.init()
+  }
+
+  private init(): void {
+    this.items = [
+      {
+        label: 'Carta',
+        icon: 'pi pi-fw pi-book',
+        routerLink: '/carta',
+      },
+      {
+        label: 'Chef',
+        icon: 'pi pi-fw pi-user',
+        routerLink: '/chef',
+      },
+      {
+        label: 'Ofertas',
+        icon: 'pi pi-fw pi-wallet',
+        routerLink: '/ofertas',
+      },
+
+      {
+        label: 'Ingredientes',
+        icon: 'pi pi-fw pi-box',
+        visible: this.auth.isInRoles('GERENTE', 'TIENDA'),
+        routerLink: '/ingredientes',
+      },
+      {
+        label: 'Comentarios',
+        icon: 'pi pi-fw pi-comments',
+        routerLink: '/comentarios',
+        visible: this.auth.isInRoles('USUARIO', 'GERENTE'),
+      },
+      {
+        label: 'Pedidos',
+        icon: 'pi pi-fw pi-euro',
+        routerLink: '/pedidos',
+        visible: this.auth.isInRoles('GERENTE', 'TIENDA'),
+      },
+      {
+        label: 'Usuarios',
+        icon: 'pi pi-fw pi-user',
+        routerLink: '/gestionUsuarios',
+        visible: this.auth.isInRoles('GERENTE'),
+      },
+    ];
   }
 }
