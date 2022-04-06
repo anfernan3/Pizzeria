@@ -6,7 +6,7 @@
 <form #miForm="ngForm">
   <div class="form-row">
     <div class="grid p-fluid">
-      <p>Usuario:</p>
+      <p>Usuario: {{this.VM.auth.Name}}</p>
       <textarea pInputTextarea [(ngModel)]="VM.Elemento.comentario" name="comentario"></textarea>
     </div>
     <app-form-buttons
