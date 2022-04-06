@@ -12,89 +12,183 @@
         <div id="id">{{VM.Elemento.id}}</div>
       </ng-container>
     </div> -->
-    <div class="form-group col-md-4">
-      <label class="form-label" for="nombre">Nombre:</label>
-      <input class="form-control" [class.is-invalid]="nombre.invalid" type="text" name="nombre" id="nombre"
-        [(ngModel)]="VM.Elemento.nombre" #nombre="ngModel" required minlength="2" maxlength="50">
-      <!-- <app-show-errors-messages [errors]="nombre.errors"></app-show-errors-messages> -->
-      <output [myShowErrors]="nombre.errors"></output>
-    </div>
-    <div class="form-group col-md-4">
-      <label class="form-label" for="descripcion">Descripción:</label>
-      <input class="form-control" [class.is-invalid]="descripcion.invalid" type="text" name="descripcion" id="descripcion"
-        [(ngModel)]="VM.Elemento.descripcion" #descripcion="ngModel" minlength="2" maxlength="50">
-      <div class="invalid-feedback" [hidden]="!descripcion.hasError('minlength') && !descripcion.hasError('maxlength')">
-        Debe tener entre 2 y 10 letras</div>
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-4">
-      <label class="form-label" for="base">Base:</label>
-      <select class="form-control" [class.is-invalid]="base.invalid"
-      name="base" id="base"
-      [(ngModel)]="VM.Elemento.base" #base="ngModel"
-      >
-        <option *ngFor="let ingr of VM.listadoBases" value="{{ingr.nombre}}">{{ingr.nombre}}</option>
-      </select>
-       <div class="invalid-feedback" [hidden]="base.valid">
-        <span [hidden]="!base.hasError('maxlength')">Debe tener menos 100 caracteres. </span>
-        <span [hidden]="!base.hasError('base')">Debe ser un ingrediente base. </span>
+    <div class="container-form-text">
+      <div class="text-nombre">
+        <label class="form-label" for="nombre">Nombre:</label>
+        <input
+          class="form-control"
+          [class.is-invalid]="nombre.invalid"
+          type="text"
+          name="nombre"
+          id="nombre"
+          [(ngModel)]="VM.Elemento.nombre"
+          #nombre="ngModel"
+          required
+          minlength="2"
+          maxlength="50"
+        />
+        <!-- <app-show-errors-messages [errors]="nombre.errors"></app-show-errors-messages> -->
+        <output [myShowErrors]="nombre.errors"></output>
       </div>
-    </div>
-
-    <div class="form-group col-md-4">
-      <label class="form-label" for="salsa">Salsa:</label>
-      <select class="form-control" [class.is-invalid]="salsa.invalid"
-      name="salsa" id="salsa"
-      [(ngModel)]="VM.Elemento.salsa" #salsa="ngModel"
-      >
-        <option *ngFor="let ingr of VM.listadoSalsas" value="{{ingr.nombre}}">{{ingr.nombre}}</option>
-      </select>
-       <div class="invalid-feedback" [hidden]="salsa.valid">
-        <span [hidden]="!salsa.hasError('maxlength')">Debe tener menos 100 caracteres. </span>
-        <span [hidden]="!salsa.hasError('base')">Debe ser un ingrediente de tipo salsa. </span>
-      </div>
-    </div>
-    <h1>Ingredientes</h1>
-    <input type="button" (click)="VM.addDetalle({idIngrediente: 1,cantidad:1})" value="Añadir">
-    <div class="form-group col-md-2" *ngFor="let item of VM.Elemento.ingredientes; let indice=index">
-       <div class="col-sm-10">
-        <div class="form-check">
-          <select
-          [(ngModel)]="VM.Elemento.ingredientes[indice].idIngrediente"
-          name="idIngrediente{{indice}}"
-          >
-            <option *ngFor="let ingr of VM.listadoIngredientes" value="{{ingr.id}}">{{ingr.nombre}}</option>
-          </select>
-          Cantidad:  <input type="number" name="Cantidad{{indice}}" [(ngModel)]="VM.Elemento.ingredientes[indice].cantidad">
-          <input type="button" (click)="VM.removeDetalle(indice)" value="X">
+      <div class="form-group col-md-4">
+        <label class="form-label" for="descripcion">Descripción:</label>
+        <input
+          class="form-control"
+          [class.is-invalid]="descripcion.invalid"
+          type="text"
+          name="descripcion"
+          id="descripcion"
+          [(ngModel)]="VM.Elemento.descripcion"
+          #descripcion="ngModel"
+          minlength="2"
+          maxlength="50"
+        />
+        <div
+          class="invalid-feedback"
+          [hidden]="
+            !descripcion.hasError('minlength') &&
+            !descripcion.hasError('maxlength')
+          "
+        >
+          Debe tener entre 2 y 10 letras
         </div>
       </div>
     </div>
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label class="form-label" for="base">Base:</label>
+        <select
+          class="form-control"
+          [class.is-invalid]="base.invalid"
+          name="base"
+          id="base"
+          [(ngModel)]="VM.Elemento.base"
+          #base="ngModel"
+        >
+          <option
+            *ngFor="let ingr of VM.listadoBases"
+            value="{{ ingr.nombre }}"
+          >
+            {{ ingr.nombre }}
+          </option>
+        </select>
+        <div class="invalid-feedback" [hidden]="base.valid">
+          <span [hidden]="!base.hasError('maxlength')"
+            >Debe tener menos 100 caracteres.
+          </span>
+          <span [hidden]="!base.hasError('base')"
+            >Debe ser un ingrediente base.
+          </span>
+        </div>
+      </div>
 
-
+      <div class="form-group col-md-4">
+        <label class="form-label" for="salsa">Salsa:</label>
+        <select
+          class="form-control"
+          [class.is-invalid]="salsa.invalid"
+          name="salsa"
+          id="salsa"
+          [(ngModel)]="VM.Elemento.salsa"
+          #salsa="ngModel"
+        >
+          <option
+            *ngFor="let ingr of VM.listadoSalsas"
+            value="{{ ingr.nombre }}"
+          >
+            {{ ingr.nombre }}
+          </option>
+        </select>
+        <div class="invalid-feedback" [hidden]="salsa.valid">
+          <span [hidden]="!salsa.hasError('maxlength')"
+            >Debe tener menos 100 caracteres.
+          </span>
+          <span [hidden]="!salsa.hasError('base')"
+            >Debe ser un ingrediente de tipo salsa.
+          </span>
+        </div>
+      </div>
+    </div>
+    <h1>Ingredientes</h1>
+    <input class = "btn"
+      type="button"
+      (click)="VM.addDetalle({ idIngrediente: 1, cantidad: 1 })"
+      value="Añadir"
+    />
+    <div
+      class="form-group col-md-2"
+      *ngFor="let item of VM.Elemento.ingredientes; let indice = index"
+    >
+      <div class="col-sm-10">
+        <div class="form-check">
+          <select
+            [(ngModel)]="VM.Elemento.ingredientes[indice].idIngrediente"
+            name="idIngrediente{{ indice }}"
+          >
+            <option
+              *ngFor="let ingr of VM.listadoIngredientes"
+              value="{{ ingr.id }}"
+            >
+              {{ ingr.nombre }}
+            </option>
+          </select>
+          Cantidad:
+          <input
+            type="number"
+            name="Cantidad{{ indice }}"
+            [(ngModel)]="VM.Elemento.ingredientes[indice].cantidad"
+          />
+          <input class="btn" type="button" (click)="VM.removeDetalle(indice)" value="X" />
+        </div>
+      </div>
+    </div>
   </div>
   <div class="form-group row">
     <div class="form-group col-md-12">
       <label class="form-label" for="foto">Foto:</label>
-      <input class="form-control" [class.is-invalid]="foto.invalid" type="url" name="foto" id="foto"
-        [(ngModel)]="VM.Elemento.foto" #foto="ngModel" maxlength="500">
+      <input
+        class="form-control"
+        [class.is-invalid]="foto.invalid"
+        type="url"
+        name="foto"
+        id="foto"
+        [(ngModel)]="VM.Elemento.foto"
+        #foto="ngModel"
+        maxlength="500"
+      />
       <div class="invalid-feedback" [hidden]="!foto.hasError('maxlength')">
-        Debe tener menos 500 caracteres.</div>
+        Debe tener menos 500 caracteres.
+      </div>
       <div class="invalid-feedback" [hidden]="!foto.hasError('type')">
-        {{foto.hasError('type')}}</div>
+        {{ foto.hasError("type") }}
+      </div>
     </div>
   </div>
   <div class="form-group col-md-4">
     <label class="form-label" for="precio">Precio:</label>
-    <input class="form-control" [class.is-invalid]="precio.invalid" type="number" name="precio" id="precio"
-      [(ngModel)]="VM.Elemento.precio" #precio="ngModel" precio maxlength="100">
+    <input
+      class="form-control"
+      [class.is-invalid]="precio.invalid"
+      type="number"
+      name="precio"
+      id="precio"
+      [(ngModel)]="VM.Elemento.precio"
+      #precio="ngModel"
+      precio
+      maxlength="100"
+    />
     <div class="invalid-feedback" [hidden]="precio.valid">
-      <span [hidden]="!precio.hasError('maxlength')">Debe tener menos 100 caracteres. </span>
+      <span [hidden]="!precio.hasError('maxlength')"
+        >Debe tener menos 100 caracteres.
+      </span>
       <span [hidden]="!precio.hasError('base')">Debe ser un número. </span>
     </div>
   </div>
-  <app-form-buttons (send)="VM.send()" [send-disabled]="miForm.invalid" (cancel)="VM.cancel()"></app-form-buttons>
+  <app-form-buttons
+    (send)="VM.send()"
+    [send-disabled]="miForm.invalid"
+    (cancel)="VM.cancel()"
+  ></app-form-buttons>
   <!-- <div class="form-group">
     <input type="button" class="btn btn-success" value="Enviar" (click)="VM.send()" [disabled]="miForm.invalid">
     <input type="button" class="btn btn-info" value="Volver" (click)="VM.cancel()">

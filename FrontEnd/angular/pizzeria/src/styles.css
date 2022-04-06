@@ -137,7 +137,14 @@ tr:nth-child(even) {
   flex-direction: column;
   margin-right: 1em;
 }
-
+.text-nombre{
+  margin-left:2.2em;
+}
+.container-form-text{
+  margin-left: 8.5em;
+  align-self: left;
+  text-align: left;
+}
 .card-descripcion-producto{
   background-color: rgba(120, 120, 120, 0.49);
   border-radius: 10px;
