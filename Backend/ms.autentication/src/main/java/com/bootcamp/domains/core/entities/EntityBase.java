@@ -1,4 +1,4 @@
-package com.capgemini.domains.core.entities;
+package com.bootcamp.domains.core.entities;
 
 import java.util.Set;
 

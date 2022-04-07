@@ -1,10 +1,10 @@
-package com.capgemini.application.dtos;
+package com.bootcamp.application.dtos;
 
 import java.util.List;
 
 import javax.validation.constraints.NotBlank;
 
-import com.capgemini.domains.entities.Usuario;
+import com.bootcamp.domains.entities.Usuario;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;

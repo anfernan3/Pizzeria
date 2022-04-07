@@ -1,4 +1,4 @@
-package com.capgemini.domains.contracts.services;
+package com.bootcamp.domains.contracts.services;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

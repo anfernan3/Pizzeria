@@ -1,4 +1,4 @@
-package com.capgemini.domains.entities;
+package com.bootcamp.domains.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -6,7 +6,7 @@ import javax.validation.constraints.NotBlank;
 
 import org.hibernate.validator.constraints.Length;
 
-import com.capgemini.domains.core.entities.EntityBase;
+import com.bootcamp.domains.core.entities.EntityBase;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.List;

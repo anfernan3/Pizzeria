@@ -1,4 +1,4 @@
-package com.capgemini;
+package com.bootcamp;
 
 import javax.sql.DataSource;
 
@@ -58,7 +58,7 @@ public class Application implements CommandLineRunner{
 	public Docket api() {                
    	    return new Docket(DocumentationType.OAS_30)          
 	      .select()
-	      .apis(RequestHandlerSelectors.basePackage("com.capgemini.application.resources"))
+	      .apis(RequestHandlerSelectors.basePackage("com.bootcamp.application.resources"))
 	      .paths(PathSelectors.ant("/**"))
 	      .build()
 	      .apiInfo(new ApiInfoBuilder()

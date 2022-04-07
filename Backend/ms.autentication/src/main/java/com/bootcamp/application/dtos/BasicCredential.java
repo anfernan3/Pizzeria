@@ -1,4 +1,4 @@
-package com.capgemini.application.dtos;
+package com.bootcamp.application.dtos;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

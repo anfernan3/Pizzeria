@@ -1,4 +1,4 @@
-package com.capgemini.domains.core.validators;
+package com.bootcamp.domains.core.validators;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;

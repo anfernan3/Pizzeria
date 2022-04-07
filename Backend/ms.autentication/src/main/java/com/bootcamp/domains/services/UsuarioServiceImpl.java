@@ -1,4 +1,4 @@
-package com.capgemini.domains.services;
+package com.bootcamp.domains.services;
 
 import java.util.List;
 
@@ -7,12 +7,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import com.capgemini.domains.contracts.repositories.UsuarioRepository;
-import com.capgemini.domains.contracts.services.UsuarioService;
-import com.capgemini.domains.entities.Usuario;
-import com.capgemini.exceptions.DuplicateKeyException;
-import com.capgemini.exceptions.InvalidDataException;
-import com.capgemini.exceptions.NotFoundException;
+import com.bootcamp.domains.contracts.repositories.UsuarioRepository;
+import com.bootcamp.domains.contracts.services.UsuarioService;
+import com.bootcamp.domains.entities.Usuario;
+import com.bootcamp.exceptions.DuplicateKeyException;
+import com.bootcamp.exceptions.InvalidDataException;
+import com.bootcamp.exceptions.NotFoundException;
 
 @Service
 public class UsuarioServiceImpl implements UsuarioService {

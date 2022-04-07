@@ -1,6 +1,6 @@
-package com.capgemini.domains.contracts.services;
+package com.bootcamp.domains.contracts.services;
 
-import com.capgemini.domains.entities.Usuario;
+import com.bootcamp.domains.entities.Usuario;
 
 public interface UsuarioService extends ProjectionDomainService<Usuario, String > {
 

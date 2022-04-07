@@ -1,4 +1,4 @@
-package com.capgemini.domains.contracts.services;
+package com.bootcamp.domains.contracts.services;
 
 import java.util.List;
 

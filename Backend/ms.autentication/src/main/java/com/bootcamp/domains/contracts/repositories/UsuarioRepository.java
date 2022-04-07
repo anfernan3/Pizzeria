@@ -1,4 +1,4 @@
-package com.capgemini.domains.contracts.repositories;
+package com.bootcamp.domains.contracts.repositories;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
-import com.capgemini.domains.entities.Usuario;
+import com.bootcamp.domains.entities.Usuario;
 
 
 public interface UsuarioRepository extends JpaRepository<Usuario, String> {

@@ -1,10 +1,10 @@
-package com.capgemini.domains.contracts.services;
+package com.bootcamp.domains.contracts.services;
 
 import java.util.List;
 
-import com.capgemini.exceptions.DuplicateKeyException;
-import com.capgemini.exceptions.InvalidDataException;
-import com.capgemini.exceptions.NotFoundException;
+import com.bootcamp.exceptions.DuplicateKeyException;
+import com.bootcamp.exceptions.InvalidDataException;
+import com.bootcamp.exceptions.NotFoundException;
 
 public interface DomainService<E, K> {
 	List<E> getAll();

@@ -1,4 +1,4 @@
-package com.capgemini.application.resources;
+package com.bootcamp.application.resources;
 
 import java.net.URI;
 import java.util.Date;
@@ -23,15 +23,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.capgemini.application.dtos.AuthToken;
-import com.capgemini.application.dtos.BasicCredential;
-import com.capgemini.application.dtos.NuevoUsuarioDTO;
-import com.capgemini.application.dtos.UsuarioDTO;
-import com.capgemini.domains.contracts.services.UsuarioService;
-import com.capgemini.domains.entities.Usuario;
-import com.capgemini.exceptions.DuplicateKeyException;
-import com.capgemini.exceptions.InvalidDataException;
-import com.capgemini.exceptions.NotFoundException;
+import com.bootcamp.application.dtos.AuthToken;
+import com.bootcamp.application.dtos.BasicCredential;
+import com.bootcamp.application.dtos.NuevoUsuarioDTO;
+import com.bootcamp.application.dtos.UsuarioDTO;
+import com.bootcamp.domains.contracts.services.UsuarioService;
+import com.bootcamp.domains.entities.Usuario;
+import com.bootcamp.exceptions.DuplicateKeyException;
+import com.bootcamp.exceptions.InvalidDataException;
+import com.bootcamp.exceptions.NotFoundException;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
